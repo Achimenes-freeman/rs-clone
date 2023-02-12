@@ -1,3 +1,4 @@
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
 import { MainContextProvider } from './context/MainContext';
@@ -7,7 +8,9 @@ const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
-    <MainContextProvider>
-        <App />
-    </MainContextProvider>
+    <StrictMode>
+        <MainContextProvider>
+            <App />
+        </MainContextProvider>
+    </StrictMode>
 );

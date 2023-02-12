@@ -1,60 +1,77 @@
-import React, { createContext, useCallback, useEffect, useMemo, useState} from "react";
-import { IMainContext, TWordsData} from "./types";
+import React, {
+    createContext,
+    useCallback,
+    // useEffect,
+    useMemo,
+    useState,
+} from 'react';
+import { IMainContext, TWordsData } from './types';
 import wordsData from '../developData/words.json';
-import { shuffler } from "../helpers/helpers";
-
+import { shuffler } from '../helpers/helpers';
 
 export const MainContext = createContext<IMainContext>({
     wordsList: [],
     typedList: [],
-    allClicks: 0,
-    wrongClicks: 0,
-    changeWordsList: ()=> {},
-    changeTypedList: ()=> {},
-    makeEmptyTypedList: ()=> {},
-})
+    timer: 60,
+    changeWordsList: () => {},
+    changeTypedList: () => {},
+    makeEmptyTypedList: () => {},
+    changeTimer: () => {},
+});
 
-export const MainContextProvider = ({children}: {children: React.ReactElement}) => {
+export const MainContextProvider = ({
+    children,
+}: {
+    children: React.ReactElement;
+}) => {
+    const [wordsList, setWordsList] = useState<TWordsData>(
+        shuffler(wordsData.map((word) => word.split('')))
+    );
+    const [typedList, setTypedList] = useState<TWordsData>([[]]);
+    const [timer, setTimer] = useState(60);
 
-    const [wordsList, setWordsList] = useState<TWordsData>(wordsData.map(word => word.split('')));
-    const [typedList, setTypedList] = useState<TWordsData>([[]]); 
+    // useEffect(() => {
+    //     setWordsList(shuffler(wordsData.map((word) => word.split(''))));
+    // }, []);
 
-    useEffect(()=> {
-        setWordsList(wordsData.map(word => word.split('')))
-    }, [])
+    const changeWordsList = useCallback((oldWordsList: TWordsData) => {
+        setWordsList([...shuffler(oldWordsList)]);
+    }, []);
 
-    const changeWordsList = useCallback(
-        (wordslist: TWordsData)=> {
-            const newWordslist: TWordsData = [...shuffler(wordslist)]
-            setWordsList(newWordslist)
-    }, 
-    [])
+    const changeTypedList = useCallback((newTypedList: TWordsData) => {
+        setTypedList(newTypedList);
+    }, []);
 
-    const changeTypedList = useCallback(
-        (newTypedList: TWordsData)=> {
-            setTypedList(newTypedList)
-        },
-    [])
+    const makeEmptyTypedList = useCallback(() => {
+        setTypedList([[]]);
+    }, []);
 
-    const makeEmptyTypedList = useCallback(
-        () => {
-            setTypedList([[]]);
-        }, [])
+    const changeTimer = useCallback((number?: number) => {
+        setTimer((prev) => (number === undefined ? prev - 1 : number));
+    }, []);
 
-    const context: IMainContext = useMemo(()=>({
-        wordsList,
-        typedList,
-        allClicks: 0,
-        wrongClicks: 0,
-        changeWordsList,
-        changeTypedList,
-        makeEmptyTypedList
-    }), [wordsList, typedList, changeWordsList, changeTypedList, makeEmptyTypedList])
-
+    const context: IMainContext = useMemo(
+        () => ({
+            wordsList,
+            typedList,
+            timer,
+            changeWordsList,
+            changeTypedList,
+            makeEmptyTypedList,
+            changeTimer,
+        }),
+        [
+            wordsList,
+            typedList,
+            timer,
+            changeWordsList,
+            changeTypedList,
+            makeEmptyTypedList,
+            changeTimer,
+        ]
+    );
 
     return (
-        <MainContext.Provider value={context}>
-            {children}
-        </MainContext.Provider>
-    )
-}
+        <MainContext.Provider value={context}>{children}</MainContext.Provider>
+    );
+};

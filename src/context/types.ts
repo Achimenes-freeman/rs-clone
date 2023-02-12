@@ -1,12 +1,12 @@
-export type TWord = Array<string>
-export type TWordsData = Array<TWord>
+export type TWord = Array<string>;
+export type TWordsData = Array<TWord>;
 
 export interface IMainContext {
     wordsList: TWordsData;
     typedList: TWordsData;
-    allClicks: number;
-    wrongClicks: number;
-    changeWordsList: (wordslist: TWordsData)=> void;
-    changeTypedList: (newTypedList: TWordsData)=> void;
-    makeEmptyTypedList: ()=> void;
-} 
+    timer: number;
+    changeWordsList: (oldWordsList: TWordsData) => void;
+    changeTypedList: (newTypedList: TWordsData) => void;
+    makeEmptyTypedList: () => void;
+    changeTimer: (number?: number) => void;
+}

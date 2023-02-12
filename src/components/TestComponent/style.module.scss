@@ -10,7 +10,7 @@
     display: inline-block;
     margin-right: 1rem;
 
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-family: $ubuntu;
     line-height: 1.5;
 
@@ -18,21 +18,20 @@
         margin-right: 0;
     }
 
-    &Caret{
+    &Caret {
         position: relative;
-        &:after{
-            content:"";
+        &:after {
+            content: '';
             display: block;
             position: absolute;
-    
-            
+
             height: 100%;
             width: 2px;
             top: 0;
             left: 0;
             background-color: $main-yellow-text;
-    
-            animation: blink .5s linear infinite;
+
+            animation: blink 0.5s linear infinite;
         }
     }
 }
@@ -43,14 +42,14 @@
     left: 50%;
 
     transform: translate(-50%, -50%);
-    height: 110px;
-    width: 80%;
+    height: 125px;
+    width: 70%;
 
     overflow: hidden;
 }
 
-.correctLetter{
-    color: $main-yellow-text
+.correctLetter {
+    color: $main-yellow-text;
 }
 
 .wrongLetter {
@@ -65,45 +64,48 @@
 .wrongWord {
     position: relative;
 
-    &::after {
+    &::before {
         content: '';
         display: block;
         position: absolute;
         left: 0;
         bottom: 0;
         width: 100%;
-        height: 3px;
+        height: 2px;
         background-color: $main-incorrect-text;
     }
 }
 
-.caret{
+.caret {
     position: relative;
-        &:after{
-            content:"";
-            display: block;
-            position: absolute;
-    
-            
-            height: 100%;
-            width: 2px;
-            top: 0;
-            left: 100%;
-            background-color: $main-yellow-text;
-    
-            animation: blink .5s linear infinite;
-    
-        }
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+
+        height: 100%;
+        width: 2px;
+        top: 0;
+        left: 100%;
+        background-color: $main-yellow-text;
+
+        animation: blink 0.5s linear infinite;
+    }
+}
+
+.timer {
+    font-size: 3rem;
+    color: $main-yellow-text;
 }
 
 @keyframes blink {
-    0%{
+    0% {
         opacity: 1;
     }
-    50%{
+    50% {
         opacity: 0;
     }
-    100%{
+    100% {
         opacity: 1;
     }
 }
