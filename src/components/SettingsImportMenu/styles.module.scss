@@ -1,0 +1,82 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($color: #000000, $alpha: 0.5);
+}
+
+.menuContainer {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+    width: 450px;
+    padding: 10px 20px;
+    background: var(--background);
+    border-radius: 5px;
+}
+
+.closeButton {
+    position: absolute;
+    top: -25px;
+    left: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    background: var(--main);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.1s linear;
+
+    &:hover {
+        background: var(--text);
+        & > span {
+            border-color: var(--background);
+        }
+    }
+
+    &:active {
+        background: var(--sub);
+    }
+}
+
+.firstPartCross {
+    position: relative;
+    right: -1.5px;
+    display: flex;
+    height: 20px;
+    width: 3px;;
+    border-right: 3px solid var(--background);
+    transform: rotateZ(45deg);
+}
+.secondPartCross {
+    position: relative;
+    left: -1.5px;
+    display: flex;
+    height: 20px;
+    width: 3px;
+    border-left: 3px solid var(--background);
+    transform: rotateZ(-45deg);
+}
+
+.input {
+    outline: none;
+    height: 40px;
+    padding: 5px;
+    border: none;
+    background: var(--subAlt);
+    border-radius: 5px;
+    color: var(--text);
+    caret-color: var(--text);
+    font-size: 16px;
+}

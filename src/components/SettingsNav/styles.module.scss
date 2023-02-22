@@ -1,0 +1,39 @@
+.settings {
+    &Navigation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        &Content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+    }
+}
+
+.Navigation {
+    list-style: none;
+
+    &Link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > a {
+            padding: 15px 10px;
+            color: var(--sub);
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.1s linear;
+
+            &:hover {
+                color: var(--text);
+            }
+        }
+    }
+}
