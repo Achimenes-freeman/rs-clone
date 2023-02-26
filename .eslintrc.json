@@ -38,6 +38,10 @@
                 ],
                 "unnamedComponents": ["function-expression", "arrow-function"]
             }
-        ]
+        ],
+        "prefer-destructuring": ["error", {
+            "array": false,
+            "object": true
+        }]
     }
 }

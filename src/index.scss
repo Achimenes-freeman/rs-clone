@@ -1,0 +1,28 @@
+@import './variables.scss';
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $main-gray-bg;
+    color: $disabled-text;
+    font-family: $ubuntu;
+
+}
+
+#root{
+    padding: 0 150px;
+    height: 100vh;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
