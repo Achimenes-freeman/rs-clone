@@ -9,7 +9,6 @@ export function SettingDangerZone() {
     const [isImportOpen, setIsImportOpen] = useState(false);
 
     const openImportMenu = () => {
-        console.log(1)
         setIsImportOpen(true);
     }
     const exportSettings = () => {

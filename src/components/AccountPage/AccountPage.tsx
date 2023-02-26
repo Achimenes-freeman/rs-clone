@@ -8,6 +8,7 @@ import { UserInfo } from './types';
 import { SettingsInterface } from "../../helpers/defaultSettings";
 import { BestGamesInfoTable } from "../BestGamesInfoTable/BestGamesInfoTable";
 import { UserShortInfo } from "../UserShortInfo/UserShortInfo";
+import { GamesInfo } from "../GamesInfo/GamesInfo";
 
 
 export function AccountPage() {
@@ -41,7 +42,7 @@ export function AccountPage() {
                 username: 'iSvitka',
                 password: 'qazwsxedc',
                 dateCreation: "2023-02-22T16:19:18.458Z",
-                gameCount: 0,
+                gameCount: 4,
                 bestGame: undefined,
                 bestGames: [],
                 games: [
@@ -93,7 +94,7 @@ export function AccountPage() {
             </div>
             <div className={styles.gamesInfoCont}>
                 {userInfo?.games.length
-                ? 'Games'
+                ? <GamesInfo userInfo={userInfo}/>
                 : <span>No games found</span>}
             </div>
         </section>
