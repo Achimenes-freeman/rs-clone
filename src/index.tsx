@@ -1,16 +1,18 @@
-import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
-import { MainContextProvider } from './context/MainContext';
+import { MainContextProvider } from './context/MainContext/MainContext';
+import { TestContextProvider } from './context/TestContext/TestContext';
 import './index.scss';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
-    <StrictMode>
+
         <MainContextProvider>
-            <App />
+            <TestContextProvider>
+                <App />
+            </TestContextProvider>
         </MainContextProvider>
-    </StrictMode>
+
 );

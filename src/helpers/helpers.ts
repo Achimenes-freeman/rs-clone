@@ -1,4 +1,4 @@
-import { TWordsData } from "../context/types";
+import { TWordsData } from "../context/MainContext/types";
 
 export const shuffler = (arr: TWordsData) => {
     let parity = 1;
@@ -27,4 +27,3 @@ export const shuffler = (arr: TWordsData) => {
     }
     return shuffledArray
   }
-

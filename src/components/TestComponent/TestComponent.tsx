@@ -4,51 +4,64 @@ import classNames from 'classnames';
 
 import styles from './style.module.scss';
 
-import { MainContext } from '../../context/MainContext';
+import { MainContext } from '../../context/MainContext/MainContext';
+import { TestContext } from '../../context/TestContext/TestContext';
 
 export const TestComponent = () => {
+
+    const {testContext, resetTestContext} = useContext(TestContext);
+    const {testContext:{allClicks, wrongClicks}} = useContext(TestContext);
     const {
         wordsList: wordsData,
         typedList,
-        timer,
         changeWordsList,
         changeTypedList,
         makeEmptyTypedList,
-        changeTimer,
+        changeFinished
     } = useContext(MainContext);
+
+    const [counting, setCounting] = useState(false);
+    const [timer, setTimer] = useState(+testContext.mode.split(' ')[1])
 
     const currentWordIndex = useRef(0);
     const currWord = useRef<Element>();
     const currentLetter = useRef<Element>();
-
-    const allClicks = useRef(0);
-    const wrongClicks = useRef(0);
-
-    const [counting, setCounting] = useState(false);
     const timerId = useRef<NodeJS.Timeout>();
+
+    useEffect(()=> {
+        testContext.accuracy = Math.round((1 - (wrongClicks / allClicks)) * 100)
+    },[allClicks, testContext, wrongClicks])
 
     useEffect(() => {
         if (counting) {
+
             timerId.current = setInterval(() => {
-                changeTimer();
+                setTimer((prev) => prev - 1);
             }, 1000);
+            
         } else {
             clearInterval(timerId.current);
         }
-    }, [counting, changeTimer]);
+    }, [counting]);
 
     useEffect(() => {
         if (timer <= 0) {
-            clearInterval(timerId.current);
+            setCounting(false)
+            const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
+            testContext.wpm = correctWords * 60 / +testContext.mode.split(' ')[1];
+
+            changeFinished()  
+        } else {
+            const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
+            testContext.printsDynamics.push(Math.round(correctWords / ((15 - timer) / 60)))
         }
+
     }, [timer]);
 
+
     useEffect(() => {
-        currWord.current = document.getElementsByClassName(`${styles.word}`)[
-            currentWordIndex.current
-        ];
         if (!currentLetter.current) {
-            currWord.current.classList.add(`${styles.wordCaret}`);
+            currWord.current?.classList.add(`${styles.wordCaret}`);
         }
         currentLetter.current =
             currWord.current?.children[
@@ -71,23 +84,27 @@ export const TestComponent = () => {
         } else {
             currWord.current?.classList.add(`${styles.wordCaret}`);
         }
-    });
+    },[typedList]);
+
+    useEffect(()=> {
+        currWord.current = document.getElementsByClassName(`${styles.word}`)[0];
+    }, [wordsData])
 
     useEffect(() => {
         document.onkeydown = (e) => {
             switch (true) {
                 case e.key === 'Tab':
                     e.preventDefault();
+                    resetTestContext()
                     changeWordsList([...wordsData]);
                     makeEmptyTypedList();
                     currentWordIndex.current = 0;
                     setCounting(false);
-                    changeTimer(0);
+                    setTimer(+testContext.mode.split(' ')[1])
                     break;
 
                 case e.key === 'Backspace':
                     if (typedList[currentWordIndex.current].length) {
-                        allClicks.current -= 1;
                         typedList[currentWordIndex.current].pop();
                     }
                     changeTypedList([...typedList]);
@@ -107,6 +124,7 @@ export const TestComponent = () => {
                         }
 
                         currentWordIndex.current += 1;
+                        currWord.current = currWord.current?.nextElementSibling || currWord.current
                         typedList.push([]);
                         changeTypedList([...typedList]);
                         currentLetter.current?.classList.remove(
@@ -118,15 +136,16 @@ export const TestComponent = () => {
                     break;
 
                 case e.key.length === 1:
-                    typedList[currentWordIndex.current].push(e.key);
-                    allClicks.current += 1;
+                    typedList[currentWordIndex.current].push(e.key)
+                    testContext.allClicks += 1;
+
                     if (
                         typedList[currentWordIndex.current].at(-1) !==
                         wordsData[currentWordIndex.current].at(
                             typedList[currentWordIndex.current].length - 1
                         )
                     ) {
-                        wrongClicks.current += 1;
+                        testContext.wrongClicks += 1;
                     }
 
                     changeTypedList([...typedList]);
@@ -142,19 +161,11 @@ export const TestComponent = () => {
                     break;
             }
         };
-    }, [
-        wordsData,
-        typedList,
-        changeWordsList,
-        makeEmptyTypedList,
-        changeTypedList,
-        changeTimer,
-        counting,
-    ]);
+    }, [wordsData, changeWordsList, makeEmptyTypedList, changeTypedList, counting, resetTestContext, testContext, typedList]);
 
     return (
         <div className={styles.TestComponent}>
-            <div className={`${styles.timer}`}>{timer}</div>
+            <span className={`${styles.timer}`}>{timer}</span>
             <div className={styles.testView}>
                 {wordsData.map((word, wordIndex) => {
                     const isWrongWord: boolean = true || false;

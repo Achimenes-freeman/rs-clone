@@ -3,7 +3,11 @@
 .TestComponent {
     position: relative;
     height: 100%;
-    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .word {
@@ -11,7 +15,6 @@
     margin-right: 1rem;
 
     font-size: 1.8rem;
-    font-family: $ubuntu;
     line-height: 1.5;
 
     &:last-child {
@@ -37,13 +40,8 @@
 }
 
 .testView {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
     height: 125px;
-    width: 70%;
+    width: 100%;
 
     overflow: hidden;
 }
@@ -94,7 +92,7 @@
 }
 
 .timer {
-    font-size: 3rem;
+    font-size: 2rem;
     color: $main-yellow-text;
 }
 

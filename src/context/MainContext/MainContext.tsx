@@ -1,22 +1,22 @@
 import React, {
     createContext,
     useCallback,
-    // useEffect,
+    useEffect,
     useMemo,
     useState,
 } from 'react';
 import { IMainContext, TWordsData } from './types';
-import wordsData from '../developData/words.json';
-import { shuffler } from '../helpers/helpers';
+import wordsData from '../../developData/words.json';
+import { shuffler } from '../../helpers/helpers';
 
 export const MainContext = createContext<IMainContext>({
     wordsList: [],
     typedList: [],
-    timer: 60,
+    isFinished: false,
     changeWordsList: () => {},
     changeTypedList: () => {},
     makeEmptyTypedList: () => {},
-    changeTimer: () => {},
+    changeFinished: ()=> {}
 });
 
 export const MainContextProvider = ({
@@ -24,15 +24,13 @@ export const MainContextProvider = ({
 }: {
     children: React.ReactElement;
 }) => {
-    const [wordsList, setWordsList] = useState<TWordsData>(
-        shuffler(wordsData.map((word) => word.split('')))
-    );
+    const [wordsList, setWordsList] = useState<TWordsData>([[]]);
     const [typedList, setTypedList] = useState<TWordsData>([[]]);
-    const [timer, setTimer] = useState(60);
+    const [isFinished, setIsFinished] = useState(false)
 
-    // useEffect(() => {
-    //     setWordsList(shuffler(wordsData.map((word) => word.split(''))));
-    // }, []);
+    useEffect(() => {
+        setWordsList(shuffler(wordsData.map((word) => word.split(''))));
+    }, []);
 
     const changeWordsList = useCallback((oldWordsList: TWordsData) => {
         setWordsList([...shuffler(oldWordsList)]);
@@ -46,28 +44,28 @@ export const MainContextProvider = ({
         setTypedList([[]]);
     }, []);
 
-    const changeTimer = useCallback((number?: number) => {
-        setTimer((prev) => (number === undefined ? prev - 1 : number));
-    }, []);
+    const changeFinished = useCallback(()=>{
+        setIsFinished(prev => !prev)
+    },[]) 
 
     const context: IMainContext = useMemo(
         () => ({
             wordsList,
             typedList,
-            timer,
+            isFinished,
             changeWordsList,
             changeTypedList,
             makeEmptyTypedList,
-            changeTimer,
+            changeFinished,
         }),
         [
             wordsList,
             typedList,
-            timer,
+            isFinished,
             changeWordsList,
             changeTypedList,
             makeEmptyTypedList,
-            changeTimer,
+            changeFinished
         ]
     );
 
