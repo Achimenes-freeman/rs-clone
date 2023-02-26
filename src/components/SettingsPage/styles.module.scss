@@ -1,0 +1,139 @@
+@import '../../variables.scss';
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font);
+}
+.button {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px; 
+    background: var(--subAlt);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.1s linear;
+
+    &:hover {
+        background: var(--text);
+        color: var(--background);
+
+        &[aria-label='emptyCaret'] > span{
+            border-color: var(--background);
+        }
+        &[aria-label='filledCaret'] > span{
+            background: var(--background);
+        }
+    }
+    &:active {
+        background: var(--sub);
+    }
+}
+
+
+
+.SettingsPage {
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 50px;
+    height: 100%;
+    width: 1250px;
+    margin: 0 auto;
+    padding: 25px;
+    background: var(--background);
+}
+
+.activeButton {
+    background: var(--main);
+    color: var(--background);
+
+    &[aria-label='emptyCaret'] > span{
+        border-color: var(--background);
+    }
+
+    &[aria-label='filledCaret'] > span{
+        background: var(--background);
+    }
+}
+
+.setGroup {
+    &Cont {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    &Content {
+        &Cont {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        &Title {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: var(--sub);
+            font-size: 16px;
+
+            & > span {
+                color: var(--main);
+                font-size: 24px;
+            }
+        }
+
+        &ButCont {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            justify-content: space-between;
+            width: 50%;
+        }
+    }
+}
+
+
+
+// .openGroup {
+//     animation: openGroup 0.2s linear both;
+// }
+// .closeGroup {
+//     animation: closeGroup 0.2s linear both;
+// }
+// @keyframes openGroup {
+//     from{
+//         transform: rotateZ(-45deg);
+//     }
+
+//     to {
+//         transform: rotateZ(45deg);
+//     }
+// }
+// @keyframes closeGroup {
+//     from{
+//         transform: rotateZ(45deg);
+//     }
+    
+//     to {
+//         transform: rotateZ(-45deg);
+//     }
+// }
