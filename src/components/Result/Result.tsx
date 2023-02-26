@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import {useContext, useEffect} from 'react';
 
+import { LineChartGeneric } from '../../generics/LineChartGeneric/LineChartGeneric';
+
 import { MainContext } from "../../context/MainContext/MainContext"
 import { TestContext } from '../../context/TestContext/TestContext';
 import styles from './style.module.scss'
@@ -10,7 +12,7 @@ export const Result = ()=> {
     const { changeFinished, changeWordsList, makeEmptyTypedList, wordsList: wordsData} = useContext(MainContext);
 
     const { 
-        testContext:{ accuracy, wpm, mode},
+        testContext:{ accuracy, wpm, mode, printsDynamics},
         resetTestContext
     } = useContext(TestContext)
 
@@ -29,7 +31,9 @@ export const Result = ()=> {
     return(
         <div className={styles.ResultComponent}>
 
-            <div className={styles.chartBox}/>
+            <div className={styles.chartBox}>
+                <LineChartGeneric printsDynamics={printsDynamics}/>
+            </div>
 
             <div className={styles.resultsBox}>
                 <div className={styles.result}><span className={styles.resultTitle}>wpm</span><span className={styles.resultValue}>{wpm}</span></div>
