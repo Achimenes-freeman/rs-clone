@@ -1,0 +1,64 @@
+@import '../../variables.scss';
+
+.ResultComponent{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 30px;
+}
+
+.resultsBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+
+    font-size: 4rem;
+    line-height: 0.84;
+
+
+    &Title{
+        font-size: 2rem;
+    }
+
+    &Value{
+        color: $main-yellow-text;
+        text-transform: uppercase;
+    }
+}
+
+.smallValue{
+    font-size: 20px;
+}
+
+.restartBtn{
+    align-self: flex-end;
+
+    max-width: 150px;
+    padding: 5px 20px;
+
+    background-color: $disabled-text;
+    border: none;
+    border-radius: $border-rad;
+
+    color: $main-yellow-text;
+    font-size: 1.4rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s linear;
+
+    &:hover{
+        color: $disabled-text;
+        background-color: $main-yellow-text;
+    }
+}
+
+.chartBox{
+    height: 200px;
+}
