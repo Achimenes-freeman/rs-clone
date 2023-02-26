@@ -45,15 +45,17 @@ export const TestComponent = () => {
     }, [counting]);
 
     useEffect(() => {
+        const curentGameTime = 15 - timer;
         if (timer <= 0) {
             setCounting(false)
             const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
             testContext.wpm = correctWords * 60 / +testContext.mode.split(' ')[1];
+            testContext.printsDynamics.push(Math.round(correctWords / (curentGameTime / 60)))
 
             changeFinished()  
-        } else {
+        } else if (curentGameTime) {
             const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
-            testContext.printsDynamics.push(Math.round(correctWords / ((15 - timer) / 60)))
+            testContext.printsDynamics.push(Math.round(correctWords / (curentGameTime / 60)))
         }
 
     }, [timer]);
