@@ -1,0 +1,49 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font);
+}
+
+.AccountPage {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: flex-start;
+    margin: 0 auto;
+    width: 1250px;
+}
+
+.user {
+    &Cont {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &NameAndDateCont {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        width: 20%;
+    }
+
+    &TotalInfoCont {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 70%;
+    }
+}
+
+.separator {
+    height: 50px;
+    width: 25px;
+}
