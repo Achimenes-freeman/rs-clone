@@ -1,4 +1,4 @@
-import { SettingsPage } from "./components/SettingsPage/SettingsPage";
+import { AccountPage } from "./components/AccountPage/AccountPage";
 import './fonts.module.scss';
 import { defaultSettings } from "./helpers/defaultSettings";
 
@@ -8,4 +8,4 @@ if(!localStorage.getItem('settings')) {
 }
 
 
-export const App = () => <SettingsPage />;
+export const App = () => <AccountPage />;

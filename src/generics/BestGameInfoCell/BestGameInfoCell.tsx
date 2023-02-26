@@ -1,11 +1,12 @@
 import styles from './styles.module.scss'
+import { CellProps } from './types'
 
-export function BestGameInfoCell() {
+export function BestGameInfoCell({name = '', wpm = 0, acc = 0}: CellProps) {
     return (
         <div className={styles.CellCont}>
-            <h4 className={styles.CellCont}>1</h4>
-            <span>2</span>
-            <span>3</span>
+            <h4 className={styles.cellName}>{name}</h4>
+            <span className={styles.cellWpm}>{wpm || '-'}</span>
+            <span className={styles.cellAcc}>{acc || '-'}</span>
         </div>
     )
 }

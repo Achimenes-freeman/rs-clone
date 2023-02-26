@@ -13,37 +13,27 @@
     justify-content: flex-start;
     margin: 0 auto;
     width: 1250px;
+    background: var(--background);
 }
 
-.user {
-    &Cont {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        gap: 10px;
-        justify-content: space-between;
-        width: 100%;
-    }
-
-    &NameAndDateCont {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 15px;
-        justify-content: center;
-        width: 20%;
-    }
-
-    &TotalInfoCont {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        justify-content: space-around;
-        width: 70%;
-    }
+.bestGamesCont {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: center;
+    width: 100%;
 }
 
-.separator {
-    height: 50px;
-    width: 25px;
+.gamesInfoCont {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: flex-start;
+    min-height: 100vh;
+
+    & > span {
+        justify-self: center;
+    }
 }

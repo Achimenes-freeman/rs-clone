@@ -1,57 +1,20 @@
 import { useEffect, useState } from "react";
+import cn from 'classnames';
+import styles from './styles.module.scss';
+import fonts from '../../fonts.module.scss';
+import themes from '../../themes.module.scss';
 // import { UserInfo, UserTokenObj } from './types';
 import { UserInfo } from './types';
-import styles from './styles.module.scss';
+import { SettingsInterface } from "../../helpers/defaultSettings";
+import { BestGamesInfoTable } from "../BestGamesInfoTable/BestGamesInfoTable";
+import { UserShortInfo } from "../UserShortInfo/UserShortInfo";
 
 
 export function AccountPage() {
+    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
+
     const [userInfo, setUserInfo] = useState<UserInfo>();
     const [isLoadingCompleted, setIsLoadingCompleted] = useState(false);
-
-    const getDay = (date: Date) => {
-        const dayNum = date.getDate()
-        if(dayNum < 10) {
-            return 0 + dayNum.toString()
-        }
-        return dayNum.toString();
-    }
-    const getMonth = (date: Date) => {
-        const month: number = date.getMonth();
-        switch(month) {
-            case 0:
-                return 'Jan';
-            case 1:
-                return 'Feb';
-            case 2:
-                return 'Mar';
-            case 3:
-                return 'Apr';
-            case 4:
-                return 'May';
-            case 5:
-                return 'Jun';
-            case 6:
-                return 'Jul';
-            case 7:
-                return 'Aug';
-            case 8:
-                return 'Sep';
-            case 9:
-                return 'Oct';
-            case 10:
-                return 'Nov';
-            case 11:
-                return 'Dec';
-            default: 
-                return 'Jan';
-        }
-    }
-    const getYear = (date: Date) => date.getFullYear().toString()
-
-    const getJoinDate = () => {
-        const dateCreation = new Date(userInfo?.dateCreation || 'null');
-        return `Joined ${getDay(dateCreation)} ${getMonth(dateCreation)} ${getYear(dateCreation)}`
-    }
     
     useEffect(() => {
         const connectFunc = async () => {
@@ -81,9 +44,35 @@ export function AccountPage() {
                 gameCount: 0,
                 bestGame: undefined,
                 bestGames: [],
-                games: [],
+                games: [
+                    {
+                        wpm: 50,
+                        accuracy: 98,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 45,
+                        accuracy: 99,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15},
+                    {
+                        wpm: 52,
+                        accuracy: 96,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15},
+                    {
+                        wpm: 49,
+                        accuracy: 100,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15},
+                ],
                 settings: {},
-                allTime: 0
+                allTime: 60
             }
 
             setUserInfo(info)
@@ -96,31 +85,16 @@ export function AccountPage() {
 
 
     return (
-        <section className={styles.AccountPage} >
-            <div className={styles.userCont}>
-                <div className={styles.userNameAndDateCont}>
-                    <h2>{userInfo?.username}</h2>
-                    <h4>{getJoinDate()}</h4>
-                </div>
-                <div className={styles.separator}/>
-                <div className={styles.userTotalInfoCont}>
-                    <div className={styles.userTotalInfoElem}>
-                        <h4>tests completed</h4>
-                        <h2>{userInfo?.gameCount}</h2>
-                    </div>
-                    <div className={styles.userTotalInfoElem}>
-                        <h4>time typing</h4>
-                        <h2>{userInfo?.allTime}</h2>
-                    </div>
-                </div>
-            </div>
+        <section className={cn(styles.AccountPage, themes[`${settings.theme.theme}Theme`], fonts[`${settings.appearance.fontFamily}Font`])} >
+            {userInfo && <UserShortInfo userInfo={userInfo}/>}
             <div className={styles.bestGamesCont}>
-                1
+                <BestGamesInfoTable type="seconds" games={userInfo?.bestGames.filter(game => game.mode.includes('seconds'))}/>
+                <BestGamesInfoTable type="words" games={userInfo?.bestGames.filter(game => game.mode.includes('words'))} />
             </div>
             <div className={styles.gamesInfoCont}>
                 {userInfo?.games.length
                 ? 'Games'
-                : 'No games found'}
+                : <span>No games found</span>}
             </div>
         </section>
     )

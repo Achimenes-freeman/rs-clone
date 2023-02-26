@@ -1,0 +1,85 @@
+.UserCont {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: var(--subAlt);
+}
+
+.user {
+    &NameAndDateCont {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        width: 20%;
+
+        &::before {
+            content: '';
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background: var(--main);
+            left: 10px;
+        }
+    }
+
+    &TotalInfo {
+        &Cont {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 70%;
+        }
+
+        &Elem {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+        }
+    }
+}
+
+.user {
+    &Name {
+        position: relative;
+        color: var(--text);
+        font-size: 32px;
+        font-weight: normal;
+    }
+
+    &Date {
+        color: var(--sub);
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+    &TestHeading {
+        color: var(--sub);
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    &TestAmount {
+        color: var(--text);
+        font-size: 32px;
+        font-weight: normal;
+    }
+}
+
+.separator {
+    height: 100px;
+    width: 25px;
+    background: var(--background);
+    border-radius: 10px;
+}
