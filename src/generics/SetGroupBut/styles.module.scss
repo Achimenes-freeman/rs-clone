@@ -1,0 +1,62 @@
+.setGroupBut {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    border: none;
+    background: none;
+    color: var(--sub);
+    cursor: pointer;
+    font-size: 32px;
+    transition: all 0.1s linear;
+
+    &:hover {
+        color: var(--text);
+    }
+
+    &:hover &Arrow{
+        border-color: var(--text);
+    }
+
+    &Arrow {
+        height: 15px;
+        width: 15px;
+        border-right: 3px solid var(--sub);
+        border-bottom: 3px solid var(--sub);
+        border-radius: 1px;
+        transform: rotateZ(-45deg);
+        transition: all 0.1s linear;
+    }
+}
+
+.activeButton {
+    background: var(--main);
+    color: var(--background);
+}
+
+
+
+.openGroup {
+    animation: openGroup 0.2s linear both;
+}
+.closeGroup {
+    animation: closeGroup 0.2s linear both;
+}
+@keyframes openGroup {
+    from{
+        transform: rotateZ(-45deg);
+    }
+
+    to {
+        transform: rotateZ(45deg);
+    }
+}
+@keyframes closeGroup {
+    from{
+        transform: rotateZ(45deg);
+    }
+    
+    to {
+        transform: rotateZ(-45deg);
+    }
+}

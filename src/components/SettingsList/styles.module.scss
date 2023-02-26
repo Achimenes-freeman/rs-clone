@@ -1,0 +1,31 @@
+.settings {
+    &List {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+
+        &Content {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: flex-start;
+            width: 100%;
+        }
+    }
+}
+
+.List {
+    list-style: none;
+
+    &Elem {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 30px;
+        justify-content: center;
+        width: 100%;
+    }
+}

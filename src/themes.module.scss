@@ -1,0 +1,19 @@
+@import './variables.scss';
+
+.defaultTheme {
+    --background: #323437;
+    --caret: #e2b714;
+    --main: #e2b714;
+    --sub: #646669;
+    --subAlt: #2c2e31;
+    --text: #d1d0c5;
+}
+
+.lavenderTheme {
+    --background: #2e1a47;
+    --caret: #f7f2ea;
+    --main: #f7f2ea;
+    --sub: #c18fff;
+    --subAlt: #27173c;
+    --text: #f7f2ea;
+}
