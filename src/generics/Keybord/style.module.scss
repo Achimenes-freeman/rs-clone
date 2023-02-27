@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+
+.Keyboard{
+    width: 25px;
+    height: 23px;
+    fill: $disabled-text;
+
+    transition: all .2s linear;
+
+    &:hover{
+        fill: $main-yellow-text
+    }
+}

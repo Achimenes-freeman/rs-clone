@@ -28,7 +28,7 @@
     }
 
     &Value{
-        color: $main-yellow-text;
+        color: var(--main);
         text-transform: uppercase;
     }
 }
@@ -43,19 +43,19 @@
     max-width: 150px;
     padding: 5px 20px;
 
-    background-color: $disabled-text;
+    background-color: var(--sub);
     border: none;
     border-radius: $border-rad;
 
-    color: $main-yellow-text;
+    color: var(--main);
     font-size: 1.4rem;
     font-family: inherit;
     cursor: pointer;
     transition: all 0.2s linear;
 
     &:hover{
-        color: $disabled-text;
-        background-color: $main-yellow-text;
+        color: var(--sub);
+        background-color: var(--main);
     }
 }
 
