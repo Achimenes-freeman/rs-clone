@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import { MainContextProvider } from './context/MainContext/MainContext';
 import { TestContextProvider } from './context/TestContext/TestContext';
@@ -11,7 +12,9 @@ root.render(
 
         <MainContextProvider>
             <TestContextProvider>
-                <App />
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
             </TestContextProvider>
         </MainContextProvider>
 
