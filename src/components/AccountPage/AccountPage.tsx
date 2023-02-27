@@ -42,12 +42,26 @@ export function AccountPage() {
                 username: 'iSvitka',
                 password: 'qazwsxedc',
                 dateCreation: "2023-02-22T16:19:18.458Z",
-                gameCount: 4,
+                gameCount: 6,
                 bestGame: undefined,
                 bestGames: [],
                 games: [
                     {
                         wpm: 50,
+                        accuracy: 98,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 30,
+                        accuracy: 98,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 75,
                         accuracy: 98,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
@@ -73,7 +87,7 @@ export function AccountPage() {
                         time: 15},
                 ],
                 settings: {},
-                allTime: 60
+                allTime: 90
             }
 
             setUserInfo(info)

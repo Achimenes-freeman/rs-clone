@@ -8,7 +8,7 @@ export function StatisticsTable({userInfo}: StatisticsTableProps) {
     
     return (
         <div className={styles.StatisticsCont}>
-            {dataArr.map(data => <StatisticsCell name={data.name} value={data.value} />)}
+            {dataArr.map(data => <StatisticsCell name={data.name} value={data.value} key={data.name}/>)}
         </div>
     )
 }

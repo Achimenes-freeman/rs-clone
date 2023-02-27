@@ -1,9 +1,10 @@
 import { UserInfo } from "../components/AccountPage/types";
 import { StatisticsCellProps } from "../generics/StatisticsCell/types";
+import { getTimeString } from "./dateAndTimeTransformations";
 
 export const createStatisticsData = (userInfo: UserInfo): StatisticsCellProps[] => {
     const testsAmount = userInfo.gameCount.toString();
-    const timeTyping = userInfo.allTime.toString();
+    const timeTyping = getTimeString(userInfo);
     const highestWpm = userInfo.games
         .sort((gameA, gameB) => gameB.wpm - gameA.wpm)[0].wpm.toString();
     const avgWpm = Math.round(userInfo.games
