@@ -1,0 +1,27 @@
+.CellCont {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cell {
+    &Name {
+        font-size: 12.8px;
+        color: var(--sub);
+    }
+
+    &Wpm {
+        color: var(--text);
+        font-size: 40px;
+        line-height: 100%;
+    }
+
+    &Acc {
+        color: var(--text);
+        font-size: 24px;
+        line-height: 100%;
+        opacity: 0.75;
+    }
+}

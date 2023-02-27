@@ -1,0 +1,60 @@
+.GameListCont {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.head {
+
+    &Row {
+        display: grid;
+        align-items: center;
+        flex-direction: row;
+        grid-template-columns: 71.25px 91.25px 201.25px 121.25px 110px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &Info {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 35px;
+        padding-left: 5px;
+        border-radius: 10px;
+        color: var(--sub);
+        cursor: default;
+    }
+
+    &Butt {
+        outline: none;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.1s linear;
+
+        &:hover {
+            background: var(--subAlt);
+        }
+    }
+}
+
+.loadButt {
+    height: 35px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background: var(--subAlt);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.1s linear;
+
+    &:hover {
+        background: var(--text);
+        color: var(--background);
+    }
+}
