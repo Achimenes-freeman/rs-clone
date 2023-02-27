@@ -19,8 +19,8 @@ ChartJS.register(
     Legend
 );
 
-export const BarChartGeneric = (props: {infoData: Array<number>, labelsData: Array<number|string>, title: string}) => {
-    const {infoData, labelsData, title} = props
+export const BarChartGeneric = (props: {infoData: Array<number>, labelsData: Array<number|string>, title: string, color: string}) => {
+    const {infoData, labelsData, title, color} = props
 
     const options = {
         responsive: true,
@@ -63,8 +63,8 @@ export const BarChartGeneric = (props: {infoData: Array<number>, labelsData: Arr
             {
                 label: title,
                 data: infoData,
-                backgroundColor: '#e2b533',
-                minBarLength: 100,
+                backgroundColor: color,
+                // minBarLength: 100,
                 scale: 10
             },
         ],
