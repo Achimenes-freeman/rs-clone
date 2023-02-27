@@ -13,10 +13,12 @@ export const MainContext = createContext<IMainContext>({
     wordsList: [],
     typedList: [],
     isFinished: false,
+    mode: '60 seconds',
     changeWordsList: () => {},
     changeTypedList: () => {},
     makeEmptyTypedList: () => {},
-    changeFinished: ()=> {}
+    changeFinished: ()=> {},
+    changeMode: ()=>{},
 });
 
 export const MainContextProvider = ({
@@ -26,7 +28,8 @@ export const MainContextProvider = ({
 }) => {
     const [wordsList, setWordsList] = useState<TWordsData>([[]]);
     const [typedList, setTypedList] = useState<TWordsData>([[]]);
-    const [isFinished, setIsFinished] = useState(false)
+    const [isFinished, setIsFinished] = useState(false);
+    const [mode, setMode] = useState('15 seconds');
 
     useEffect(() => {
         setWordsList(shuffler(wordsData.map((word) => word.split(''))));
@@ -48,24 +51,32 @@ export const MainContextProvider = ({
         setIsFinished(prev => !value && !prev)
     },[]) 
 
+    const changeMode = useCallback((newMode: string) =>{
+        setMode(newMode)
+    },[])
+
     const context: IMainContext = useMemo(
         () => ({
             wordsList,
             typedList,
             isFinished,
+            mode,
             changeWordsList,
             changeTypedList,
             makeEmptyTypedList,
             changeFinished,
+            changeMode 
         }),
         [
             wordsList,
             typedList,
             isFinished,
+            mode,
             changeWordsList,
             changeTypedList,
             makeEmptyTypedList,
-            changeFinished
+            changeFinished,
+            changeMode 
         ]
     );
 
