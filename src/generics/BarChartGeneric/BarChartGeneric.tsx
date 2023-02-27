@@ -64,8 +64,6 @@ export const BarChartGeneric = (props: {infoData: Array<number>, labelsData: Arr
                 label: title,
                 data: infoData,
                 backgroundColor: '#e2b533',
-                minBarLength: 100,
-                scale: 10
             },
         ],
     };
