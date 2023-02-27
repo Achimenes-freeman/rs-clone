@@ -7,6 +7,8 @@ import styles from './style.module.scss';
 import { MainContext } from '../../context/MainContext/MainContext';
 import { TestContext } from '../../context/TestContext/TestContext';
 
+import { ModeBar } from '../ModeBar/ModeBar';
+
 export const TestComponent = () => {
 
     const {testContext, resetTestContext} = useContext(TestContext);
@@ -14,6 +16,7 @@ export const TestComponent = () => {
     const {
         wordsList: wordsData,
         typedList,
+        mode,
         changeWordsList,
         changeTypedList,
         makeEmptyTypedList,
@@ -21,7 +24,7 @@ export const TestComponent = () => {
     } = useContext(MainContext);
 
     const [counting, setCounting] = useState(false);
-    const [timer, setTimer] = useState(+testContext.mode.split(' ')[1])
+    const [timer, setTimer] = useState(parseInt(mode,10))
 
     const currentWordIndex = useRef(0);
     const currWord = useRef<Element>();
@@ -45,11 +48,11 @@ export const TestComponent = () => {
     }, [counting]);
 
     useEffect(() => {
-        const curentGameTime = 15 - timer;
+        const curentGameTime = parseInt(mode,10) - timer;
         if (timer <= 0) {
             setCounting(false)
             const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
-            testContext.wpm = correctWords * 60 / +testContext.mode.split(' ')[1];
+            testContext.wpm = correctWords * 60 / parseInt(mode,10);
             testContext.printsDynamics.push(Math.round(correctWords / (curentGameTime / 60)))
 
             changeFinished()  
@@ -94,12 +97,17 @@ export const TestComponent = () => {
         makeEmptyTypedList()
 
         setCounting(false)
-        setTimer(+testContext.mode.split(' ')[1])
+        setTimer(parseInt(mode,10))
 
     }, [wordsData])
 
+    useEffect(()=>{
+        changeWordsList([...wordsData])
+    },[mode])
+
     useEffect(() => {
         document.onkeydown = (e) => {
+            e.preventDefault()
             switch (true) {
                 case e.key === 'Tab':
                     e.preventDefault();
@@ -108,7 +116,7 @@ export const TestComponent = () => {
                     makeEmptyTypedList();
                     currentWordIndex.current = 0;
                     setCounting(false);
-                    setTimer(+testContext.mode.split(' ')[1])
+                    setTimer(parseInt(mode,10))
                     break;
 
                 case e.key === 'Backspace':
@@ -164,8 +172,6 @@ export const TestComponent = () => {
                     break;
 
                 default:
-                    clearInterval(timerId.current);
-
                     break;
             }
         };
@@ -173,6 +179,7 @@ export const TestComponent = () => {
 
     return (
         <div className={styles.TestComponent}>
+            <ModeBar />
             <span className={`${styles.timer}`}>{timer}</span>
             <div className={styles.testView}>
                 {wordsData.map((word, wordIndex) => {

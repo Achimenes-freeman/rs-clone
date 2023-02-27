@@ -9,10 +9,10 @@ import styles from './style.module.scss'
 
 export const Result = ()=> {
 
-    const { changeFinished, changeWordsList, makeEmptyTypedList, wordsList: wordsData} = useContext(MainContext);
+    const { changeFinished, changeWordsList, makeEmptyTypedList, wordsList: wordsData, mode} = useContext(MainContext);
 
     const { 
-        testContext:{ accuracy, wpm, mode, printsDynamics},
+        testContext:{ accuracy, wpm, printsDynamics},
         resetTestContext
     } = useContext(TestContext)
 

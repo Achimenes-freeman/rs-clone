@@ -1,7 +1,6 @@
 export interface ITestContextData {
     allClicks:number;
     wrongClicks:number;
-    mode: string ,
     printsDynamics: Array<number>,
     accuracy:number,
     wpm: number,
