@@ -44,8 +44,8 @@ export const MainContextProvider = ({
         setTypedList([[]]);
     }, []);
 
-    const changeFinished = useCallback(()=>{
-        setIsFinished(prev => !prev)
+    const changeFinished = useCallback((value?:boolean)=>{
+        setIsFinished(prev => !value && !prev)
     },[]) 
 
     const context: IMainContext = useMemo(

@@ -8,5 +8,5 @@ export interface IMainContext {
     changeWordsList: (oldWordsList: TWordsData) => void;
     changeTypedList: (newTypedList: TWordsData) => void;
     makeEmptyTypedList: () => void;
-    changeFinished: ()=> void
+    changeFinished: (value?:boolean)=> void
 }

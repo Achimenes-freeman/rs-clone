@@ -90,6 +90,12 @@ export const TestComponent = () => {
 
     useEffect(()=> {
         currWord.current = document.getElementsByClassName(`${styles.word}`)[0];
+        currentWordIndex.current = 0;
+        makeEmptyTypedList()
+
+        setCounting(false)
+        setTimer(+testContext.mode.split(' ')[1])
+
     }, [wordsData])
 
     useEffect(() => {

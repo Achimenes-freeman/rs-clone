@@ -1,0 +1,14 @@
+.Footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rss{
+    width: 100px;
+}
+
+.link{
+    text-decoration: none;
+    color: var(--sub)
+}

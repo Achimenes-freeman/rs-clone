@@ -1,0 +1,22 @@
+.CellCont {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0px;
+    justify-content: center;
+    padding: 15px 20px;
+}
+
+.cell {
+    &Name {
+        color: var(--sub);
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    &Value {
+        color: var(--text);
+        font-size: 48px;
+        font-weight: normal;
+    }
+}

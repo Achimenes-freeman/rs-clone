@@ -1,0 +1,12 @@
+.GamesInfoCont {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: flex-start;
+}
+
+.testWpmChart {
+    height: 300px;
+    width: 1250px;
+}
