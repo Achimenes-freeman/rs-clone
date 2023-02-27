@@ -15,7 +15,8 @@ export interface Game {
     accuracy: number
     chars: [number, number, number, number]
     mode: string
-    time: number
+    time: number,
+    date: Date
 }
 
 

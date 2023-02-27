@@ -6,7 +6,7 @@ export function createGameData(gameInfo: Game) {
     const accString = `${gameInfo.accuracy}%`;
     const charsString = gameInfo.chars.join('/');
     const modeString = `${gameInfo.mode.includes('seconds') ? 'time' : 'words'} ${parseInt(gameInfo.mode, 10)}`;
-    const dateString = `${getDay(new Date(gameInfo.time))} ${getMonth(new Date(gameInfo.time))} ${getYear(new Date(gameInfo.time))}/${getHoursString(gameInfo.time)}:${getMinutesString(gameInfo.time)}`
+    const dateString = `${getDay(new Date(gameInfo.date))} ${getMonth(new Date(gameInfo.date))} ${getYear(new Date(gameInfo.date))}/${getHoursString(gameInfo.date.getHours() * 3600)}:${getMinutesString(gameInfo.date.getMinutes() * 60)}`
 
     return {wpmString, accString, charsString, modeString, dateString}
 }

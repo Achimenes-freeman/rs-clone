@@ -31,6 +31,7 @@ export function AccountPage() {
             // }).then(res => res.json()).catch(console.log)
     
             // const info: UserInfo = await fetch('https://rs-clone-backend-production.up.railway.app/get_profile', {
+            //     method: 'GET',
             //     headers: {
             //         "Authorization": `Bearer ${userToken.token}`,
             //         "Content-type":  "application/json"
@@ -51,126 +52,144 @@ export function AccountPage() {
                         accuracy: 98,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 17, 12, 55, 35)
                     },
                     {
                         wpm: 30,
                         accuracy: 98,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 17, 13, 21, 45)
                     },
                     {
                         wpm: 75,
                         accuracy: 98,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 17, 18, 35, 24)
                     },
                     {
                         wpm: 45,
                         accuracy: 99,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 18, 10, 5, 17)
                     },
                     {
                         wpm: 52,
                         accuracy: 96,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 18, 12, 42, 35)
                     },
                     {
                         wpm: 49,
                         accuracy: 100,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 18, 14, 12, 45)
                     },
                     {
                         wpm: 50,
                         accuracy: 98,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 18, 15, 52, 15)
                     },
                     {
                         wpm: 30,
                         accuracy: 98,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 19, 1, 5, 1)
                     },
                     {
                         wpm: 75,
                         accuracy: 98,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 19, 8, 0, 45)
                     },
                     {
                         wpm: 45,
                         accuracy: 99,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 19, 10, 55, 56)
                     },
                     {
                         wpm: 52,
                         accuracy: 96,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 19, 11, 5, 5)
                     },
                     {
                         wpm: 49,
                         accuracy: 100,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 19, 12, 54, 42)
                     },
                     {
                         wpm: 50,
                         accuracy: 98,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 19, 13, 14, 52)
                     },
                     {
                         wpm: 30,
                         accuracy: 98,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 19, 16, 45, 12)
                     },
                     {
                         wpm: 75,
                         accuracy: 98,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 19, 16, 50, 19)
                     },
                     {
                         wpm: 45,
                         accuracy: 99,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 19, 16, 55, 46)
                     },
                     {
                         wpm: 52,
                         accuracy: 96,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 2, 19, 17, 56, 12)
                     },
                     {
                         wpm: 49,
                         accuracy: 100,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15
+                        time: 15,
+                        date: new Date(2023, 0, 19, 17, 58, 35)
                     },
                 ],
                 settings: {},

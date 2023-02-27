@@ -10,7 +10,7 @@ export function GamesInfo({userInfo}: GamesInfoProps) {
     return (
         <div className={styles.GamesInfoCont}>
             <div className={styles.testWpmChart}>
-                <BarChartGeneric infoData={testCountData} labelsData={limitsData}/>
+                <BarChartGeneric title='Tests' infoData={testCountData} labelsData={limitsData}/>
             </div>
             <StatisticsTable userInfo={userInfo}/>
             <GamesList userInfo={userInfo}/>

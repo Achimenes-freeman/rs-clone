@@ -145,9 +145,9 @@ export const sortGamesFunc = ({method, type, userInfo, gameAmount, setGameList, 
             break;
         case 'date':
             if(type === 'high') {
-                setGameList([...userInfo.games].sort((gameA, gameB) => gameA.time - gameB.time).slice(0, gameAmount))
+                setGameList([...userInfo.games].sort((gameA, gameB) => gameA.date.valueOf() - gameB.date.valueOf()).slice(0, gameAmount))
             } else {
-                setGameList([...userInfo.games].sort((gameA, gameB) => gameB.time - gameA.time).slice(0, gameAmount))
+                setGameList([...userInfo.games].sort((gameA, gameB) => gameB.date.valueOf() - gameA.date.valueOf()).slice(0, gameAmount))
             }
             setGameAmount(gameAmount)
             break

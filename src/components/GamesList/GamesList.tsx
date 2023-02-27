@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import styles from './styles.module.scss'
 import { GamesListProps, SortMethod, SortType } from "./types";
@@ -7,7 +7,7 @@ import { changeSortToAcc, changeSortToDate, changeSortToWpm, sortGamesFunc } fro
 
 export function GamesList({userInfo}: GamesListProps) {
     const [gameAmount, setGameAmount] = useState(userInfo.gameCount < 10 ? userInfo.gameCount : 10);
-    const [gameList, setGameList] = useState(userInfo.games.slice(0, gameAmount));
+    const [gameList, setGameList] = useState([...userInfo.games].sort((gameA, gameB) => gameB.date.valueOf() - gameA.date.valueOf()).slice(0, gameAmount));
     const [wpmState, setWpmState] = useState(false);
     const [wpmSort, setWpmSort] = useState<SortType>('off');
     const [accState, setAccState] = useState(false)
@@ -45,6 +45,10 @@ export function GamesList({userInfo}: GamesListProps) {
             sortGames(currentSortMethod, currentSortType, userInfo.gameCount)
         }
     }
+
+    useEffect(() => {
+
+    }, []) 
     return (
         <div className={styles.GameListCont}>
             <div className={styles.headRow}>
@@ -66,7 +70,7 @@ export function GamesList({userInfo}: GamesListProps) {
                     onClick={() => changeSortMethod('date')}
                     >date{dateState ? dateSort === 'low' && '▼' || dateSort === 'high' && '▲' : null}</button>
             </div>
-            {gameList.map((game, index) => <GameRow gameInfo={game} bg={index % 2} key={game.time}/>)}
+            {gameList.map((game, index) => <GameRow gameInfo={game} bg={index % 2} key={Math.random()}/>)}
             {gameAmount !== userInfo.gameCount
             ? <button className={styles.loadButt} type='button' onClick={() => addGamesToList()}>Load more</button>
             : null}
