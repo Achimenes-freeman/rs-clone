@@ -1,4 +1,14 @@
+<<<<<<< HEAD
 import { AccountPage } from "./components/AccountPage/AccountPage";
+=======
+import { useContext } from 'react';
+import { TestComponent } from './components/TestComponent/TestComponent';
+import { MainContext } from './context/MainContext/MainContext';
+
+import { defaultSettings } from "./helpers/defaultSettings";
+import { Result } from './components/Result/Result';
+
+>>>>>>> develop
 import './fonts.module.scss';
 import { defaultSettings } from "./helpers/defaultSettings";
 // import { useContext } from 'react';
