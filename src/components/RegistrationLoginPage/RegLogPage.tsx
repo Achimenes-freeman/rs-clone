@@ -19,21 +19,23 @@ export function RegLogPage() {
                 <button 
                     type='button' 
                     className={cn(styles.typeButton, 
+                    styles.logButt,
                     {[styles.active]: logState}, 
-                    {[styles.activeLeft]: logState},
                     {[styles.disabledLeft]: regState})}
                     onClick={() => changeType()}
                 >login</button>
                 <button 
                     type='button' 
                     className={cn(styles.typeButton, 
+                    styles.regButt,
                     {[styles.active]: regState}, 
-                    {[styles.activeRight]: regState},
                     {[styles.disabledRight]: logState})}
                     onClick={() => changeType()}
                 >register</button>
-                {logState && <LoginBlock />}
-                {regState && <RegistrationBlock />}
+                <div className={cn(styles.inputsCont, {[styles.inputActiveLeft]: logState}, {[styles.inputActiveRight]: regState})}>
+                    {logState && <LoginBlock />}
+                    {regState && <RegistrationBlock />}
+                </div>
             </div>
         </div>
     )

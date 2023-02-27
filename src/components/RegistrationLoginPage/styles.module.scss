@@ -1,0 +1,67 @@
+.RegLogPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.regLogCont {
+    position: relative;
+    display: grid;
+    grid-template-areas: 
+    'logButt regButt'
+    'regLogCont regLogCont';
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 40px 250px;
+}
+
+.logButt {
+    grid-area: logButt;
+}
+.regButt {
+    grid-area: regButt;
+}
+
+.inputsCont {
+    grid-area: regLogCont;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    border: 3px solid var(--main);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.inputActive {
+    &Left {
+        border-top-right-radius: 10px;
+    }
+
+    &Right {
+        border-top-left-radius: 10px;
+    }
+}
+
+.typeButton {
+    border: none;
+    border-radius: 10px;
+    background: var(--subAlt);
+    color: var(--text);
+}
+
+.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: var(--main);
+    color: var(--background);
+}
+
+.disabled {
+    &Right {
+        border-bottom-left-radius: 0;
+    }
+    &Left {
+        border-bottom-right-radius: 0;
+    }
+}

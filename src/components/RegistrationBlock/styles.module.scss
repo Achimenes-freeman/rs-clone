@@ -1,0 +1,60 @@
+.input {
+    height: 40px;
+    width: 100%;
+    padding-left: 10px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background: var(--subAlt);
+    caret-color: var(--main);
+    color: var(--text);
+    font-size: 18px;
+
+    &::placeholder {
+        color: var(--main);
+        opacity: 0.25;
+    }
+}
+
+.nameSpan {
+    margin-bottom: 20px;
+}
+
+.passSpan, .nameSpan {
+    align-self: flex-start;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.registerButt {
+    align-self: flex-start;
+    width: 50%;
+    height: 35px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: var(--subAlt);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.1s linear;
+
+    &:hover {
+        background: var(--text);
+        color: var(--background);
+    }
+}
+
+.error {
+    color: var(--error);
+}
+
+.errorSpan {
+    position: absolute;
+    bottom: 32px;
+    right: 30px;
+    width: 150px;
+    color: var(--error);
+    font-size: 12px;
+}

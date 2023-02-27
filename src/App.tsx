@@ -9,13 +9,16 @@ import { SettingsPage } from './components/SettingsPage/SettingsPage';
 import './fonts.module.scss';
 import { defaultSettings } from "./helpers/defaultSettings";
 import { Result } from './components/Result/Result';
+import { RegLogPage } from './components/RegistrationLoginPage/RegLogPage';
+import { AccountPage } from './components/AccountPage/AccountPage';
 
 if(!localStorage.getItem('settings')) {
     localStorage.setItem('settings', JSON.stringify(defaultSettings))
 }
 
 export const App = () => {
-    const {isFinished} = useContext(MainContext)
+    const {isFinished} = useContext(MainContext);
+    const token = localStorage.getItem('authToken');
     
     return (
         <Routes>
@@ -24,7 +27,7 @@ export const App = () => {
                 <Route path='/rating' element='rating'/>
                 <Route path='/info' element='info'/>
                 <Route path='/settings' element={<SettingsPage/>}/>
-                <Route path='/user' element='user'/>
+                <Route path='/user' element={token ? <AccountPage /> : <RegLogPage />}/>
                 <Route path='/logout' element='logout'/>
             </Route>
         </Routes>
