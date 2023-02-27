@@ -5,8 +5,6 @@ import { MainContext } from './context/MainContext/MainContext';
 import { defaultSettings } from "./helpers/defaultSettings";
 import { Result } from './components/Result/Result';
 
-import { BarChartGeneric } from './generics/BarChartGeneric/BarChartGeneric';
-
 import './fonts.module.scss';
 
 if(!localStorage.getItem('settings')) {
@@ -20,7 +18,6 @@ export const App = () => {
     return (
         <div className='main'>
             {isFinished ? <Result/>: <TestComponent/>}
-            <BarChartGeneric infoData={[3, 7]} labelsData={['0-9', '10-19']} title='Tests'/>
         </div>
     )
 }
