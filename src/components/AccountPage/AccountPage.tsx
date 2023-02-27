@@ -42,7 +42,7 @@ export function AccountPage() {
                 username: 'iSvitka',
                 password: 'qazwsxedc',
                 dateCreation: "2023-02-22T16:19:18.458Z",
-                gameCount: 6,
+                gameCount: 18,
                 bestGame: undefined,
                 bestGames: [],
                 games: [
@@ -72,19 +72,106 @@ export function AccountPage() {
                         accuracy: 99,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15},
+                        time: 15
+                    },
                     {
                         wpm: 52,
                         accuracy: 96,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15},
+                        time: 15
+                    },
                     {
                         wpm: 49,
                         accuracy: 100,
                         chars: [100, 100, 100, 100],
                         mode: '15seconds',
-                        time: 15},
+                        time: 15
+                    },
+                    {
+                        wpm: 50,
+                        accuracy: 98,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 30,
+                        accuracy: 98,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 75,
+                        accuracy: 98,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 45,
+                        accuracy: 99,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 52,
+                        accuracy: 96,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 49,
+                        accuracy: 100,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 50,
+                        accuracy: 98,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 30,
+                        accuracy: 98,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 75,
+                        accuracy: 98,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 45,
+                        accuracy: 99,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 52,
+                        accuracy: 96,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
+                    {
+                        wpm: 49,
+                        accuracy: 100,
+                        chars: [100, 100, 100, 100],
+                        mode: '15seconds',
+                        time: 15
+                    },
                 ],
                 settings: {},
                 allTime: 90

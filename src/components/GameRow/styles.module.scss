@@ -1,0 +1,24 @@
+.GameCont {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.bg{
+    background: var(--subAlt);
+}
+
+.gameInfo {
+    color: var(--text);
+    cursor: default;
+    font-size: 16px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+}

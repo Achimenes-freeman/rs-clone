@@ -1,5 +1,6 @@
 import { BarChartGeneric } from '../../generics/BarChartGeneric/BarChartGeneric'
 import { createAccChartData } from '../../helpers/createAccChartData'
+import { GamesList } from '../GamesList/GamesList'
 import { StatisticsTable } from '../StatisticsTable/StatisticsTable'
 import styles from './styles.module.scss'
 import { GamesInfoProps } from './types'
@@ -12,6 +13,7 @@ export function GamesInfo({userInfo}: GamesInfoProps) {
                 <BarChartGeneric infoData={testCountData} labelsData={limitsData}/>
             </div>
             <StatisticsTable userInfo={userInfo}/>
+            <GamesList userInfo={userInfo}/>
         </div>
     )
 }

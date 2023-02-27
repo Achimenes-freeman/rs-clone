@@ -1,13 +1,13 @@
 import { UserInfo } from "../components/AccountPage/types";
 
-const getDay = (date: Date) => {
+export const getDay = (date: Date) => {
     const dayNum = date.getDate()
     if(dayNum < 10) {
         return 0 + dayNum.toString()
     }
     return dayNum.toString();
 }
-const getMonth = (date: Date) => {
+export const getMonth = (date: Date) => {
     const month: number = date.getMonth();
     switch(month) {
         case 0:
@@ -38,21 +38,21 @@ const getMonth = (date: Date) => {
             return 'Jan';
     }
 }
-const getYear = (date: Date) => date.getFullYear().toString()
+export const getYear = (date: Date) => date.getFullYear().toString()
 export const getJoinDate = (userInfo: UserInfo) => {
     const dateCreation = new Date(userInfo.dateCreation);
     return `Joined ${getDay(dateCreation)} ${getMonth(dateCreation)} ${getYear(dateCreation)}`
 }
 
 
-const getHoursString = (time: number) => {
+export const getHoursString = (time: number) => {
     const hh = Math.floor(time / 3600)
     if(hh < 10) {
         return `0${hh}`
     }
     return hh.toString()
 }
-const getMinutesString = (time: number) => {
+export const getMinutesString = (time: number) => {
     const mm = Math.floor((time % 3600) / 60);
     if(mm < 10) {
         return `0${mm}`
