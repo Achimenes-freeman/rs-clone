@@ -9,12 +9,9 @@
 }
 
 #root{
-    height: 100vh;
-}
-
-.main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+    padding: 0 150px;
+    min-height: 100vh;
+    background-color: var(--background);
+    color: var(--sub);
+    font-family: var(--font);
 }

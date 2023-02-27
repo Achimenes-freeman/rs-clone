@@ -1,0 +1,12 @@
+@import '../../variables.scss';
+
+.Gear{
+    width: 20px;
+    fill: $disabled-text;
+
+    transition: all .2s linear;
+
+    &:hover{
+        fill: $main-yellow-text
+    }
+}
