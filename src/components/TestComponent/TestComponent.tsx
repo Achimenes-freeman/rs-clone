@@ -8,9 +8,11 @@ import { MainContext } from '../../context/MainContext/MainContext';
 import { TestContext } from '../../context/TestContext/TestContext';
 
 import { ModeBar } from '../ModeBar/ModeBar';
+import { SettingsInterface } from '../../helpers/defaultSettings';
 
 export const TestComponent = () => {
 
+    const {appearance: {tpOpacity, fontSize}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
     const {testContext, resetTestContext} = useContext(TestContext);
     const {testContext:{allClicks, wrongClicks}} = useContext(TestContext);
     const {
@@ -179,8 +181,8 @@ export const TestComponent = () => {
     return (
         <div className={styles.TestComponent}>
             <ModeBar />
-            <span className={`${styles.timer}`}>{timer}</span>
-            <div className={styles.testView}>
+            <span style={{opacity: tpOpacity}} className={`${styles.timer}`}>{timer}</span>
+            <div  style={{fontSize: `${fontSize}rem`, height: `${70 * +fontSize}px`}} className={styles.testView}>
                 {wordsData.map((word, wordIndex) => {
                     const isWrongWord: boolean = true || false;
                     return (
@@ -188,6 +190,7 @@ export const TestComponent = () => {
                             <div
                                 key={`${word.join('') + wordIndex}`}
                                 className={styles.word}
+                                style={{marginRight: `${+fontSize *10}px`}}
                             >
                                 {word.map((letter, index) => {
                                     const isWrongLetter =
