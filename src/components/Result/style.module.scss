@@ -39,23 +39,29 @@
 
 .restartBtn{
     align-self: flex-end;
-
-    max-width: 150px;
-    padding: 5px 20px;
-
-    background-color: var(--sub);
-    border: none;
-    border-radius: $border-rad;
-
-    color: var(--main);
-    font-size: 1.4rem;
-    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100px;
+    margin: 0;
+    padding: 5px 10px;
+    border: 1px solid var(--main);
+    border-radius: 5px; 
+    background: var(--subAlt);
+    color: var(--text);
     cursor: pointer;
-    transition: all 0.2s linear;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.1s linear;
 
-    &:hover{
-        color: var(--sub);
-        background-color: var(--main);
+    &:hover {
+        background: var(--text);
+        color: var(--background);
+    }
+
+    &:active {
+        background: var(--sub);
     }
 }
 

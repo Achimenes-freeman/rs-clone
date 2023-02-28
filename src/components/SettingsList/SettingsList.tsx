@@ -11,12 +11,12 @@ export function SettingsList() {
     return(
         <div className={styles.settingsList}>
             <ul className={cn(styles.settingsListContent, styles.List)}>
-                <li className={styles.ListElem}><SettingBehavior/></li>
-                <li className={styles.ListElem}><SettingSound/></li>
-                <li className={styles.ListElem}><SettingCaret/></li>
-                <li className={styles.ListElem}><SettingAppearance/></li>
-                <li className={styles.ListElem}><SettingTheme/></li>
-                <li className={styles.ListElem}><SettingDangerZone/></li>
+                <li className={styles.ListElem} id='behavior'><SettingBehavior/></li>
+                <li className={styles.ListElem} id='sound'><SettingSound/></li>
+                <li className={styles.ListElem} id='caret'><SettingCaret/></li>
+                <li className={styles.ListElem} id='appearance'><SettingAppearance/></li>
+                <li className={styles.ListElem} id='theme'><SettingTheme/></li>
+                <li className={styles.ListElem} id='dangerZone'><SettingDangerZone/></li>
             </ul>
         </div>
     )

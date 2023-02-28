@@ -1,16 +1,45 @@
 .Layout {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
     min-height: 100vh;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 0;
+    width: 100%;
+    background: var(--background);
+    color: var(--sub);
+    font-family: var(--font);
 }
 
 .main{
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    height: 100%;
-
     flex: 1 1 auto;
+    height: 100%;
+    width: 100%;
+}
+
+.layoutCont {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    min-height: 100vh;
+    width: 1250px;
+}
+
+body {
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+        background: var(--subAlt);
+    }
+    &::-webkit-scrollbar-thumb {
+        width: 10px;
+        border-radius: 10px;
+        background: var(--sub);
+    }
 }
