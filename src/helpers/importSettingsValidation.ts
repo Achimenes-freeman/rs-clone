@@ -13,7 +13,7 @@ export const behaviorCheck = (behaviorSettings: BehaviorSettings, newSettings: S
         }
     }
     if(behaviorSettings.quickRestart) {
-        if(behaviorSettings.quickRestart === 'esc' || behaviorSettings.quickRestart === 'tab' || behaviorSettings.quickRestart === 'off') {
+        if(behaviorSettings.quickRestart === 'Escape' || behaviorSettings.quickRestart === 'Tab' || behaviorSettings.quickRestart === 'off') {
             result.quickRestart = behaviorSettings.quickRestart;
         }
     }

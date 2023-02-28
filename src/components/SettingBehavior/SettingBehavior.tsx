@@ -61,11 +61,11 @@ export function SettingBehavior() {
                             className={cn({[pageStyles.activeButton]: qrState === 'off'}, 
                             pageStyles.button)} type="button" onClick={() => toggleQrState('off')}>off</button>
                         <button 
-                            className={cn({[pageStyles.activeButton]: qrState === 'tab'}, 
-                            pageStyles.button)} type="button" onClick={() => toggleQrState('tab')}>tab</button> 
+                            className={cn({[pageStyles.activeButton]: qrState === 'Tab'}, 
+                            pageStyles.button)} type="button" onClick={() => toggleQrState('Tab')}>tab</button> 
                         <button 
-                            className={cn({[pageStyles.activeButton]: qrState === 'esc'}, 
-                            pageStyles.button)} type="button" onClick={() => toggleQrState('esc')}>esc</button>
+                            className={cn({[pageStyles.activeButton]: qrState === 'Escape'}, 
+                            pageStyles.button)} type="button" onClick={() => toggleQrState('Escape')}>esc</button>
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>

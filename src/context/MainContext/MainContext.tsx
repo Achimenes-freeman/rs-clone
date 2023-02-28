@@ -7,7 +7,9 @@ import React, {
 } from 'react';
 import { IMainContext, TWordsData } from './types';
 import wordsData from '../../developData/words.json';
+import russianWordsData from '../../developData/wordsRussian.json'
 import { shuffler } from '../../helpers/helpers';
+import { SettingsInterface } from '../../helpers/defaultSettings';
 
 export const MainContext = createContext<IMainContext>({
     wordsList: [],
@@ -29,11 +31,17 @@ export const MainContextProvider = ({
     const [wordsList, setWordsList] = useState<TWordsData>([[]]);
     const [typedList, setTypedList] = useState<TWordsData>([[]]);
     const [isFinished, setIsFinished] = useState(false);
-    const [mode, setMode] = useState('15 seconds');
+    const [mode, setMode] = useState('60 seconds');
+
+    const {behavior: {language}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
 
     useEffect(() => {
-        setWordsList(shuffler(wordsData.map((word) => word.split(''))));
-    }, []);
+        if(language === 'en'){
+            setWordsList(shuffler(wordsData.map((word) => word.split(''))));
+        } else {
+            setWordsList(shuffler(russianWordsData.map((word) => word.toLowerCase().split(''))));
+        }
+    }, [language]);
 
     const changeWordsList = useCallback((oldWordsList: TWordsData) => {
         setWordsList([...shuffler(oldWordsList)]);

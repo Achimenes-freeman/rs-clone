@@ -14,6 +14,10 @@ export function AccountPage() {
     const [userInfo, setUserInfo] = useState<UserInfo>();
     const [isLoadingCompleted, setIsLoadingCompleted] = useState(false);
     
+    useEffect(()=>{
+        document.onkeydown = null
+    },[])
+
     useEffect(() => {
         const connectFunc = async () => {
             const info: UserInfo = await fetch(`https://rs-clone-backend-production.up.railway.app/get_profile?username=${username}`, {

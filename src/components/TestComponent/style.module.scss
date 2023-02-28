@@ -12,9 +12,8 @@
 
 .word {
     display: inline-block;
-    margin-right: 1rem;
 
-    font-size: 1.8rem;
+    font-size: inherit;
     line-height: 1.5;
 
     &:last-child {
@@ -23,26 +22,79 @@
 
     &Caret {
         position: relative;
-        &:after {
-            content: '';
-            display: block;
-            position: absolute;
 
-            height: 100%;
-            width: 2px;
-            top: 0;
-            left: 0;
-            background-color: var(--caret);
+        &.default{
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
 
-            animation: blink 0.5s linear infinite;
+                height: 100%;
+                width: 2px;
+                top: 0;
+                left: 0;
+                background-color: var(--caret);
+
+                animation: blink 0.5s linear infinite;
+            }
         }
+
+        &.underscore{
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 2px;
+                width: 100%;
+                top: 100%;
+                left: 0;
+                background-color: var(--caret);
+
+                animation: blink 0.5s linear infinite;
+            }
+        }
+
+        &.empty{
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 80%;
+                width: 100%;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                background-color: transparent;
+                border: 1px solid var(--caret);
+
+                animation: blink 0.5s linear infinite;
+            }
+        }
+
+        &.filled{
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                background-color: var(--caret);
+                // border: 1px solid var(--caret);
+
+                animation: blink 0.5s linear infinite;
+            }
+        }
+        
     }
 }
 
 .testView {
-    height: 125px;
     width: 100%;
-
     overflow: hidden;
 }
 
@@ -76,19 +128,71 @@
 
 .caret {
     position: relative;
-    &:after {
-        content: '';
-        display: block;
-        position: absolute;
+    &.default{
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
 
-        height: 100%;
-        width: 2px;
-        top: 0;
-        left: 100%;
-        background-color: var(--caret);
+                height: 100%;
+                width: 2px;
+                top: 0;
+                right: 0;
+                background-color: var(--caret);
 
-        animation: blink 0.5s linear infinite;
-    }
+                animation: blink 0.5s linear infinite;
+            }
+        }
+
+        &.underscore{
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 2px;
+                width: 100%;
+                top: 100%;
+                left: 0;
+                background-color: var(--caret);
+
+                animation: blink 0.5s linear infinite;
+            }
+        }
+        
+        &.empty{
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 80%;
+                width: 100%;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                background-color: transparent;
+                border: 1px solid var(--caret);
+
+                animation: blink 0.5s linear infinite;
+            }
+        }
+
+        &.filled{
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                background-color: var(--caret);
+
+                animation: blink 0.5s linear infinite;
+            }
+        }
 }
 
 .timer {
