@@ -1,35 +1,25 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import cn from 'classnames';
 import styles from './styles.module.scss';
-import { UserInfo, UserTokenObj } from './types';
+import { UserInfo } from './types';
 // import { UserInfo } from './types';
 import { BestGamesInfoTable } from "../BestGamesInfoTable/BestGamesInfoTable";
 import { UserShortInfo } from "../UserShortInfo/UserShortInfo";
 import { GamesInfo } from "../GamesInfo/GamesInfo";
+import { PageContext } from "../../context/PageContext/PageContext";
 
 
 export function AccountPage() {
-
+    const {token, username} = useContext(PageContext)
     const [userInfo, setUserInfo] = useState<UserInfo>();
     const [isLoadingCompleted, setIsLoadingCompleted] = useState(false);
     
     useEffect(() => {
         const connectFunc = async () => {
-            const userToken: UserTokenObj  = await fetch('https://rs-clone-backend-production.up.railway.app/login', {
-                method: 'POST',
-                headers: {
-                    "Content-type":  "application/json"
-                },
-                body: JSON.stringify({
-                    username: "iSvitka",
-                    password: "qazwsxedc"
-                })
-            }).then(res => res.json())
-    
-            const info: UserInfo = await fetch('https://rs-clone-backend-production.up.railway.app/get_profile?username=iSvitka', {
+            const info: UserInfo = await fetch(`https://rs-clone-backend-production.up.railway.app/get_profile?username=${username}`, {
                 method: 'GET',
                 headers: {
-                    "Authorization": `Bearer ${userToken.token}`,
+                    "Authorization": `Bearer ${token}`,
                     "Content-type":  "application/json"
                 }
             }).then(res => res.json())
@@ -196,7 +186,7 @@ export function AccountPage() {
         if(!isLoadingCompleted) {
             connectFunc()
         }
-    }, [isLoadingCompleted]);
+    }, [token, username, isLoadingCompleted]);
 
 
     return (
