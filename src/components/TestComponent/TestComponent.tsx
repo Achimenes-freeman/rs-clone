@@ -10,10 +10,14 @@ import { TestContext } from '../../context/TestContext/TestContext';
 import { ModeBar } from '../ModeBar/ModeBar';
 import { SettingsInterface } from '../../helpers/defaultSettings';
 
+import CorrectSound from '../../assets/sounds/correct.mp3'
+import WrongSound from '../../assets/sounds/wrong.mp3'
+
 export const TestComponent = () => {
 
-    const {appearance: {tpOpacity, fontSize},
-            caret: {caretStyle}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
+    const { appearance: {tpOpacity, fontSize},
+            caret: {caretStyle},
+            sound: {soundVolume, playSoundOnClick, playSoundOnError}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
     const {testContext, resetTestContext} = useContext(TestContext);
     const {testContext:{allClicks, wrongClicks}} = useContext(TestContext);
     const {
@@ -33,6 +37,28 @@ export const TestComponent = () => {
     const currWord = useRef<Element>();
     const currentLetter = useRef<Element>();
     const timerId = useRef<NodeJS.Timeout>();
+
+    const correctSound = new Audio(CorrectSound)
+    const wrongSound = new Audio(WrongSound)
+
+    correctSound.muted = playSoundOnClick === 'off'
+    wrongSound.muted = playSoundOnError === 'off'
+    switch(soundVolume) {
+        case 'quite':
+            correctSound.volume = 0.01
+            wrongSound.volume = 0.01
+            break;
+        case 'loud':
+            correctSound.volume = 0.05
+            wrongSound.volume = 0.05
+            break;
+        default: 
+            correctSound.volume = 0.02
+            wrongSound.volume = 0.02
+            break;
+    }
+
+    
 
     useEffect(()=> {
         testContext.accuracy = Math.round((1 - (wrongClicks / allClicks)) * 100)
@@ -129,6 +155,7 @@ export const TestComponent = () => {
                     break;
 
                 case e.key === ' ':
+                    correctSound.play()
                     if (typedList.at(-1)?.length !== 0) {
                         if (
                             JSON.stringify(
@@ -163,7 +190,10 @@ export const TestComponent = () => {
                             typedList[currentWordIndex.current].length - 1
                         )
                     ) {
+                        wrongSound.play()
                         testContext.wrongClicks += 1;
+                    } else {
+                        correctSound.play()
                     }
 
                     changeTypedList([...typedList]);
