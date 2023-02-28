@@ -61,10 +61,11 @@
                 display: block;
                 position: absolute;
 
-                height: 100%;
+                height: 80%;
                 width: 100%;
-                top: 0;
+                top: 50%;
                 left: 0;
+                transform: translateY(-50%);
                 background-color: transparent;
                 border: 1px solid var(--caret);
 
@@ -94,7 +95,6 @@
 
 .testView {
     width: 100%;
-
     overflow: hidden;
 }
 
@@ -166,10 +166,11 @@
                 display: block;
                 position: absolute;
 
-                height: 100%;
+                height: 80%;
                 width: 100%;
-                top: 0;
+                top: 50%;
                 left: 0;
+                transform: translateY(-50%);
                 background-color: transparent;
                 border: 1px solid var(--caret);
 
