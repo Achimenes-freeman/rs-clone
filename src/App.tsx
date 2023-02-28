@@ -7,11 +7,12 @@ import { Layout } from './components/Layout/Layout';
 import { SettingsPage } from './components/SettingsPage/SettingsPage';
 
 import './fonts.module.scss';
-import { defaultSettings } from "./helpers/defaultSettings";
+import { SettingsInterface, defaultSettings } from "./helpers/defaultSettings";
 import { Result } from './components/Result/Result';
 import { RegLogPage } from './components/RegistrationLoginPage/RegLogPage';
 import { AccountPage } from './components/AccountPage/AccountPage';
 import { PageContext } from './context/PageContext/PageContext';
+import { getSettings } from './helpers/userManipulationFuncs';
 
 if(!localStorage.getItem('settings')) {
     localStorage.setItem('settings', JSON.stringify(defaultSettings))
@@ -19,7 +20,7 @@ if(!localStorage.getItem('settings')) {
 
 export const App = () => {
     const {isFinished} = useContext(MainContext);
-    const {token, username, updateToken, updateUsername} = useContext(PageContext)
+    const {token, username, updateTheme, updateFont, updateToken, updateUsername, isLoaded, setLoaded} = useContext(PageContext)
     const checkAuth = useCallback(() => {
         const localToken = localStorage.getItem('authToken')
         if(localToken) {
@@ -36,11 +37,40 @@ export const App = () => {
                 updateUsername('')
             }
         }
-    }, [token.length, username.length, updateToken, updateUsername])
+    }, [token.length, username.length, updateToken, updateUsername]);
+    const checkSettings = useCallback(() => {
+        const localToken = localStorage.getItem('authToken');
+        if(localToken) {
+            getSettings(token).then(setts => {
+                updateTheme(setts.theme.theme);
+                updateFont(setts.appearance.fontFamily);
+            }).catch(() => {
+                const localSetts: SettingsInterface = JSON.parse(localStorage.getItem('settings') ||'{}')
+                if(localSetts) {
+                    updateTheme(localSetts.theme.theme);
+                    updateFont(localSetts.appearance.fontFamily);
+                } else {
+                    localStorage.setItem('settings', JSON.stringify(defaultSettings))
+                }
+            })
+        } else {
+            const localSetts: SettingsInterface = JSON.parse(localStorage.getItem('settings') ||'{}')
+            if(localSetts) {
+                updateTheme(localSetts.theme.theme);
+                updateFont(localSetts.appearance.fontFamily);
+            } else {
+                localStorage.setItem('settings', JSON.stringify(defaultSettings))
+            }
+        }
+    }, [token, updateFont, updateTheme])
 
     useEffect(() => {
-        checkAuth()
-    }, [checkAuth]) 
+        if(!isLoaded) {
+            checkAuth()
+            checkSettings()
+            setLoaded()
+        }
+    }, [checkAuth, checkSettings, isLoaded, setLoaded])
     
     return (
         <Routes>

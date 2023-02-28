@@ -6,7 +6,7 @@ import { SetGroupBut } from "../../generics/SetGroupBut/SetGroupBut";
 import { SettingsInterface } from "../../helpers/defaultSettings";
 
 export function SettingBehavior() {
-    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
+    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || '{}');
     const behaviorSettings: BehaviorSettings = settings.behavior;
 
     const [isOpen, setIsOpen] = useState(true);

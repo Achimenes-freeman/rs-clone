@@ -7,7 +7,7 @@ import { SetGroupBut } from "../../generics/SetGroupBut/SetGroupBut";
 import { SettingsInterface } from "../../helpers/defaultSettings";
 
 export function SettingCaret() {
-    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
+    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || '{}');
     const caretSettings: CaretSettings = settings.caret;
 
     const [isOpen, setIsOpen] = useState(true);

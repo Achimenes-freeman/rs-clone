@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import pageStyles from '../SettingsPage/styles.module.scss';
 import styles from './styles.module.scss';
 import { SettingsImportMenuProps } from './types';
 import { SettingsInterface, defaultSettings } from '../../helpers/defaultSettings';
 import { appearanceCheck, behaviorCheck, caretCheck, soundCheck, themeCheck } from '../../helpers/importSettingsValidation';
+import { PageContext } from '../../context/PageContext/PageContext';
+import { updateSettings } from '../../helpers/updateSettings';
 
 export function SettingsImportMenu({setIsImportOpen}: SettingsImportMenuProps) {
+    const {token, updateTheme, updateFont} = useContext(PageContext)
     const [inputState, setInputState] = useState('')
     const changeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputState(event.target.value)
@@ -45,7 +48,10 @@ export function SettingsImportMenu({setIsImportOpen}: SettingsImportMenuProps) {
                 if(inputSettings.theme) {
                     newSettings.theme = themeCheck(inputSettings.theme, newSettings);
                 }
-                localStorage.setItem('settings', JSON.stringify(newSettings))
+
+                updateSettings(newSettings, token, newSettings)
+                updateFont(newSettings.appearance.fontFamily)
+                updateTheme(newSettings.theme.theme)
         }
     }
 

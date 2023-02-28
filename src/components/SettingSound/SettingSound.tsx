@@ -6,7 +6,7 @@ import { SetGroupBut } from "../../generics/SetGroupBut/SetGroupBut";
 import { SettingsInterface } from "../../helpers/defaultSettings";
 
 export function SettingSound() {
-    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
+    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || '{}');
     const soundSettings = settings.sound;
 
     const [isOpen, setIsOpen] = useState(true);
@@ -29,9 +29,9 @@ export function SettingSound() {
         }
     }
     const toggleSeState = (target: SeType) => {
-        soundSettings.playSoundOnError = target;
-        localStorage.setItem('settings', JSON.stringify(settings))
         if(target !== seState) {
+            soundSettings.playSoundOnError = target;
+            localStorage.setItem('settings', JSON.stringify(settings))
             setSeState(target)
         }
     }
