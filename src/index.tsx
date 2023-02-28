@@ -6,6 +6,7 @@ import { TestContextProvider } from './context/TestContext/TestContext';
 import themes from './themes.module.scss';
 import fonts from './fonts.module.scss';
 import './index.scss';
+import { PageContextProvider } from './context/PageContext/PageContext';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -14,7 +15,7 @@ const root = ReactDOM.createRoot(
 document.getElementById('root')?.classList.add(`${themes.defaultTheme}`, `${fonts.robotoMonoFont}`)
 
 root.render(
-
+    <PageContextProvider>
         <MainContextProvider>
             <TestContextProvider>
                 <BrowserRouter>
@@ -22,5 +23,5 @@ root.render(
                 </BrowserRouter>
             </TestContextProvider>
         </MainContextProvider>
-
+    </PageContextProvider>
 );
