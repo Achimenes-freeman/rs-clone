@@ -11,3 +11,15 @@ export function getMainColor() {
             return '#ffffff';
     }
 }
+
+export function getSubAltColor() {
+    const settings:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'settings');
+    switch(settings.theme.theme) {
+        case 'default': 
+            return '#2c2e31';
+        case 'lavender':
+            return '#27173c';
+        default: 
+            return '#ffffff';
+    }
+}

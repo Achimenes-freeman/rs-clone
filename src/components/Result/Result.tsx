@@ -6,6 +6,7 @@ import { LineChartGeneric } from '../../generics/LineChartGeneric/LineChartGener
 import { MainContext } from "../../context/MainContext/MainContext"
 import { TestContext } from '../../context/TestContext/TestContext';
 import styles from './style.module.scss'
+import { getMainColor, getSubAltColor } from '../../helpers/getMainColor';
 
 export const Result = ()=> {
 
@@ -32,7 +33,7 @@ export const Result = ()=> {
         <div className={styles.ResultComponent}>
 
             <div className={styles.chartBox}>
-                <LineChartGeneric printsDynamics={printsDynamics}/>
+                <LineChartGeneric printsDynamics={printsDynamics} chartColor={getSubAltColor()} color={getMainColor()}/>
             </div>
 
             <div className={styles.resultsBox}>

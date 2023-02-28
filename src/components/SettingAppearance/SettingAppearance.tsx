@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import cn from 'classnames';
 import { AppearanceSettings, ColorType, FamilyType, OpacityType, SizeType, StyleType } from "./types";
 import styles from './styles.module.scss';
 import pageStyles from '../SettingsPage/styles.module.scss';
 import { SetGroupBut } from "../../generics/SetGroupBut/SetGroupBut";
 import { SettingsInterface } from "../../helpers/defaultSettings";
+import { PageContext } from "../../context/PageContext/PageContext";
+import { updateSettings } from "../../helpers/updateSettings";
 
 export function SettingAppearance() {
-    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
+    const {token, updateFont} = useContext(PageContext)
+    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || '{}');
     const appearanceSettings: AppearanceSettings = settings.appearance;
     
     const [isOpen, setIsOpen] = useState(true);
@@ -20,35 +23,35 @@ export function SettingAppearance() {
     const toggleStyleState = (target: StyleType) => {
         if(target !== styleState) {
             appearanceSettings.tpStyle = target;
-            localStorage.setItem('settings', JSON.stringify(settings));
+            updateSettings({appearance: appearanceSettings}, token, settings)
             setStyleState(target);
         }
     }
     const toggleColorState = (target: ColorType) => {
         if(target !== colorState) {
             appearanceSettings.tpColor = target;
-            localStorage.setItem('settings', JSON.stringify(settings));
+            updateSettings({appearance: appearanceSettings}, token, settings)
             setColorState(target);
         }
     }
     const toggleOpacity = (target: OpacityType) => {
         if(target !== opacityState) {
             appearanceSettings.tpOpacity = target;
-            localStorage.setItem('settings', JSON.stringify(settings));
+            updateSettings({appearance: appearanceSettings}, token, settings)
             setOpacityState(target);
         }
     }
     const toggleSizeState = (target: SizeType) => {
         if(target !== sizeState) {
             appearanceSettings.fontSize = target;
-            localStorage.setItem('settings', JSON.stringify(settings));
+            updateSettings({appearance: appearanceSettings}, token, settings)
             setSizeState(target)
         }
     }
     const toggleFamilyState = (target: FamilyType) => {
         if(target !== familyState) {
             appearanceSettings.fontFamily = target;
-            localStorage.setItem('settings', JSON.stringify(settings));
+            updateSettings({appearance: appearanceSettings}, token, settings, target, updateFont)
             setFamilyState(target);
         }
     }

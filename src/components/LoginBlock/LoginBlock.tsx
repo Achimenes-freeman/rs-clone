@@ -1,10 +1,13 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import cn from 'classnames'
 import styles from './styles.module.scss'
 import { tryLogin } from "../../helpers/regLogFunctions";
+import { PageContext } from "../../context/PageContext/PageContext";
+import { getSettings } from "../../helpers/userManipulationFuncs";
 
 export function LoginBlock() {
+    const {setLoaded} = useContext(PageContext)
     const navigate = useNavigate()
     const [nameState, setNameState] = useState('');
     const [nameErrorState, setNameErrorState] = useState(false);
@@ -40,8 +43,12 @@ export function LoginBlock() {
     }
     const login = () => {
         if(validateInputs()) {
-            tryLogin(nameState, passState).then(() => {
-                navigate('/')
+            tryLogin(nameState, passState).then((token) => {
+                getSettings(token.token).then(setts => {
+                    localStorage.setItem('settings', JSON.stringify(setts))
+                    setLoaded(false)
+                    navigate('/')
+                })
             }).catch(() => {
                 setShowError(true)
             })

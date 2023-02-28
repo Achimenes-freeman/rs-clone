@@ -1,10 +1,14 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import cn from 'classnames'
 import styles from './styles.module.scss'
 import { tryLogin, tryRegister } from "../../helpers/regLogFunctions";
+import { PageContext } from "../../context/PageContext/PageContext";
+import { setSettings } from "../../helpers/userManipulationFuncs";
+import { SettingsInterface } from "../../helpers/defaultSettings";
 
 export function RegistrationBlock() {
+    const {setLoaded} = useContext(PageContext)
     const navigate = useNavigate()
     const [nameState, setNameState] = useState('');
     const [nameErrorState, setNameErrorState] = useState(false);
@@ -41,8 +45,14 @@ export function RegistrationBlock() {
     const register = () => {
         if(validateInputs()) {
             tryRegister(nameState, passState).then(res => {
-                tryLogin(res.username, res.password)
-            }).then(() => {navigate('/')}).catch((err: Error) => {
+                tryLogin(res.username, res.password).then((token) => {
+                    const settings: SettingsInterface = JSON.parse( localStorage.getItem('settings') || '{}');
+                    setSettings(token.token, settings);
+                })
+            }).then(() => {
+                setLoaded(false)
+                navigate('/')
+            }).catch((err: Error) => {
                 setErrorState(err.message)
             })
         }

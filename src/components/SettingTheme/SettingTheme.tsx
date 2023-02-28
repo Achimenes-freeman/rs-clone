@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import cn from 'classnames';
 import { ColorfulModeType, FlipTestColorsType, ThemeSettings, ThemeType } from "./types";
 import pageStyles from '../SettingsPage/styles.module.scss';
 import { SetGroupBut } from "../../generics/SetGroupBut/SetGroupBut";
 import { SettingsInterface } from "../../helpers/defaultSettings";
+import { updateSettings } from "../../helpers/updateSettings";
+import { PageContext } from "../../context/PageContext/PageContext";
 
 export function SettingTheme() {
+    const {token, updateTheme} = useContext(PageContext)
     const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
     const themeSettings: ThemeSettings = settings.theme;
     
@@ -17,14 +20,14 @@ export function SettingTheme() {
     const toggleFtcState = (target: FlipTestColorsType) => {
         if(target !== ftcState) {
             themeSettings.flipTestColors = target;
-            localStorage.setItem('settings', JSON.stringify(settings));
+            updateSettings({theme: themeSettings}, token, settings)
             setFtcState(target)
         }
     }
     const toggleCmState = (target: ColorfulModeType) => {
         if(target !== cmState) {
             themeSettings.colorfulMode = target;
-            localStorage.setItem('settings', JSON.stringify(settings));
+            updateSettings({theme: themeSettings}, token, settings)
             setCmState(target)
         }
     }
@@ -32,7 +35,7 @@ export function SettingTheme() {
     const toggleThemeState = (target: ThemeType) => {
         if(target !== themeState) {
             themeSettings.theme = target;
-            localStorage.setItem('settings', JSON.stringify(settings));
+            updateSettings({theme: themeSettings}, token, settings, target, undefined, updateTheme)
             setThemeState(target)
         }
     }

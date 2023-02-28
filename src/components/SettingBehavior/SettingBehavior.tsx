@@ -1,12 +1,15 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import cn from 'classnames';
 import pageStyles from '../SettingsPage/styles.module.scss';
 import { BehaviorSettings, LangType, QrType, TdType } from "./types";
 import { SetGroupBut } from "../../generics/SetGroupBut/SetGroupBut";
 import { SettingsInterface } from "../../helpers/defaultSettings";
+import { updateSettings } from "../../helpers/updateSettings";
+import { PageContext } from "../../context/PageContext/PageContext";
 
 export function SettingBehavior() {
-    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
+    const {token} = useContext(PageContext)
+    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || '{}');
     const behaviorSettings: BehaviorSettings = settings.behavior;
 
     const [isOpen, setIsOpen] = useState(true);
@@ -16,21 +19,21 @@ export function SettingBehavior() {
     const toggleTdState = (target: TdType) => {
         if(target !== tdState) {
             behaviorSettings.testDifficulty = target;
-            localStorage.setItem('settings', JSON.stringify(settings))
+            updateSettings({behavior: behaviorSettings}, token, settings)
             setTdState(target)
         }
     }
     const toggleQrState = (target: QrType) => {
         if(target !== qrState) {
             behaviorSettings.quickRestart = target;
-            localStorage.setItem('settings', JSON.stringify(settings))
+            updateSettings({behavior: behaviorSettings}, token, settings)
             setQrState(target)
         }
     }
     const toggleLangState = (target: LangType) => {
         if(target !== langState) {
             behaviorSettings.language = target;
-            localStorage.setItem('settings', JSON.stringify(settings))
+            updateSettings({behavior: behaviorSettings}, token, settings)
             setLangState(target)
         }
     }

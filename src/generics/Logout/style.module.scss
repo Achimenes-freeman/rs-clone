@@ -2,11 +2,13 @@
 
 .Logout{
     width: 25px;
-    fill: $disabled-text;
-
+    border: none;
+    background: none;
+    cursor: pointer;
+    fill: var(--sub);
     transition: all .2s linear;
 
     &:hover{
-        fill: $main-yellow-text
+        fill: var(--text);
     }
 }

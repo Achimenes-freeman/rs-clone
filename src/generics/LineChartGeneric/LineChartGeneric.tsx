@@ -22,9 +22,9 @@ ChartJS.register(
     Legend
 );
 
-export const LineChartGeneric = (props: {printsDynamics: Array<number>}) => {
-    const {printsDynamics} = props;
-
+export const LineChartGeneric = (props: {printsDynamics: Array<number>, chartColor: string, color: string}) => {
+    const {printsDynamics, chartColor, color} = props;
+// 
 
     const options = {
         responsive: true,
@@ -45,9 +45,9 @@ export const LineChartGeneric = (props: {printsDynamics: Array<number>}) => {
             {
                 label: 'WPM Dynamic',
                 data: printsDynamics,
-                borderColor: '#e2b533',
-                pointBackgroundColor: '#e2b533',
-                backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                borderColor: color,
+                pointBackgroundColor: color,
+                backgroundColor: chartColor,
                 fill: 'origin',
                 tension: 0.4
             },
