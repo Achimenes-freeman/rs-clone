@@ -52,7 +52,7 @@ export const Result = ()=> {
 
             <div className={styles.resultsBox}>
                 <div className={styles.result}><span className={styles.resultTitle}>wpm</span><span className={styles.resultValue}>{wpm}</span></div>
-                <div className={styles.result}><span className={styles.resultTitle}>accuracy</span><span className={styles.resultValue}>{accuracy}%</span></div>
+                <div className={styles.result}><span className={styles.resultTitle}>accuracy</span><span className={styles.resultValue}>{accuracy || 0}%</span></div>
                 <div className={styles.result}><span className={styles.resultTitle}>mode</span><span className={classNames(styles.resultValue, styles.smallValue)}>{mode}</span></div>
             </div>
 

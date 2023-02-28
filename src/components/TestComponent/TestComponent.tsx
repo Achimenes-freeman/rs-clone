@@ -15,15 +15,15 @@ import WrongSound from '../../assets/sounds/wrong.mp3'
 
 export const TestComponent = () => {
 
-// Get user settings from localStorage ========================================
+// Get user settings from localStorage ==================================================
 
     const { 
         appearance: {tpOpacity, fontSize},
         caret: {caretStyle},
         sound: {soundVolume, playSoundOnClick, playSoundOnError},
-        behavior: {quickRestart}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
+        behavior: {testDifficulty,quickRestart}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
 
-// ============================================================================
+// =======================================================================================
 
     const {testContext, resetTestContext} = useContext(TestContext);
     const {testContext:{allClicks, wrongClicks}} = useContext(TestContext);
@@ -45,7 +45,7 @@ export const TestComponent = () => {
     const currentLetter = useRef<Element>();
     const timerId = useRef<NodeJS.Timeout>();
 
-// Sound effects ===============================
+// Sound effects =========================================================================
     const correctSound = new Audio(CorrectSound)
     const wrongSound = new Audio(WrongSound)
 
@@ -66,12 +66,15 @@ export const TestComponent = () => {
             wrongSound.volume = 0.02
             break;
     }
-// ===========================
+// =======================================================================================
     
+// Counting accuracy =====================================================================
 
     useEffect(()=> {
         testContext.accuracy = Math.round((1 - (wrongClicks / allClicks)) * 100)
     },[allClicks, testContext, wrongClicks])
+
+// =======================================================================================
 
     useEffect(() => {
         if (counting) {
@@ -85,6 +88,8 @@ export const TestComponent = () => {
         }
     }, [counting]);
 
+// End game timer handler ================================================================
+
     useEffect(() => {
         const currentGameTime = parseInt(mode,10) - timer;
         if (timer <= 0) {
@@ -92,8 +97,8 @@ export const TestComponent = () => {
             const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
             testContext.wpm = correctWords * 60 / parseInt(mode,10);
             testContext.printsDynamics.push(Math.round(correctWords / (currentGameTime / 60)))
-
             changeFinished()  
+
         } else if (currentGameTime) {
             const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
             testContext.printsDynamics.push(Math.round(correctWords / (currentGameTime / 60)))
@@ -101,7 +106,9 @@ export const TestComponent = () => {
 
     }, [timer]);
 
-// Correct/Incorrect letter styles chang================================================
+// =======================================================================================
+
+// Correct/Incorrect letter styles change ================================================
 
     useEffect(() => {
         if (!currentLetter.current) {
@@ -132,6 +139,7 @@ export const TestComponent = () => {
 
 // =======================================================================================
 
+// Restart game ==========================================================================
     useEffect(()=> {
         currWord.current = document.getElementsByClassName(`${styles.word}`)[0];
         currentWordIndex.current = 0;
@@ -146,7 +154,10 @@ export const TestComponent = () => {
         changeWordsList([...wordsData])
     },[mode])
 
-// Keyboard handler==============================
+    
+// =======================================================================================
+
+// Keyboard handler=======================================================================
 
     useEffect(() => {
         document.onkeydown = (e) => {
@@ -206,6 +217,9 @@ export const TestComponent = () => {
                     ) {
                         wrongSound.play()
                         testContext.wrongClicks += 1;
+                        if(testDifficulty === 'master'){
+                            setTimer(0)
+                        }
                     } else {
                         correctSound.play()
                     }
@@ -223,7 +237,7 @@ export const TestComponent = () => {
         };
     }, [wordsData, changeWordsList, makeEmptyTypedList, changeTypedList, counting, resetTestContext, testContext, typedList]);
 
-// ========================================
+// =======================================================================================
 
     return (
         <div className={styles.TestComponent}>
