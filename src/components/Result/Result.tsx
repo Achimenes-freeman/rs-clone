@@ -28,7 +28,6 @@ export const Result = ()=> {
 
     useEffect(()=>{
         resetTestContext()
-        document.onkeydown = null
     },[resetTestContext])
 
     const gameResultData: ISetGameResultData = {
@@ -40,6 +39,7 @@ export const Result = ()=> {
     }
 
     useEffect(()=> {
+        document.onkeydown = null
         setGameResultData(gameResultData)
     }, [])
 

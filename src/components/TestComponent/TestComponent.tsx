@@ -15,9 +15,16 @@ import WrongSound from '../../assets/sounds/wrong.mp3'
 
 export const TestComponent = () => {
 
-    const { appearance: {tpOpacity, fontSize},
-            caret: {caretStyle},
-            sound: {soundVolume, playSoundOnClick, playSoundOnError}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
+// Get user settings from localStorage ========================================
+
+    const { 
+        appearance: {tpOpacity, fontSize},
+        caret: {caretStyle},
+        sound: {soundVolume, playSoundOnClick, playSoundOnError},
+        behavior: {quickRestart}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
+
+// ============================================================================
+
     const {testContext, resetTestContext} = useContext(TestContext);
     const {testContext:{allClicks, wrongClicks}} = useContext(TestContext);
     const {
@@ -38,11 +45,13 @@ export const TestComponent = () => {
     const currentLetter = useRef<Element>();
     const timerId = useRef<NodeJS.Timeout>();
 
+// Sound effects ===============================
     const correctSound = new Audio(CorrectSound)
     const wrongSound = new Audio(WrongSound)
 
     correctSound.muted = playSoundOnClick === 'off'
     wrongSound.muted = playSoundOnError === 'off'
+
     switch(soundVolume) {
         case 'quite':
             correctSound.volume = 0.01
@@ -57,7 +66,7 @@ export const TestComponent = () => {
             wrongSound.volume = 0.02
             break;
     }
-
+// ===========================
     
 
     useEffect(()=> {
@@ -92,6 +101,7 @@ export const TestComponent = () => {
 
     }, [timer]);
 
+// Correct/Incorrect letter styles chang================================================
 
     useEffect(() => {
         if (!currentLetter.current) {
@@ -120,6 +130,8 @@ export const TestComponent = () => {
         }
     },[typedList]);
 
+// =======================================================================================
+
     useEffect(()=> {
         currWord.current = document.getElementsByClassName(`${styles.word}`)[0];
         currentWordIndex.current = 0;
@@ -134,10 +146,12 @@ export const TestComponent = () => {
         changeWordsList([...wordsData])
     },[mode])
 
+// Keyboard handler==============================
+
     useEffect(() => {
         document.onkeydown = (e) => {
             switch (true) {
-                case e.key === 'Tab':
+                case e.key === quickRestart:
                     e.preventDefault();
                     resetTestContext()
                     changeWordsList([...wordsData]);
@@ -208,6 +222,8 @@ export const TestComponent = () => {
             }
         };
     }, [wordsData, changeWordsList, makeEmptyTypedList, changeTypedList, counting, resetTestContext, testContext, typedList]);
+
+// ========================================
 
     return (
         <div className={styles.TestComponent}>

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import cn from 'classnames'
 import styles from './styles.module.scss'
@@ -14,6 +14,10 @@ export function LoginBlock() {
     const [passState, setPassState] = useState('');
     const [passErrorState, setPassErrorState] = useState(false);
     const [showError, setShowError] = useState(false)
+
+    useEffect(()=>{
+        document.onkeydown = null
+    },[])
 
     const nameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNameState(event.target.value);
