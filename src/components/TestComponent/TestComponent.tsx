@@ -12,7 +12,8 @@ import { SettingsInterface } from '../../helpers/defaultSettings';
 
 export const TestComponent = () => {
 
-    const {appearance: {tpOpacity, fontSize}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
+    const {appearance: {tpOpacity, fontSize},
+            caret: {caretStyle}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
     const {testContext, resetTestContext} = useContext(TestContext);
     const {testContext:{allClicks, wrongClicks}} = useContext(TestContext);
     const {
@@ -189,7 +190,7 @@ export const TestComponent = () => {
                         isWrongWord && (
                             <div
                                 key={`${word.join('') + wordIndex}`}
-                                className={styles.word}
+                                className={classNames(styles.word, styles[caretStyle])}
                                 style={{marginRight: `${+fontSize *10}px`}}
                             >
                                 {word.map((letter, index) => {
@@ -214,7 +215,8 @@ export const TestComponent = () => {
                                                 isWrongLetter &&
                                                     styles.wrongLetter,
                                                 isCorrectLetter &&
-                                                    styles.correctLetter
+                                                    styles.correctLetter,
+                                                styles[caretStyle]
                                             )}
                                         >
                                             {letter}
@@ -230,7 +232,7 @@ export const TestComponent = () => {
                                                 key={`${
                                                     extraLetter + extraIndex
                                                 }`}
-                                                className={styles.extraLetter}
+                                                className={classNames(styles.extraLetter, styles[caretStyle])}
                                             >
                                                 {extraLetter}
                                             </span>
