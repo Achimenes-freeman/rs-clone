@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import {useContext, useEffect} from 'react';
 
 import { LineChartGeneric } from '../../generics/LineChartGeneric/LineChartGeneric';
+import { ISetGameResultData } from './types';
+import { setGameResultData } from '../../helpers/setGameResultData';
 
 import { MainContext } from "../../context/MainContext/MainContext"
 import { TestContext } from '../../context/TestContext/TestContext';
@@ -13,7 +15,7 @@ export const Result = ()=> {
     const { changeFinished, changeWordsList, makeEmptyTypedList, wordsList: wordsData, mode} = useContext(MainContext);
 
     const { 
-        testContext:{ accuracy, wpm, printsDynamics},
+        testContext:{ allClicks, wrongClicks, accuracy, wpm, printsDynamics},
         resetTestContext
     } = useContext(TestContext)
 
@@ -28,6 +30,18 @@ export const Result = ()=> {
         resetTestContext()
         document.onkeydown = null
     },[resetTestContext])
+
+    const gameResultData: ISetGameResultData = {
+        wpm,
+        accuracy,
+        chars: [allClicks - wrongClicks, wrongClicks,0,0],
+        mode,
+        time: parseInt(mode, 10)
+    }
+
+    useEffect(()=> {
+        setGameResultData(gameResultData)
+    }, [])
 
     return(
         <div className={styles.ResultComponent}>
