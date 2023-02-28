@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import cn from 'classnames';
 import pageStyles from '../SettingsPage/styles.module.scss';
 import styles from './styles.module.scss';
 import { CSmType, CStType, CaretSettings} from "./types";
 import { SetGroupBut } from "../../generics/SetGroupBut/SetGroupBut";
 import { SettingsInterface } from "../../helpers/defaultSettings";
+import { PageContext } from "../../context/PageContext/PageContext";
+import { updateSettings } from "../../helpers/updateSettings";
 
 export function SettingCaret() {
+    const {token} = useContext(PageContext)
     const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || '{}');
     const caretSettings: CaretSettings = settings.caret;
 
@@ -17,14 +20,14 @@ export function SettingCaret() {
     const toggleCSmState = (target: CSmType) => {
         if(target !== cSmState) {
             caretSettings.smoothCaret = target;
-            localStorage.setItem('settings', JSON.stringify(settings))
+            updateSettings({caret: caretSettings}, token, settings)
             setCSmState(target);
         }
     }
     const toggleCStState = (target: CStType) => {
         if(target !== cStState) {
             caretSettings.caretStyle = target;
-            localStorage.setItem('settings', JSON.stringify(settings))
+            updateSettings({caret: caretSettings}, token, settings)
             setCStState(target)
         }
     }

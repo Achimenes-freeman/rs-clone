@@ -9,10 +9,12 @@ import { Gear } from '../../generics/Gear/Gear';
 import { UserIcon } from '../../generics/UserIcon/UserIcon';
 import { Logout } from '../../generics/Logout/Logout';
 import styles from './style.module.scss'
+import { PageContext } from '../../context/PageContext/PageContext';
 
 export const Header = ()=> {
 
     const { changeFinished, changeWordsList,wordsList: wordsData} = useContext(MainContext);
+    const {token, setLoaded, updateUsername, updateToken} = useContext(PageContext)
 
     const { 
         resetTestContext
@@ -22,6 +24,15 @@ export const Header = ()=> {
         resetTestContext();
         changeWordsList([...wordsData]);
         changeFinished(true)
+    }
+
+    const logOut = () => {
+        restartGame()
+        updateToken('');
+        updateUsername('');
+        setLoaded(false)
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('username');
     }
     
     return (
@@ -48,9 +59,11 @@ export const Header = ()=> {
                         <Link to='/user' onClick={restartGame}>
                             <UserIcon/>
                         </Link>
-                        <Link to='/logout' onClick={restartGame}>
-                            <Logout/>
-                        </Link>
+                        {!!token && 
+                            <Link to='/' onClick={logOut}>
+                                <Logout/>
+                            </Link>
+                        }
                     </div>
                 </nav>
         </header>

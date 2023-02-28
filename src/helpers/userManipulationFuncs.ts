@@ -14,7 +14,8 @@ export const setSettings = async (token: string, setGroup: Partial<SettingsInter
     const response = await fetch(`https://rs-clone-backend-production.up.railway.app/set_settings`, {
         method: 'PATCH',
         headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
+            "Content-type":  "application/json"
         },
         body: JSON.stringify(setGroup)
     }).then(res => res.json())

@@ -1,18 +1,14 @@
 import { useEffect, useState } from "react";
 import cn from 'classnames';
 import styles from './styles.module.scss';
-import fonts from '../../fonts.module.scss';
-import themes from '../../themes.module.scss';
 import { UserInfo, UserTokenObj } from './types';
 // import { UserInfo } from './types';
-import { SettingsInterface } from "../../helpers/defaultSettings";
 import { BestGamesInfoTable } from "../BestGamesInfoTable/BestGamesInfoTable";
 import { UserShortInfo } from "../UserShortInfo/UserShortInfo";
 import { GamesInfo } from "../GamesInfo/GamesInfo";
 
 
 export function AccountPage() {
-    const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
 
     const [userInfo, setUserInfo] = useState<UserInfo>();
     const [isLoadingCompleted, setIsLoadingCompleted] = useState(false);
@@ -204,7 +200,7 @@ export function AccountPage() {
 
 
     return (
-        <section className={cn(styles.AccountPage, themes[`${settings.theme.theme}Theme`], fonts[`${settings.appearance.fontFamily}Font`])} >
+        <section className={cn(styles.AccountPage)} >
             {userInfo && <UserShortInfo userInfo={userInfo}/>}
             <div className={styles.bestGamesCont}>
                 <BestGamesInfoTable type="seconds" games={userInfo?.bestGames.filter(game => game.mode.includes('seconds'))}/>

@@ -21,6 +21,7 @@ if(!localStorage.getItem('settings')) {
 export const App = () => {
     const {isFinished} = useContext(MainContext);
     const {token, username, updateTheme, updateFont, updateToken, updateUsername, isLoaded, setLoaded} = useContext(PageContext)
+
     const checkAuth = useCallback(() => {
         const localToken = localStorage.getItem('authToken')
         if(localToken) {
@@ -38,20 +39,13 @@ export const App = () => {
             }
         }
     }, [token.length, username.length, updateToken, updateUsername]);
-    const checkSettings = useCallback(() => {
+    const checkSettings = useCallback(async () => {
         const localToken = localStorage.getItem('authToken');
         if(localToken) {
-            getSettings(token).then(setts => {
+            await getSettings(localToken).then(setts => {
                 updateTheme(setts.theme.theme);
                 updateFont(setts.appearance.fontFamily);
-            }).catch(() => {
-                const localSetts: SettingsInterface = JSON.parse(localStorage.getItem('settings') ||'{}')
-                if(localSetts) {
-                    updateTheme(localSetts.theme.theme);
-                    updateFont(localSetts.appearance.fontFamily);
-                } else {
-                    localStorage.setItem('settings', JSON.stringify(defaultSettings))
-                }
+                localStorage.setItem('settings', JSON.stringify(setts))
             })
         } else {
             const localSetts: SettingsInterface = JSON.parse(localStorage.getItem('settings') ||'{}')
@@ -62,13 +56,17 @@ export const App = () => {
                 localStorage.setItem('settings', JSON.stringify(defaultSettings))
             }
         }
-    }, [token, updateFont, updateTheme])
+    }, [updateFont, updateTheme])
 
     useEffect(() => {
+        const asyncCheckFunc = async () => {
+            checkAuth();
+            await checkSettings()
+            setLoaded(true)
+        }
+
         if(!isLoaded) {
-            checkAuth()
-            checkSettings()
-            setLoaded()
+            asyncCheckFunc()
         }
     }, [checkAuth, checkSettings, isLoaded, setLoaded])
     

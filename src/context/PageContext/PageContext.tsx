@@ -35,8 +35,8 @@ export const PageContextProvider = ({children}: {children: React.ReactElement}) 
     const updateToken = (newToken: string) => {
         setToken(newToken)
     }
-    const setLoaded = () => {
-        setIsLoaded(true)
+    const setLoaded = (value: boolean) => {
+        setIsLoaded(value)
     } 
 
     const pageContext: IPageContext = useMemo(() => ({

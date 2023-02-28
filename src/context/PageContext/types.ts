@@ -11,5 +11,5 @@ export interface IPageContext {
     updateFont: (newFont: FamilyType) => void
     updateToken: (newToken: string) => void
     updateUsername: (newUsername: string) => void
-    setLoaded: () => void
+    setLoaded: (value: boolean) => void
 }

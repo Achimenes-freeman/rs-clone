@@ -21,6 +21,9 @@ export const tryLogin = async (nameState: string, passState: string) => {
         return res.json()
     })
     localStorage.setItem('authToken', token.token)
+    localStorage.setItem('username', nameState)
+
+    return token
 }
 
 export const tryRegister = async (nameState: string, passState: string) => {

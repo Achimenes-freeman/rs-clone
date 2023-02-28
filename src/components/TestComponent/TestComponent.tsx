@@ -48,17 +48,17 @@ export const TestComponent = () => {
     }, [counting]);
 
     useEffect(() => {
-        const curentGameTime = parseInt(mode,10) - timer;
+        const currentGameTime = parseInt(mode,10) - timer;
         if (timer <= 0) {
             setCounting(false)
             const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
             testContext.wpm = correctWords * 60 / parseInt(mode,10);
-            testContext.printsDynamics.push(Math.round(correctWords / (curentGameTime / 60)))
+            testContext.printsDynamics.push(Math.round(correctWords / (currentGameTime / 60)))
 
             changeFinished()  
-        } else if (curentGameTime) {
+        } else if (currentGameTime) {
             const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
-            testContext.printsDynamics.push(Math.round(correctWords / (curentGameTime / 60)))
+            testContext.printsDynamics.push(Math.round(correctWords / (currentGameTime / 60)))
         }
 
     }, [timer]);
@@ -107,7 +107,6 @@ export const TestComponent = () => {
 
     useEffect(() => {
         document.onkeydown = (e) => {
-            e.preventDefault()
             switch (true) {
                 case e.key === 'Tab':
                     e.preventDefault();

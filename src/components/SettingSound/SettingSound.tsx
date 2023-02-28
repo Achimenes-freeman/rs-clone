@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import cn from 'classnames';
 import { ScType, SeType, VolType } from "./types";
 import pageStyles from '../SettingsPage/styles.module.scss';
 import { SetGroupBut } from "../../generics/SetGroupBut/SetGroupBut";
 import { SettingsInterface } from "../../helpers/defaultSettings";
+import { updateSettings } from "../../helpers/updateSettings";
+import { PageContext } from "../../context/PageContext/PageContext";
 
 export function SettingSound() {
+    const {token} = useContext(PageContext)
     const settings: SettingsInterface = JSON.parse(localStorage.getItem('settings') || '{}');
     const soundSettings = settings.sound;
 
@@ -17,21 +20,21 @@ export function SettingSound() {
     const toggleVolState = (target: VolType) => {
         if(target !== volState) {
             soundSettings.soundVolume = target;
-            localStorage.setItem('settings', JSON.stringify(settings))
+            updateSettings({sound: soundSettings}, token, settings)
             setVolState(target);
         }
     }
     const toggleScState = (target: ScType) => {
         if(target !== scState) {
             soundSettings.playSoundOnClick = target;
-            localStorage.setItem('settings', JSON.stringify(settings))
+            updateSettings({sound: soundSettings}, token, settings)
             setScState(target)
         }
     }
     const toggleSeState = (target: SeType) => {
         if(target !== seState) {
             soundSettings.playSoundOnError = target;
-            localStorage.setItem('settings', JSON.stringify(settings))
+            updateSettings({sound: soundSettings}, token, settings)
             setSeState(target)
         }
     }

@@ -3,10 +3,13 @@
 .UserIcon{
     width: 20px;
     fill: var(--sub);
-
     transition: all .2s linear;
 
     &:hover{
         fill: var(--text);
     }
+}
+
+.logUser {
+    fill: var(--main);
 }
