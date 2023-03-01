@@ -11,7 +11,9 @@ export const updateSettings = (value: Partial<SettingsInterface>, token: string,
             setSettings(token, value);
         }
         if(target) {
-            if(target === 'default' || target === 'lavender') {
+            if(target === 'default' || target === 'lavender' 
+            || target === 'darkPurple' || target === 'orange' 
+            || target === 'vscode' || target === 'miamiNights') {
                 if(updateTheme) {
                     updateTheme(target)
                 }

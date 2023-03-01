@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import cn from 'classnames';
+import styles from './styles.module.scss'
 import { ColorfulModeType, FlipTestColorsType, ThemeSettings, ThemeType } from "./types";
 import pageStyles from '../SettingsPage/styles.module.scss';
 import { SetGroupBut } from "../../generics/SetGroupBut/SetGroupBut";
@@ -69,13 +70,25 @@ export function SettingTheme() {
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
                     <h3 className={pageStyles.setGroupContentTitle}><span>·</span>theme:</h3>
-                    <div className={pageStyles.setGroupContentButCont}>
+                    <div className={cn(pageStyles.setGroupContentButCont, styles.themeButtonCont)}>
                         <button 
                             className={cn({[pageStyles.activeButton]: themeState === 'default'}, 
                             pageStyles.button)} type="button" onClick={() => toggleThemeState('default')}>default</button>
                         <button 
                             className={cn({[pageStyles.activeButton]: themeState === 'lavender'}, 
                             pageStyles.button)} type="button" onClick={() => toggleThemeState('lavender')}>lavender</button>
+                        <button 
+                            className={cn({[pageStyles.activeButton]: themeState === 'orange'}, 
+                            pageStyles.button)} type="button" onClick={() => toggleThemeState('orange')}>orange</button>
+                        <button 
+                            className={cn({[pageStyles.activeButton]: themeState === 'darkPurple'}, 
+                            pageStyles.button)} type="button" onClick={() => toggleThemeState('darkPurple')}>dark purple</button>
+                        <button 
+                            className={cn({[pageStyles.activeButton]: themeState === 'vscode'}, 
+                            pageStyles.button)} type="button" onClick={() => toggleThemeState('vscode')}>vscode</button>
+                        <button 
+                            className={cn({[pageStyles.activeButton]: themeState === 'miamiNights'}, 
+                            pageStyles.button)} type="button" onClick={() => toggleThemeState('miamiNights')}>miami nights</button>
                     </div>
                 </div>
             </div>
