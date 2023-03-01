@@ -1,4 +1,5 @@
 import styles from './styles.module.scss'
+import { Game } from '../AccountPage/types'
 import { BestGameInfoCell } from "../../generics/BestGameInfoCell/BestGameInfoCell";
 import { TableProps } from "./types";
 
@@ -10,22 +11,27 @@ export function BestGamesInfoTable({type, games}: TableProps) {
         cellNamesArr = ['10', '20', '50', '100']
     }
     
+    const gameMap: Map<string, Game | undefined> = new Map()
+    cellNamesArr.forEach(cell => {
+        gameMap.set(cell, games?.find(game => {
+            if(parseInt(game.mode, 10).toString() === cell) {
+                return true
+            }
+            return false
+        }) || undefined)
+    })
+    
+
     return (
         <div className={styles.BestGamesInfoCont}>
-            {games?.length
-            ? games.sort((gameA, gameB) => {
-                if(parseInt(gameA.mode, 10) < parseInt(gameB.mode, 10)) {
-                    return -1
-                } 
-                return 1
+            {
+                Array.from(gameMap.entries()).map(game => {
+                    if(game[1]) {
+                        return <BestGameInfoCell name={game[1].mode} wpm={game[1].wpm} acc={game[1].accuracy} key={Math.random()}/> 
+                    }
+                    return <BestGameInfoCell name={`${game[0]} ${type}`} key={Math.random()}/>
+                })
             }
-            ).map(game => <BestGameInfoCell name={game.mode} wpm={game.wpm} acc={game.accuracy}/>)
-            :<>
-                <BestGameInfoCell name={`${cellNamesArr[0]} ${type}`}/>
-                <BestGameInfoCell name={`${cellNamesArr[1]} ${type}`}/>
-                <BestGameInfoCell name={`${cellNamesArr[2]} ${type}`}/>
-                <BestGameInfoCell name={`${cellNamesArr[3]} ${type}`}/>
-            </>}
         </div>
     )
 }

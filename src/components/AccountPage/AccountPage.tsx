@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import cn from 'classnames';
 import styles from './styles.module.scss';
 import { UserInfo } from './types';
-// import { UserInfo } from './types';
 import { BestGamesInfoTable } from "../BestGamesInfoTable/BestGamesInfoTable";
 import { UserShortInfo } from "../UserShortInfo/UserShortInfo";
 import { GamesInfo } from "../GamesInfo/GamesInfo";

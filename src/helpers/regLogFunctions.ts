@@ -11,8 +11,8 @@ export const tryLogin = async (nameState: string, passState: string) => {
             "Content-type":  "application/json"
         },
         body: JSON.stringify({
-            username: nameState,
-            password: passState
+            "username": nameState,
+            "password": passState
         })
     }).then(res => {
         if(res.status === 400) {

@@ -31,14 +31,14 @@ export const App = () => {
                 updateUsername(localUser)
             }
         } else {
-            if(token.length) {
+            if(token) {
                 updateToken('')
             }
-            if(username.length) {
+            if(username) {
                 updateUsername('')
             }
         }
-    }, [token.length, username.length, updateToken, updateUsername]);
+    }, [token, username, updateToken, updateUsername]);
     const checkSettings = useCallback(async () => {
         const localToken = localStorage.getItem('authToken');
         if(localToken) {
