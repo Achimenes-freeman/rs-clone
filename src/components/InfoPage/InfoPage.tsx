@@ -111,7 +111,7 @@ export function InfoPage() {
                         </ul>
                     </li>
                     <li>
-                        <h3  className={styles.subHeading}>Back-end</h3>
+                        <h3  className={styles.subHeading}>Backend</h3>
                         <ul>
                             <li>User registration</li>
                             <li>User login</li>

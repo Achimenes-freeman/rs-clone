@@ -19,7 +19,7 @@ export function RatingRow({username = 'name', position = '#', wpm = 'wpm', acc =
                 {[styles.colored]: position !== '#'})}>{mode}</div>
             <div className={cn(styles.info,
                 {[styles.colored]: position !== '#'}, 
-                {[styles.date]: date !== 'date'})}>{date.split('/').map(item => <span>{item}</span>)}</div>
+                {[styles.date]: date !== 'date'})}>{date.split('/').map(item => <span key={Math.random()}>{item}</span>)}</div>
         </div>
     )
 }

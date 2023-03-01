@@ -22,9 +22,10 @@ export function RatingLeaderboard({users}: RateLeadBoardProps) {
     return (
         <div className={styles.RateLeadBoard}>
             <div className={styles.rowsCont}>
-                <RatingRow bg/>
+                <RatingRow key={Math.random()} bg/>
                 {sortedUsers.map((user, index) => 
                     <RatingRow 
+                        key={Math.random()}
                         bg={Boolean(index % 2)} 
                         username={user.username} 
                         position={(index + 1).toString()} 

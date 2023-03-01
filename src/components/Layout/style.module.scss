@@ -44,3 +44,8 @@ body {
         background: var(--sub);
     }
 }
+
+.overflow {
+    height: 100vh;
+    overflow: hidden;
+}

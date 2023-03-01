@@ -24,7 +24,7 @@ export function Layout() {
     document.documentElement.style.setProperty(fontVar[0], fontVar[1])
 
     return (
-        <div className={classNames(styles.Layout, themes[`${theme}Theme`], fonts[`${font}Font`])}>
+        <div className={classNames(styles.Layout, themes[`${theme}Theme`], fonts[`${font}Font`], {[styles.overflow]: !isLoaded})}>
             <div className={styles.layoutCont}>
                 <Header />
 

@@ -5,9 +5,9 @@ export const Footer = ()=>
     (
         <footer className={styles.Footer}>
             <div className={styles.gitHubCont}>
-                <a rel='noreferrer' target='_blank' href="https://github.com/Achimenes-freeman" className={styles.link}>Achimenes-freeman</a>
-                <a rel='noreferrer' target='_blank' href="https://github.com/iSvitka" className={styles.link}>iSvitka</a>
-                <a rel='noreferrer' target='_blank' href="https://github.com/grom0330" className={styles.link}>grom0330</a>
+                <a rel='noreferrer' target='_blank' href="https://github.com/Achimenes-freeman" className={styles.link}>Achimenes-freeman: frontend</a>
+                <a rel='noreferrer' target='_blank' href="https://github.com/iSvitka" className={styles.link}>iSvitka: frontend</a>
+                <a rel='noreferrer' target='_blank' href="https://github.com/grom0330" className={styles.link}>grom0330: backend</a>
             </div>
             <div className={styles.rssCont}>
                 <a rel='noreferrer' target='_blank' href="https://rs.school/js/" className={styles.rss}>
