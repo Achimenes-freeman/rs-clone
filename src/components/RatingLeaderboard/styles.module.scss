@@ -1,0 +1,42 @@
+.RateLeadBoard {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: flex-start;
+    width: fit-content;
+
+    &Heading {
+        color: var(--text);
+        font-weight: normal;
+
+        & > span {
+            color: var(--error);
+            font-weight: bold;
+        }
+    }
+}
+
+.rowsCont {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: fit-content;
+    overflow-y: scroll;
+    scrollbar-gutter: stable both-edges;
+
+    &::-webkit-scrollbar {
+        appearance: none;
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--sub);
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background: var(--background);
+    }
+}
