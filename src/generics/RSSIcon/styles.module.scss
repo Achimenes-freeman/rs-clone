@@ -1,0 +1,57 @@
+.RSSIcon {
+    fill: var(--sub);
+    transition: all 0.2s linear;
+
+    &:hover {
+        fill: var(--main);
+    }
+
+    &:hover .st5 {
+        fill: var(--background);
+    }
+}
+
+.st0 {
+    fill: var(--main);
+    &:hover {
+        fill: var(--text);
+    }
+}
+.st1 {
+    clip-path: url(#SVGID_2_);
+}
+.st2 {
+    clip-path: url(#SVGID_4_);
+}
+.st3 {
+    clip-path: url(#SVGID_6_);
+}
+.st4 {
+    clip-path: url(#SVGID_8_);
+}
+.st5 {
+    fill: var(--main);
+    stroke: var(--sub);
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+.st6 {
+    clip-path: url(#SVGID_8_);
+}
+.st6,
+.st7 {
+    fill: none;
+    stroke: var(--sub);
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
+.st8,
+.st9 {
+    clip-path: url(#SVGID_10_);
+}
+.st9 {
+    fill: none;
+    stroke: var(--sub);
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+}
