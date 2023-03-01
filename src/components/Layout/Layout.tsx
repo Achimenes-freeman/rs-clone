@@ -11,9 +11,10 @@ import fonts from '../../fonts.module.scss';
 
 import { PageContext } from '../../context/PageContext/PageContext';
 import { getThemeVars, getFontVar } from '../../helpers/getVarsFuncs';
+import { Loader } from '../Loader/Loader';
 
 export function Layout() {
-    const {theme, font} = useContext(PageContext) 
+    const {theme, font, isLoaded} = useContext(PageContext) 
     const themeVars: string[][] = getThemeVars(theme);
     const fontVar = getFontVar(font);
 
@@ -30,7 +31,7 @@ export function Layout() {
                     <main className={styles.main}>
                         <Outlet />
                     </main>
-
+                    {!isLoaded && <Loader />}
                 <Footer/>
             </div>
         </div>

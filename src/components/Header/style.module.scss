@@ -8,30 +8,33 @@
 }
 
 .logo{
-    font-size: 1.6rem;
     line-height: 0.95;
     text-decoration: none;
     color: var(--main);
+
+    > h1 {
+        padding-bottom: 10px;
+        font-size: 44px;
+    }
 }
 
 .nav{
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-
+    align-items: center;
     width: 100%;
 }
 
 .leftNav{
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     gap: 40px;
 }
 
 .rightNav{
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     gap: 30px;
 }
