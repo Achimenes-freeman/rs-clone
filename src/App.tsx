@@ -14,6 +14,7 @@ import { AccountPage } from './components/AccountPage/AccountPage';
 import { PageContext } from './context/PageContext/PageContext';
 import { getSettings } from './helpers/userManipulationFuncs';
 import { RatingPage } from './components/RatingPage/RatingPage';
+import { InfoPage } from './components/InfoPage/InfoPage';
 
 if(!localStorage.getItem('settings')) {
     localStorage.setItem('settings', JSON.stringify(defaultSettings))
@@ -76,7 +77,7 @@ export const App = () => {
             <Route path="/" element={<Layout />}>
                 <Route index element={isFinished ? <Result/>: <TestComponent/>}/>
                 <Route path='/rating' element={<RatingPage />}/>
-                <Route path='/info' element='info'/>
+                <Route path='/info' element={<InfoPage />}/>
                 <Route path='/settings' element={<SettingsPage/>}/>
                 <Route path='/user' element={token ? <AccountPage /> : <RegLogPage />}/>
             </Route>
