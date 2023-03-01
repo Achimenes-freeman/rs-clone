@@ -39,28 +39,28 @@ export const Header = ()=> {
         <header className={styles.Header}>
                 <nav className={styles.nav}>
                     <div className={styles.leftNav}>
-                        <Link to='/' className={styles.logo} onClick={restartGame}>
+                        <Link to='/rs-clone/' className={styles.logo} onClick={restartGame}>
                             <h1>RStype</h1>
                         </Link>
-                        <Link to='/' onClick={restartGame}>
+                        <Link to='/rs-clone/' onClick={restartGame}>
                             <Keyboard />
                         </Link>
-                        <Link to='/rating' onClick={restartGame}>
+                        <Link to='/rs-clone/rating' onClick={restartGame}>
                             <Crown />
                         </Link>
-                        <Link to='/info' onClick={restartGame}>
+                        <Link to='/rs-clone/info' onClick={restartGame}>
                             <InfoIcon />
                         </Link>
-                        <Link to='/settings' onClick={restartGame}>
+                        <Link to='/rs-clone/settings' onClick={restartGame}>
                             <Gear />
                         </Link>
                     </div>
                     <div className={styles.rightNav}>
-                        <Link to='/user' onClick={restartGame}>
+                        <Link to='/rs-clone/user' onClick={restartGame}>
                             <UserIcon/>
                         </Link>
                         {!!token && 
-                            <Link to='/' onClick={logOut}>
+                            <Link to='/rs-clone/' onClick={logOut}>
                                 <Logout/>
                             </Link>
                         }

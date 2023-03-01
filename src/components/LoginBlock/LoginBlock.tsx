@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import cn from 'classnames'
 import styles from './styles.module.scss'
 import { tryLogin } from "../../helpers/regLogFunctions";
@@ -8,7 +8,6 @@ import { getSettings } from "../../helpers/userManipulationFuncs";
 
 export function LoginBlock() {
     const {setLoaded} = useContext(PageContext)
-    const navigate = useNavigate()
     const [nameState, setNameState] = useState('');
     const [nameErrorState, setNameErrorState] = useState(false);
     const [passState, setPassState] = useState('');
@@ -51,7 +50,7 @@ export function LoginBlock() {
                 getSettings(token.token).then(setts => {
                     localStorage.setItem('settings', JSON.stringify(setts))
                     setLoaded(false)
-                    navigate('/')
+                    redirect('/rs-clone/')
                 })
             }).catch(() => {
                 setShowError(true)

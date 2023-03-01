@@ -74,12 +74,12 @@ export const App = () => {
     
     return (
         <Routes>
-            <Route path="/" element={<Layout />}>
+            <Route path="/rs-clone/" element={<Layout />}>
                 <Route index element={isFinished ? <Result/>: <TestComponent/>}/>
-                <Route path='/rating' element={<RatingPage />}/>
-                <Route path='/info' element={<InfoPage />}/>
-                <Route path='/settings' element={<SettingsPage/>}/>
-                <Route path='/user' element={token ? <AccountPage /> : <RegLogPage />}/>
+                <Route path='/rs-clone/rating' element={<RatingPage />}/>
+                <Route path='/rs-clone/info' element={<InfoPage />}/>
+                <Route path='/rs-clone/settings' element={<SettingsPage/>}/>
+                <Route path='/rs-clone/user' element={token ? <AccountPage /> : <RegLogPage />}/>
             </Route>
         </Routes>
     )

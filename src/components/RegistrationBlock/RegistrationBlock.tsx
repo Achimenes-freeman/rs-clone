@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import cn from 'classnames'
 import styles from './styles.module.scss'
 import { tryLogin, tryRegister } from "../../helpers/regLogFunctions";
@@ -9,7 +9,6 @@ import { SettingsInterface } from "../../helpers/defaultSettings";
 
 export function RegistrationBlock() {
     const {setLoaded} = useContext(PageContext)
-    const navigate = useNavigate()
     const [nameState, setNameState] = useState('');
     const [nameErrorState, setNameErrorState] = useState(false);
     const [passState, setPassState] = useState('');
@@ -48,10 +47,10 @@ export function RegistrationBlock() {
                 tryLogin(res.username, res.password).then((token) => {
                     const settings: SettingsInterface = JSON.parse( localStorage.getItem('settings') || '{}');
                     setSettings(token.token, settings);
+                }).then(() => {
+                    setLoaded(false)
+                    redirect('/rs-clone/')
                 })
-            }).then(() => {
-                setLoaded(false)
-                navigate('/')
             }).catch((err: Error) => {
                 setErrorState(err.message)
             })
