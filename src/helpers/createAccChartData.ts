@@ -7,7 +7,10 @@ export function createAccChartData(userInfo: UserInfo) {
     const minWpm = wpmSortedGames[0].wpm.toString();
     const maxWpm = wpmSortedGames[wpmSortedGames.length - 1].wpm.toString();
     for(let i = +minWpm[0]; i <= +maxWpm[0]; i += 1) {
-        const limit = `${i}0-${i}9`;
+        let limit = `${i}0-${i}9`;
+        if(i === 0) {
+            limit = `${i}-9`
+        }
         chartDataMap.set(limit, 0);
     }
 

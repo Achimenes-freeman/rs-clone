@@ -21,6 +21,7 @@ export const TestComponent = () => {
         appearance: {tpOpacity, fontSize},
         caret: {caretStyle},
         sound: {soundVolume, playSoundOnClick, playSoundOnError},
+        theme: {colorfulMode, flipTestColors},
         behavior: {testDifficulty,quickRestart}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
 
 // =======================================================================================
@@ -250,7 +251,9 @@ export const TestComponent = () => {
                         isWrongWord && (
                             <div
                                 key={`${word.join('') + wordIndex}`}
-                                className={classNames(styles.word, styles[caretStyle])}
+                                className={classNames(styles.word, styles[caretStyle],
+                                    flipTestColors === 'on' && styles.wordFlipped, 
+                                    flipTestColors === 'on' && colorfulMode === 'on' && styles.wordFlippedColorful)}
                                 style={{marginRight: `${+fontSize *10}px`}}
                             >
                                 {word.map((letter, index) => {
@@ -276,6 +279,12 @@ export const TestComponent = () => {
                                                     styles.wrongLetter,
                                                 isCorrectLetter &&
                                                     styles.correctLetter,
+                                                isCorrectLetter &&
+                                                    colorfulMode === 'on' &&
+                                                        styles.correctLetterColorful,
+                                                isCorrectLetter && 
+                                                    flipTestColors === 'on'
+                                                        && styles.correctLetterFlipped,
                                                 styles[caretStyle]
                                             )}
                                         >

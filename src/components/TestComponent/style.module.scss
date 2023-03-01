@@ -91,6 +91,14 @@
         }
         
     }
+
+    &Flipped {
+        color: var(--text);
+    }
+
+    &FlippedColorful {
+        color: var(--main);
+    }
 }
 
 .testView {
@@ -99,7 +107,14 @@
 }
 
 .correctLetter {
-    color: var(--main);
+    color: var(--text);
+
+    &Colorful {
+        color: var(--main);
+    }
+    &Flipped {
+        color: var(--sub);
+    }
 }
 
 .wrongLetter {

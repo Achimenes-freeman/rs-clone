@@ -7,7 +7,7 @@ import { changeSortToAcc, changeSortToDate, changeSortToWpm, sortGamesFunc } fro
 
 export function GamesList({userInfo}: GamesListProps) {
     const [gameAmount, setGameAmount] = useState(userInfo.gameCount < 10 ? userInfo.gameCount : 10);
-    const [gameList, setGameList] = useState([...userInfo.games].sort((gameA, gameB) => gameB.date.valueOf() - gameA.date.valueOf()).slice(0, gameAmount));
+    const [gameList, setGameList] = useState([...userInfo.games].sort((gameA, gameB) => new Date(gameB.date).valueOf() - new Date(gameA.date).valueOf()).slice(0, gameAmount));
     const [wpmState, setWpmState] = useState(false);
     const [wpmSort, setWpmSort] = useState<SortType>('off');
     const [accState, setAccState] = useState(false)
