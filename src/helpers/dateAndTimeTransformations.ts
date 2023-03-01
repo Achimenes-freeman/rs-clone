@@ -45,6 +45,7 @@ export const getJoinDate = (userInfo: UserInfo) => {
 }
 
 
+
 export const getHoursString = (time: number) => {
     const hh = Math.floor(time / 3600)
     if(hh < 10) {
@@ -71,4 +72,17 @@ export const getTimeString = (userInfo: UserInfo) => {
     const mm = getMinutesString(userInfo.allTime)
     const ss = getSecondsString(userInfo.allTime)
     return `${hh}:${mm}:${ss}`
+}
+
+
+
+export const getFormattedTimeString = (date: string) => {
+    const newDate = new Date(date);
+    const hh = newDate.getHours() < 10 ? `0${newDate.getHours()}` : newDate.getHours().toString()
+    const mm = newDate.getMinutes() < 10 ? `0${newDate.getMinutes()}` : newDate.getMinutes().toString()
+    return `${hh}:${mm}`
+}
+export const getFormattedDate = (date: string) => {
+    const newDate = new Date(date);
+    return `${getDay(newDate)} ${getMonth(newDate)} ${getYear(newDate)}/${getFormattedTimeString(date)}`
 }

@@ -16,7 +16,7 @@ export interface Game {
     chars: [number, number, number, number]
     mode: string
     time: number,
-    date: Date
+    date: string
 }
 
 

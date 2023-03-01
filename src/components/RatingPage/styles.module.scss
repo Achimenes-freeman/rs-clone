@@ -1,0 +1,22 @@
+.RatingPage {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: flex-start;
+    width: 1250px;
+}
+
+.heading {
+    color: var(--text);
+    font-size: 40px;
+}
+
+.boardsCont {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    width: 100%;
+}
