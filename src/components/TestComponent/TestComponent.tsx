@@ -18,8 +18,8 @@ export const TestComponent = () => {
 // Get user settings from localStorage ==================================================
 
     const { 
-        appearance: {tpOpacity, fontSize},
-        caret: {smoothCaret,caretStyle},
+        appearance: {tpOpacity, tpStyle, tpColor, fontSize},
+        caret: {smoothCaret, caretStyle},
         sound: {soundVolume, playSoundOnClick, playSoundOnError},
         theme: {colorfulMode, flipTestColors},
         behavior: {testDifficulty,quickRestart}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
@@ -139,7 +139,7 @@ export const TestComponent = () => {
             currWord.current?.classList.add(`${styles.wordCaret}`);
         }
 
-        if ((currentMode.current === 'words' && typedList.length === parseNum.current + 1)) {
+        if (currentMode.current === 'words' && typedList.length === parseNum.current + 1) {
             setCounting(false)
             const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
             testContext.wpm = Math.floor(correctWords * 60 / timer);
@@ -161,6 +161,7 @@ export const TestComponent = () => {
     }, [wordsData])
 
     useEffect(()=>{
+        makeEmptyTypedList()
         currentMode.current = mode.split(' ')[1];
         parseNum.current = parseInt(mode, 10);
         changeWordsList([...wordsData]);
@@ -253,7 +254,9 @@ export const TestComponent = () => {
     return (
         <div className={classNames(styles.TestComponent)}>
             <ModeBar />
-            <span style={{opacity: tpOpacity}} className={`${styles.timer}`}>{currentMode.current === 'seconds'? parseNum.current - timer : timer}</span>
+            <div className={classNames(styles.timerBox, styles[tpStyle])}>
+                <span style={{opacity: tpOpacity}} className={classNames(styles.timer, styles[tpColor])}>{currentMode.current === 'seconds'? parseNum.current - timer : timer}</span>
+            </div>
             <div  style={{fontSize: `${fontSize}rem`, height: `${70 * +fontSize}px`}} className={styles.testView}>
                 {wordsData.slice(0, currentMode.current === 'words'? parseNum.current : -1).map((word, wordIndex) => {
                     const isWrongWord: boolean = true || false;

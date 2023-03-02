@@ -334,9 +334,36 @@ $animFillOff: blinkfill 0.5s linear infinite;
     }
 }
 
-.timer {
+.timerBox{
+    display: flex;
     font-size: 2rem;
-    color: var(--main);
+
+    width: 100%;
+
+    &.text{
+        justify-content: center;
+        font-size: 8rem;
+    }
+}
+
+.timer {
+    font-size: infinite;
+
+    &.main{
+        color: var(--main);
+    }
+
+    &.text{
+        color: var(--text);
+    }
+
+    &.sub{
+        color: var(--sub);
+    }
+
+    &.black{
+        color: #000
+    }
 }
 
 @keyframes blink {
