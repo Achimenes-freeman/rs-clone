@@ -114,6 +114,7 @@ export const TestComponent = () => {
 // Correct/Incorrect letter styles change ================================================
 
     useEffect(() => {
+
         if (!currentLetter.current) {
             currWord.current?.classList.add(`${styles.wordCaret}`);
         }
@@ -161,6 +162,7 @@ export const TestComponent = () => {
     }, [wordsData])
 
     useEffect(()=>{
+        clearInterval(timerId.current)
         makeEmptyTypedList()
         currentMode.current = mode.split(' ')[1];
         parseNum.current = parseInt(mode, 10);
@@ -192,6 +194,14 @@ export const TestComponent = () => {
                     break;
 
                 case e.key === ' ':
+
+                    if (typedList.length >= wordsData.length - 1) {
+                        setCounting(false)
+                        const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
+                        testContext.wpm = Math.floor(correctWords * 60 / timer);
+                        testContext.printsDynamics.push(Math.round(correctWords / (timer / 60)))
+                        changeFinished() 
+                    }
                     correctSound.play()
                     if (typedList.at(-1)?.length !== 0) {
                         if (
