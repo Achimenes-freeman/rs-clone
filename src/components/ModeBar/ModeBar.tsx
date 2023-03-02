@@ -17,6 +17,10 @@ export const ModeBar = () => {
             <li className={cn({[styles.modeActive]: mode === '30 seconds'}, styles.mode)} onClick={()=> changeMode('30 seconds')}>30 seconds</li>
             <li className={cn({[styles.modeActive]: mode === '60 seconds'}, styles.mode)} onClick={()=> changeMode('60 seconds')}>60 seconds</li>
             <li className={cn({[styles.modeActive]: mode === '120 seconds'}, styles.mode)} onClick={()=> changeMode('120 seconds')}>120 seconds</li>
+            <li className={cn({[styles.modeActive]: mode === '10 words'}, styles.mode)} onClick={()=> changeMode('10 words')}>10 words</li>
+            <li className={cn({[styles.modeActive]: mode === '25 words'}, styles.mode)} onClick={()=> changeMode('25 words')}>25 words</li>
+            <li className={cn({[styles.modeActive]: mode === '50 words'}, styles.mode)} onClick={()=> changeMode('50 words')}>50 words</li>
+            <li className={cn({[styles.modeActive]: mode === '100 words'}, styles.mode)} onClick={()=> changeMode('100 words')}>100 words</li>
         </ul>
     </div>
 )}

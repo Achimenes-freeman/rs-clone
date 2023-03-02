@@ -39,10 +39,12 @@ export const TestComponent = () => {
     } = useContext(MainContext);
 
     const [counting, setCounting] = useState(false);
-    const [timer, setTimer] = useState(parseInt(mode,10))
+    const [timer, setTimer] = useState(0)
 
     const currentWordIndex = useRef(0);
     const currWord = useRef<Element>();
+    const currentMode = useRef<string>(mode.split(' ')[1]);
+    const parseNum = useRef<number>(parseInt(mode, 10));
     const currentLetter = useRef<Element>();
     const timerId = useRef<NodeJS.Timeout>();
 
@@ -68,7 +70,7 @@ export const TestComponent = () => {
             break;
     }
 // =======================================================================================
-    
+
 // Counting accuracy =====================================================================
 
     useEffect(()=> {
@@ -81,7 +83,7 @@ export const TestComponent = () => {
         if (counting) {
 
             timerId.current = setInterval(() => {
-                setTimer((prev) => prev - 1);
+                setTimer((prev) => prev + 1);
             }, 1000);
             
         } else {
@@ -92,17 +94,17 @@ export const TestComponent = () => {
 // End game timer handler ================================================================
 
     useEffect(() => {
-        const currentGameTime = parseInt(mode,10) - timer;
-        if (timer <= 0) {
+        
+        if ((currentMode.current === 'seconds' && (parseNum.current - timer <= 0))) {
             setCounting(false)
             const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
-            testContext.wpm = correctWords * 60 / parseInt(mode,10);
-            testContext.printsDynamics.push(Math.round(correctWords / (currentGameTime / 60)))
+            testContext.wpm = Math.floor(correctWords * 60 / timer);
+            testContext.printsDynamics.push(Math.round(correctWords / (timer / 60)))
             changeFinished()  
 
-        } else if (currentGameTime) {
+        } else if (timer) {
             const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
-            testContext.printsDynamics.push(Math.round(correctWords / (currentGameTime / 60)))
+            testContext.printsDynamics.push(Math.round(correctWords / (timer / 60)))
         }
 
     }, [timer]);
@@ -136,6 +138,14 @@ export const TestComponent = () => {
         } else {
             currWord.current?.classList.add(`${styles.wordCaret}`);
         }
+
+        if ((currentMode.current === 'words' && typedList.length === parseNum.current + 1)) {
+            setCounting(false)
+            const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
+            testContext.wpm = Math.floor(correctWords * 60 / timer);
+            testContext.printsDynamics.push(Math.round(correctWords / (timer / 60)))
+            changeFinished() 
+        }
     },[typedList]);
 
 // =======================================================================================
@@ -144,15 +154,16 @@ export const TestComponent = () => {
     useEffect(()=> {
         currWord.current = document.getElementsByClassName(`${styles.word}`)[0];
         currentWordIndex.current = 0;
-        makeEmptyTypedList()
 
         setCounting(false)
-        setTimer(parseInt(mode,10))
+        setTimer(0)
 
     }, [wordsData])
 
     useEffect(()=>{
-        changeWordsList([...wordsData])
+        currentMode.current = mode.split(' ')[1];
+        parseNum.current = parseInt(mode, 10);
+        changeWordsList([...wordsData]);
     },[mode])
 
     
@@ -242,9 +253,9 @@ export const TestComponent = () => {
     return (
         <div className={classNames(styles.TestComponent)}>
             <ModeBar />
-            <span style={{opacity: tpOpacity}} className={`${styles.timer}`}>{timer}</span>
+            <span style={{opacity: tpOpacity}} className={`${styles.timer}`}>{currentMode.current === 'seconds'? parseNum.current - timer : timer}</span>
             <div  style={{fontSize: `${fontSize}rem`, height: `${70 * +fontSize}px`}} className={styles.testView}>
-                {wordsData.map((word, wordIndex) => {
+                {wordsData.slice(0, currentMode.current === 'words'? parseNum.current : -1).map((word, wordIndex) => {
                     const isWrongWord: boolean = true || false;
                     return (
                         isWrongWord && (

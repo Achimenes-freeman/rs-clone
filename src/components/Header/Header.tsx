@@ -13,7 +13,7 @@ import { PageContext } from '../../context/PageContext/PageContext';
 
 export const Header = ()=> {
 
-    const { changeFinished, changeWordsList,wordsList: wordsData} = useContext(MainContext);
+    const { makeEmptyTypedList ,changeFinished, changeWordsList,wordsList: wordsData} = useContext(MainContext);
     const {token, setLoaded, updateUsername, updateToken} = useContext(PageContext)
 
     const { 
@@ -21,6 +21,7 @@ export const Header = ()=> {
     } = useContext(TestContext)
 
     const restartGame = () => {
+        makeEmptyTypedList()
         resetTestContext();
         changeWordsList([...wordsData]);
         changeFinished(true)
@@ -69,5 +70,3 @@ export const Header = ()=> {
         </header>
     )
 } 
-        
-    

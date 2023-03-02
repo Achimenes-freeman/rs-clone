@@ -10,6 +10,5 @@ export const setGameResultData = async (data: ISetGameResultData) => {
         body: JSON.stringify(data)
     })
 
-    console.log(await response.json())
     return response.ok
 }
