@@ -19,7 +19,7 @@ export const TestComponent = () => {
 
     const { 
         appearance: {tpOpacity, fontSize},
-        caret: {caretStyle},
+        caret: {smoothCaret,caretStyle},
         sound: {soundVolume, playSoundOnClick, playSoundOnError},
         theme: {colorfulMode, flipTestColors},
         behavior: {testDifficulty,quickRestart}}:SettingsInterface = JSON.parse(localStorage.getItem('settings') || 'null');
@@ -157,7 +157,6 @@ export const TestComponent = () => {
 
     
 // =======================================================================================
-
 // Keyboard handler=======================================================================
 
     useEffect(() => {
@@ -241,7 +240,7 @@ export const TestComponent = () => {
 // =======================================================================================
 
     return (
-        <div className={styles.TestComponent}>
+        <div className={classNames(styles.TestComponent)}>
             <ModeBar />
             <span style={{opacity: tpOpacity}} className={`${styles.timer}`}>{timer}</span>
             <div  style={{fontSize: `${fontSize}rem`, height: `${70 * +fontSize}px`}} className={styles.testView}>
@@ -251,7 +250,7 @@ export const TestComponent = () => {
                         isWrongWord && (
                             <div
                                 key={`${word.join('') + wordIndex}`}
-                                className={classNames(styles.word, styles[caretStyle],
+                                className={classNames(styles.word, styles[caretStyle],styles[smoothCaret],
                                     flipTestColors === 'on' && styles.wordFlipped, 
                                     flipTestColors === 'on' && colorfulMode === 'on' && styles.wordFlippedColorful)}
                                 style={{marginRight: `${+fontSize *10}px`}}
@@ -285,7 +284,7 @@ export const TestComponent = () => {
                                                 isCorrectLetter && 
                                                     flipTestColors === 'on'
                                                         && styles.correctLetterFlipped,
-                                                styles[caretStyle]
+                                                styles[caretStyle], styles[smoothCaret]
                                             )}
                                         >
                                             {letter}
