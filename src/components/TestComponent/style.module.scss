@@ -1,3 +1,8 @@
+$animOn: blink 0.5s linear infinite;
+$animFillOn: blinkfill 0.5s linear infinite;
+$animOff: none;
+$animFillOff: blinkfill 0.5s linear infinite;
+
 .TestComponent {
     position: relative;
     height: 100%;
@@ -9,6 +14,7 @@
 
     user-select: none;
 }
+
 
 .word {
     display: inline-block;
@@ -24,7 +30,7 @@
         position: relative;
 
         &.default{
-            &:after {
+            &.on:after {
                 content: '';
                 display: block;
                 position: absolute;
@@ -35,12 +41,25 @@
                 left: 0;
                 background-color: var(--caret);
 
-                animation: blink 0.5s linear infinite;
+                animation: $animOn
+            }
+            &.off:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 100%;
+                width: 2px;
+                top: 0;
+                left: 0;
+                background-color: var(--caret);
+
+                animation: $animOff
             }
         }
 
         &.underscore{
-            &:after {
+            &.on:after {
                 content: '';
                 display: block;
                 position: absolute;
@@ -51,12 +70,25 @@
                 left: 0;
                 background-color: var(--caret);
 
-                animation: blink 0.5s linear infinite;
+                animation: $animOn;
+            }
+            &.off:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 2px;
+                width: 100%;
+                top: 100%;
+                left: 0;
+                background-color: var(--caret);
+
+                animation: $animOff;
             }
         }
 
         &.empty{
-            &:after {
+            &.on:after {
                 content: '';
                 display: block;
                 position: absolute;
@@ -69,11 +101,28 @@
                 background-color: transparent;
                 border: 1px solid var(--caret);
 
-                animation: blink 0.5s linear infinite;
+                animation:$animOn;
+            }
+            &.off:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 80%;
+                width: 100%;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                background-color: transparent;
+                border: 1px solid var(--caret);
+
+                animation: $animOff;
             }
         }
 
+
         &.filled{
+            z-index: 1;
             &:after {
                 content: '';
                 display: block;
@@ -83,10 +132,24 @@
                 width: 100%;
                 top: 0;
                 left: 0;
-                background-color: var(--caret);
-                // border: 1px solid var(--caret);
+                background-color: var(--main);
 
-                animation: blink 0.5s linear infinite;
+                animation: $animFillOn;
+                z-index: -1;
+            }
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                background-color: var(--main);
+
+                animation: $animFillOff;
+                z-index: -1;
             }
         }
         
@@ -106,6 +169,134 @@
     overflow: hidden;
 }
 
+.caret {
+    position: relative;
+    &.default{
+            &.on:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 100%;
+                width: 2px;
+                top: 0;
+                right: 0;
+                background-color: var(--caret);
+
+                animation: $animOn
+            }
+            &.off:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 100%;
+                width: 2px;
+                top: 0;
+                right: 0;
+                background-color: var(--caret);
+
+                animation: $animOff
+            }
+        }
+
+        &.underscore{
+            &.on:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 2px;
+                width: 100%;
+                top: 100%;
+                left: 100%;
+                background-color: var(--caret);
+
+                animation: $animOn;
+            }
+            &.off:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 2px;
+                width: 100%;
+                top: 100%;
+                left: 100%;
+                background-color: var(--caret);
+
+                animation: $animOff;
+            }
+        }
+        
+        &.empty{
+            &.on:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 80%;
+                width: 100%;
+                top: 50%;
+                left: 100%;
+                transform: translateY(-50%);
+                background-color: transparent;
+                border: 1px solid var(--caret);
+
+                animation: $animOn;
+            }
+            &.off:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 80%;
+                width: 100%;
+                top: 50%;
+                left: 100%;
+                transform: translateY(-50%);
+                background-color: transparent;
+                border: 1px solid var(--caret);
+
+                animation: $animOff;
+            }
+        }
+
+        &.filled{
+            z-index: 1;
+            &.on:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 100%;
+                background-color: var(--main);
+                
+
+                animation: animFillOn;
+                z-index: -1;
+            }
+            &.off:after {
+                content: '';
+                display: block;
+                position: absolute;
+
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 100%;
+                background-color: var(--main);
+                
+
+                animation: animFillOff;
+                z-index: -1;
+            }
+        }
+}
+
 .correctLetter {
     color: var(--text);
 
@@ -120,6 +311,8 @@
 .wrongLetter {
     color: var(--error);
 }
+
+
 
 .extraLetter {
     color: var(--error);
@@ -141,78 +334,36 @@
     }
 }
 
-.caret {
-    position: relative;
-    &.default{
-            &:after {
-                content: '';
-                display: block;
-                position: absolute;
+.timerBox{
+    display: flex;
+    font-size: 2rem;
 
-                height: 100%;
-                width: 2px;
-                top: 0;
-                right: 0;
-                background-color: var(--caret);
+    width: 100%;
 
-                animation: blink 0.5s linear infinite;
-            }
-        }
-
-        &.underscore{
-            &:after {
-                content: '';
-                display: block;
-                position: absolute;
-
-                height: 2px;
-                width: 100%;
-                top: 100%;
-                left: 0;
-                background-color: var(--caret);
-
-                animation: blink 0.5s linear infinite;
-            }
-        }
-        
-        &.empty{
-            &:after {
-                content: '';
-                display: block;
-                position: absolute;
-
-                height: 80%;
-                width: 100%;
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%);
-                background-color: transparent;
-                border: 1px solid var(--caret);
-
-                animation: blink 0.5s linear infinite;
-            }
-        }
-
-        &.filled{
-            &:after {
-                content: '';
-                display: block;
-                position: absolute;
-
-                height: 100%;
-                width: 100%;
-                top: 0;
-                left: 0;
-                background-color: var(--caret);
-
-                animation: blink 0.5s linear infinite;
-            }
-        }
+    &.text{
+        justify-content: center;
+        font-size: 8rem;
+    }
 }
 
 .timer {
-    font-size: 2rem;
-    color: var(--main);
+    font-size: infinite;
+
+    &.main{
+        color: var(--main);
+    }
+
+    &.text{
+        color: var(--text);
+    }
+
+    &.sub{
+        color: var(--sub);
+    }
+
+    &.black{
+        color: #000
+    }
 }
 
 @keyframes blink {
@@ -224,5 +375,17 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes blinkfill {
+    0% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.4;
     }
 }
