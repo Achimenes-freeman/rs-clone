@@ -230,7 +230,8 @@ export const TestComponent = () => {
                         wrongSound.play()
                         testContext.wrongClicks += 1;
                         if(testDifficulty === 'master'){
-                            setTimer(0)
+                            setCounting(false)
+                            changeFinished()
                         }
                     } else {
                         correctSound.play()
