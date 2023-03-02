@@ -119,7 +119,7 @@ export const TestComponent = () => {
         }
         currentLetter.current =
             currWord.current?.children[
-                typedList[currentWordIndex.current].length - 1
+                typedList[currentWordIndex.current] ? typedList[currentWordIndex.current].length - 1 : 0
             ];
         currWord.current?.scrollIntoView({
             behavior: 'smooth',
@@ -127,7 +127,7 @@ export const TestComponent = () => {
         });
 
         if (
-            typedList[currentWordIndex.current].length &&
+            typedList[currentWordIndex.current]?.length &&
             currentLetter.current
         ) {
             currentLetter.current.previousElementSibling?.classList.remove(
@@ -181,7 +181,7 @@ export const TestComponent = () => {
                     makeEmptyTypedList();
                     currentWordIndex.current = 0;
                     setCounting(false);
-                    setTimer(parseInt(mode,10))
+                    setTimer(0)
                     break;
 
                 case e.key === 'Backspace':

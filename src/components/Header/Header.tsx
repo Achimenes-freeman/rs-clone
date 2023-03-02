@@ -21,9 +21,9 @@ export const Header = ()=> {
     } = useContext(TestContext)
 
     const restartGame = () => {
+        changeWordsList([...wordsData]);
         makeEmptyTypedList()
         resetTestContext();
-        changeWordsList([...wordsData]);
         changeFinished(true)
     }
 
