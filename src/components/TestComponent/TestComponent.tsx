@@ -231,7 +231,10 @@ export const TestComponent = () => {
                         testContext.wrongClicks += 1;
                         if(testDifficulty === 'master'){
                             setCounting(false)
-                            changeFinished()
+                            const correctWords = typedList.filter((typedWord, index) => typedWord.join('') === wordsData[index].join('')).length;
+                            testContext.wpm = Math.floor(correctWords * 60 / timer) || 0;
+                            testContext.printsDynamics.push(Math.round(correctWords / (timer / 60)))
+                            changeFinished() 
                         }
                     } else {
                         correctSound.play()
