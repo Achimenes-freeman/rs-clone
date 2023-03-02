@@ -8,7 +8,7 @@ export function BestGamesInfoTable({type, games}: TableProps) {
     if(type === 'seconds') {
         cellNamesArr = ['15', '30', '60', '120']
     } else {
-        cellNamesArr = ['10', '20', '50', '100']
+        cellNamesArr = ['10', '25', '50', '100']
     }
     
     const gameMap: Map<string, Game | undefined> = new Map()

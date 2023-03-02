@@ -70,9 +70,6 @@ export function SettingAppearance() {
                     <h3 className={pageStyles.setGroupContentTitle}><span>·</span>timer/progress style:</h3>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
-                            className={cn({[pageStyles.activeButton]: styleState === 'bar'}, 
-                            pageStyles.button)} type="button" onClick={() => toggleStyleState('bar')}>bar</button>
-                        <button 
                             className={cn({[pageStyles.activeButton]: styleState === 'text'}, 
                             pageStyles.button)} type="button" onClick={() => toggleStyleState('text')}>text</button>
                         <button 

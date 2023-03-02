@@ -87,7 +87,7 @@ export const appearanceCheck = (appearanceSettings: AppearanceSettings, newSetti
         }
     }
     if(appearanceSettings.tpStyle) {
-        if(appearanceSettings.tpStyle === 'bar' || appearanceSettings.tpStyle === 'mini'
+        if(appearanceSettings.tpStyle === 'mini'
         || appearanceSettings.tpStyle === 'text') {
             result.tpStyle = appearanceSettings.tpStyle
         }
@@ -108,7 +108,9 @@ export const themeCheck = (themeSettings: ThemeSettings, newSettings: SettingsIn
         }
     }
     if(themeSettings.theme) {
-        if(themeSettings.theme === 'default' || themeSettings.theme === 'lavender') {
+        if(themeSettings.theme === 'default' || themeSettings.theme === 'lavender' 
+        || themeSettings.theme === 'darkPurple' || themeSettings.theme === 'miamiNights' 
+        || themeSettings.theme === 'orange' || themeSettings.theme === 'vscode') {
             result.theme = themeSettings.theme
         }
     }
