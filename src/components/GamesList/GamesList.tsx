@@ -56,19 +56,19 @@ export function GamesList({userInfo}: GamesListProps) {
                     type='button' 
                     className={cn(styles.headInfo, styles.headButt)}
                     onClick={() => changeSortMethod('wpm')}
-                    >wpm{wpmState ? wpmSort === 'low' && '▼' || wpmSort === 'high' && '▲' : null}</button>
+                    ><span>wpm</span>{wpmState ? wpmSort === 'low' && '▼' || wpmSort === 'high' && '▲' : null}</button>
                 <button 
                     type='button' 
                     className={cn(styles.headInfo, styles.headButt)}
                     onClick={() => changeSortMethod('acc')}
-                    >accuracy{accState ? accSort === 'low' && '▼' || accSort === 'high' && '▲' : null}</button>
+                    ><span>accuracy</span>{accState ? accSort === 'low' && '▼' || accSort === 'high' && '▲' : null}</button>
                 <div className={styles.headInfo}>chars</div>
                 <div className={styles.headInfo}>mode</div>
                 <button 
                     type='button' 
                     className={cn(styles.headInfo, styles.headButt)}
                     onClick={() => changeSortMethod('date')}
-                    >date{dateState ? dateSort === 'low' && '▼' || dateSort === 'high' && '▲' : null}</button>
+                    ><span>date</span>{dateState ? dateSort === 'low' && '▼' || dateSort === 'high' && '▲' : null}</button>
             </div>
             {gameList.map((game, index) => <GameRow gameInfo={game} bg={index % 2} key={Math.random()}/>)}
             {gameAmount !== userInfo.gameCount
