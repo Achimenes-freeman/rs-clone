@@ -78,6 +78,8 @@
         gap: 20px;
         justify-content: flex-start;
         width: 100%;
+
+        animation: open 0.25s linear both;
     }
 
     &Content {
@@ -89,12 +91,27 @@
             width: 100%;
         }
 
+        &Description {
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 16px;
+        }
+
         &Title {
             display: flex;
             align-items: center;
             justify-content: flex-start;
             color: var(--sub);
             font-size: 16px;
+            
+            &Cont {
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 5px;
+                justify-content: flex-start;
+                width: 50%;
+            }
 
             & > span {
                 color: var(--main);
@@ -111,30 +128,10 @@
         }
     }
 }
-
-
-
-// .openGroup {
-//     animation: openGroup 0.2s linear both;
-// }
-// .closeGroup {
-//     animation: closeGroup 0.2s linear both;
-// }
-// @keyframes openGroup {
-//     from{
-//         transform: rotateZ(-45deg);
-//     }
-
-//     to {
-//         transform: rotateZ(45deg);
-//     }
-// }
-// @keyframes closeGroup {
-//     from{
-//         transform: rotateZ(45deg);
-//     }
-    
-//     to {
-//         transform: rotateZ(-45deg);
-//     }
-// }
+@keyframes open {
+    from{
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}

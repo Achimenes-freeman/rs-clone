@@ -34,11 +34,14 @@ export function SettingCaret() {
 
     return(
         <>
-            <SetGroupBut setIsOpen={setIsOpen} isOpen={isOpen}>caret</SetGroupBut>
+            <SetGroupBut setIsOpen={setIsOpen} isOpen={isOpen} type='caret'>caret</SetGroupBut>
             {isOpen
-            ? <div className={pageStyles.setGroupCont}>
+            ? <div className={pageStyles.setGroupCont} id="caretGroup">
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>smooth caret:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>flickering caret:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Change the state of the caret to flickering mode.z</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: cSmState === 'off'}, 
@@ -49,7 +52,10 @@ export function SettingCaret() {
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>caret style:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>caret style:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Change the style of the caret during the test.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: cStState === 'default'}, 

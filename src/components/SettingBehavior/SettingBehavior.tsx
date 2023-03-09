@@ -40,11 +40,16 @@ export function SettingBehavior() {
 
     return(
         <>
-            <SetGroupBut isOpen={isOpen} setIsOpen={setIsOpen}>behavior</SetGroupBut>
+            <SetGroupBut isOpen={isOpen} setIsOpen={setIsOpen} type='behavior'>behavior</SetGroupBut>
             {isOpen
-            ? <div className={pageStyles.setGroupCont}>
+            ? <div className={pageStyles.setGroupCont} id='behaviorGroup'>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>test difficulty</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>test difficulty</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Normal is the classic type test experience. 
+                        Master fails if you press a single incorrect key (meaning you have to achieve 100% accuracy).</p>
+                    </div>
+                    
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: tdState === 'normal'}, 
@@ -55,7 +60,10 @@ export function SettingBehavior() {
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>quick restart</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>quick restart</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Press <em><b>tab</b></em> or <em><b>esc</b></em> to quickly restart the test.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: qrState === 'off'}, 
@@ -69,7 +77,10 @@ export function SettingBehavior() {
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>language</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>language</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Change in which language you want to type.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: langState === 'en'}, 

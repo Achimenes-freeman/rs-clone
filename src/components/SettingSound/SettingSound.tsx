@@ -41,11 +41,14 @@ export function SettingSound() {
 
     return(
         <>
-            <SetGroupBut setIsOpen={setIsOpen} isOpen={isOpen}>sound</SetGroupBut>
+            <SetGroupBut setIsOpen={setIsOpen} isOpen={isOpen} type='sound'>sound</SetGroupBut>
             {isOpen
-            ? <div className={pageStyles.setGroupCont}>
+            ? <div className={pageStyles.setGroupCont} id="soundGroup">
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>sound volume:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>sound volume:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Change to volume of sound effects.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: volState === 'quite'}, 
@@ -59,7 +62,10 @@ export function SettingSound() {
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>play sound on click:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>play sound on click:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Plays a short sound when you press a key.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: scState === 'off'}, 
@@ -70,7 +76,10 @@ export function SettingSound() {
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>play sound on error:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>play sound on error:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Plays a short sound if you press an incorrect key or press space too early.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: seState === 'off'}, 

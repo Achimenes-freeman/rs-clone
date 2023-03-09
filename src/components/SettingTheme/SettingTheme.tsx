@@ -40,14 +40,18 @@ export function SettingTheme() {
             setThemeState(target)
         }
     }
-
+    
     return (
         <>
-            <SetGroupBut setIsOpen={setIsOpen} isOpen={isOpen}>theme</SetGroupBut>
+            <SetGroupBut setIsOpen={setIsOpen} isOpen={isOpen} type='theme'>theme</SetGroupBut>
             {isOpen
-            ? <div className={pageStyles.setGroupCont}>
+            ? <div className={pageStyles.setGroupCont} id="themeGroup">
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>flip test colors:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>flip test colors:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>By default, typed text is brighter than the future text. 
+                        When enabled, the colors will be flipped and the future text will be brighter than the already typed text.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: ftcState === 'off'}, 
@@ -58,7 +62,11 @@ export function SettingTheme() {
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>colorful mode:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>colorful mode:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>When enabled, the test words will use the main color, 
+                        instead of the text color, making the website more colorful.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: cmState === 'off'}, 
@@ -69,7 +77,10 @@ export function SettingTheme() {
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>theme:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>theme:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Change the theme of page.</p>
+                    </div>
                     <div className={cn(pageStyles.setGroupContentButCont, styles.themeButtonCont)}>
                         <button 
                             className={cn({[pageStyles.activeButton]: themeState === 'default'}, 

@@ -63,11 +63,14 @@ export function SettingAppearance() {
 
     return(
         <>
-            <SetGroupBut setIsOpen={setIsOpen} isOpen={isOpen}>appearance</SetGroupBut>
+            <SetGroupBut setIsOpen={setIsOpen} isOpen={isOpen} type='appearance'>appearance</SetGroupBut>
             {isOpen
-            ? <div className={pageStyles.setGroupCont}>
+            ? <div className={pageStyles.setGroupCont} id="appearanceGroup">
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>timer/progress style:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>timer/progress style:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Change the style of the timer/progress during a timed test.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: styleState === 'text'}, 
@@ -78,7 +81,10 @@ export function SettingAppearance() {
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>timer/progress color:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>timer/progress color:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Change the color of the timer/progress number/bar.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: colorState === 'black'}, 
@@ -95,7 +101,10 @@ export function SettingAppearance() {
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>timer/progress opacity:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>timer/progress opacity:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Change the opacity of the timer/progress number/bar.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: opacityState === '0.25'}, 
@@ -112,14 +121,20 @@ export function SettingAppearance() {
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>font size:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>font size:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Change the font size of the test words.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <input className={styles.defaultRangeInput} type="range" min={1} max={5} step={0.1} value={sizeState} onChange={sizeOnChange}/>
                         <span className={styles.label}>{sizeState}</span>
                     </div>
                 </div>
                 <div className={pageStyles.setGroupContentCont}>
-                    <h3 className={pageStyles.setGroupContentTitle}><span>·</span>font family:</h3>
+                    <div className={pageStyles.setGroupContentTitleCont}>
+                        <h3 className={pageStyles.setGroupContentTitle}><span>·</span>font family:</h3>
+                        <p className={pageStyles.setGroupContentDescription}>Change the font of the page.</p>
+                    </div>
                     <div className={pageStyles.setGroupContentButCont}>
                         <button 
                             className={cn({[pageStyles.activeButton]: familyState === 'robotoMono'}, 

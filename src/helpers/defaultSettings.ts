@@ -31,7 +31,7 @@ export const defaultSettings: SettingsInterface = {
         tpStyle: 'mini',
         tpColor: 'main',
         tpOpacity: '1',
-        fontSize: '1',
+        fontSize: '1.5',
         fontFamily: 'robotoMono'
     },
     theme: {
