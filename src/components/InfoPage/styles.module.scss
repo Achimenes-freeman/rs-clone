@@ -7,6 +7,18 @@
     width: 1250px;
 }
 
+.monkeytypeLink {
+    display: inline;
+    margin-left: 5px;
+    color: var(--main);
+    text-decoration: none;
+    transition: all 0.2s linear;
+
+    &:hover {
+        color: var(--text);
+    }
+}
+
 
 .section {
     display: flex;
@@ -26,19 +38,9 @@
         margin-top: 5px;
     }
 
-    & a{
-        display: inline;
-        margin-left: 5px;
-        color: var(--main);
-        text-decoration: none;
-        transition: all 0.2s linear;
-
-        &:hover {
-            color: var(--text);
-        }
+    & > p:nth-of-type(2) a {
+        margin-left: 0;
     }
-
-
 }
 
 .implCont {

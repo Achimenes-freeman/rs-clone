@@ -7,18 +7,33 @@ export function InfoPage() {
             <div className={cn(styles.aboutMt, styles.section)}>
                 <h2 className={styles.mainHeading}>About RStype</h2>
                 <p>
-                    RStype was create as the final project in Rolling Scopes
-                    School.
-                    The task was to create a copy of any existence site, app,
-                    game or anything else. So, we choose to create a clone of 
-                    <a rel="noreferrer" href='https://monkeytype.com/' target='_blank'>monkeytype</a>.
+                    RStype was created as the final project in Rolling Scopes
+                    School. The task was to create a copy of any existence site,
+                    app, game or anything else. So, we choose to create a clone
+                    of
+                    <a
+                        className={styles.monkeytypeLink}
+                        rel="noreferrer"
+                        href="https://monkeytype.com/"
+                        target="_blank"
+                    >
+                        monkeytype
+                    </a>
+                    .
                 </p>
                 <p>
-                    <a rel="noreferrer" href='https://github.com/monkeytypegame/monkeytype' target='_blank'>monkeytype</a> - is a open source minimalistic and
-                    customizable typing test. It is written by using only
-                    Typescript. So we decided to make it with React. By the way,
-                    not all, but many functions from original have been
-                    implemented
+                    <a
+                        className={styles.monkeytypeLink}
+                        rel="noreferrer"
+                        href="https://github.com/monkeytypegame/monkeytype"
+                        target="_blank"
+                    >
+                        monkeytype
+                    </a>{' '}
+                    - is a open source minimalistic and customizable typing
+                    test. It is written by using only Typescript. So we decided
+                    to make it with React. By the way, not all, but many
+                    functions from original have been implemented
                 </p>
                 <p className={styles.feelFree}>Feel free to test yourself!</p>
             </div>
@@ -52,6 +67,7 @@ export function InfoPage() {
                                         Possibility to import/export
                                         settings(with it validation)
                                     </li>
+                                    <li>Open/close animation</li>
                                 </ul>
                             </li>
                             <li>
@@ -60,8 +76,10 @@ export function InfoPage() {
                                 </h4>
                                 <ul>
                                     <li>
-                                        Leader is a user with a highest wpm in
-                                        any game
+                                        Sort users by their best game by wpm
+                                    </li>
+                                    <li>
+                                        Highlighting the name of the best user
                                     </li>
                                 </ul>
                             </li>
@@ -111,7 +129,7 @@ export function InfoPage() {
                         </ul>
                     </li>
                     <li>
-                        <h3  className={styles.subHeading}>Backend</h3>
+                        <h3 className={styles.subHeading}>Backend</h3>
                         <ul>
                             <li>User registration</li>
                             <li>User login</li>
