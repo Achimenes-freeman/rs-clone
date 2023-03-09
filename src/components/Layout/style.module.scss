@@ -48,3 +48,16 @@ body {
     height: 100vh;
     overflow: hidden;
 }
+
+
+@media (max-width: 1439px) and (min-width: 1024px) {
+    .layoutCont {
+        width: 984px;
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .layoutCont {
+        width: 728px;
+    }
+}

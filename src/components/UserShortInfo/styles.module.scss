@@ -84,3 +84,15 @@
     background: var(--background);
     border-radius: 10px;
 }
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .user {
+        &NameAndDateCont {
+            align-items: flex-start;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+}

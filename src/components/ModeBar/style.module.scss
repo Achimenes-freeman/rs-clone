@@ -36,3 +36,14 @@
         color: var(--main)
     }
 }
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .ModeBar {
+        width: 728px;
+    }
+
+    .modesList {
+        gap: 10px;
+        padding: 10px 15px;
+    }
+}

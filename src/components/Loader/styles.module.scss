@@ -93,3 +93,16 @@
         opacity: 1;
     }
 }
+
+
+@media (max-width: 1439px) and (min-width: 1024px) {
+    .Loader {
+        width: 984px;
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .Loader {
+        width: 728px;
+    }
+}

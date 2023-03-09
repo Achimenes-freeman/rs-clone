@@ -50,3 +50,9 @@
 .position {
     color: var(--error)
 }
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .Row {
+        gap: 40px;
+    }
+}

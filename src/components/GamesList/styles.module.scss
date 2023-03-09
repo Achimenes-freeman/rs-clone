@@ -88,3 +88,27 @@
         color: var(--background);
     }
 }
+
+@media (max-width: 1439px) and (min-width: 1024px) {
+    .GameListCont {
+        width: 100%;
+    }
+
+    .head {
+        &Row {
+            grid-template-columns: 156.8px 156.8px 301.8px 206.8px 161.8px;
+        }
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .GameListCont {
+        width: 100%;
+    }
+
+    .head {
+        &Row {
+            grid-template-columns: 105.6px 105.6px 200.6px 155.6px 160.4px;
+        }
+    }
+}

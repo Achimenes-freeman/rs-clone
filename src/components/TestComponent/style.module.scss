@@ -389,3 +389,9 @@ $animFillOff: blinkfill 0.5s linear infinite;
         opacity: 0.4;
     }
 }
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .TestComponent {
+        width: 728px;
+    }
+}

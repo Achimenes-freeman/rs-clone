@@ -37,3 +37,15 @@
         justify-self: center;
     }
 }
+
+@media (max-width: 1439px) and (min-width: 1024px)  {
+    .AccountPage {
+        width: 984px;
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px)  {
+    .AccountPage {
+        width:728px;
+    }
+}
