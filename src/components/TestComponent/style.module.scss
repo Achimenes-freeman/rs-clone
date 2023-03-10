@@ -395,3 +395,13 @@ $animFillOff: blinkfill 0.5s linear infinite;
         width: 728px;
     }
 }
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .TestComponent {
+        width: 405px;
+    }
+
+    .testView {
+        padding: 0 10px;
+    }
+}

@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useMemo, useState } from "react";
 import { SettingIdType, AnimationType, AnimationValueType, IAnimationContext } from "./types";
-
+import { createMaxHeightValue } from "../../helpers/createMaxHeightValue";
 
 export const AnimationContext = createContext<IAnimationContext>({
     'behavior': null,
@@ -63,9 +63,6 @@ export const AnimationContextProvider = ({children}: {children: React.ReactEleme
         }
     }, [])
 
-
-
-
     const openSettingGroup = useCallback((maxHeight: number, element: HTMLElement, settingId: SettingIdType) => {
         const setGroup = element;
         setGroup.style.height = `0px`;
@@ -73,26 +70,29 @@ export const AnimationContextProvider = ({children}: {children: React.ReactEleme
         let height = step;
         const animationTimer = setInterval(() => {
             if(height >= maxHeight) {
-                setGroup.style.overflow = 'auto'
-                updateSettingAnimationValue(settingId, null)
                 clearInterval(animationTimer)
+                updateSettingAnimationValue(settingId, null)
+                setGroup.style.removeProperty('overflow')
+                setGroup.style.removeProperty('height')
+                return
             }
             setGroup.style.height = `${height}px`;
             height += step
         }, 7)
         updateSettingAnimationValue(settingId, animationTimer)
     }, [updateSettingAnimationValue])
-    
     const closeSettingGroup = useCallback((maxHeight: number, element: HTMLElement, settingId: SettingIdType) => {
         const setGroup = element;
         setGroup.style.height = `${maxHeight}px`;
         const step = maxHeight / 36;
         let height = step;
         const animationTimer = setInterval(() => {
-            if(Number(setGroup.style.height) >= maxHeight) {
-                setGroup.style.overflow = 'auto'
-                updateSettingAnimationValue(settingId, null)
+            if(height >= maxHeight) {
                 clearInterval(animationTimer)
+                updateSettingAnimationValue(settingId, null)
+                setGroup.style.overflow = 'auto'
+                setGroup.style.removeProperty('height')
+                return
             }
     
             setGroup.style.height = `${maxHeight - height}px`;
@@ -100,33 +100,12 @@ export const AnimationContextProvider = ({children}: {children: React.ReactEleme
         }, 7)
         updateSettingAnimationValue(settingId, animationTimer)
     }, [updateSettingAnimationValue])
-    
     const animateGroupAppearance = useCallback((settingId: SettingIdType, type: AnimationType) => {
         const settingCont = document.getElementById(`${settingId}Group`);
         if(settingCont) {
             settingCont.style.overflow = 'hidden';
-            let maxHeight = 0
-            switch(settingId) {
-                case 'behavior':
-                    maxHeight = 218;
-                    break;
-                case 'sound':
-                    maxHeight = 199;
-                    break;
-                case 'caret':
-                    maxHeight = 126;
-                    break;
-                case 'appearance':
-                    maxHeight = 345;
-                    break;
-                case 'theme':
-                    maxHeight = 256;
-                    break;
-                case 'dangerZone':
-                    maxHeight = 72;
-                    break;
-                default: break;
-            }
+            const maxHeight = createMaxHeightValue(settingId)
+            
         
             switch(type) {
                 case 'appear':

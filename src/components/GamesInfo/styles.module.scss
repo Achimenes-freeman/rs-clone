@@ -22,3 +22,9 @@
         width: 728px;
     }
 }
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .testWpmChart {
+        width: 405px;
+    }
+}

@@ -56,3 +56,16 @@
         color: var(--text);
     }
 }
+
+@media (max-width: 767px) and (min-width: 425px) {
+    
+    .Footer {
+        padding: 0 15px;
+    }
+
+    .rss{
+        &Cont {
+            flex-direction: column;
+        }
+    }
+}

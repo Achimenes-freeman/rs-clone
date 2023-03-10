@@ -8,6 +8,7 @@ import { SettingTheme } from '../SettingTheme/SettingTheme';
 import { SettingDangerZone } from '../SettingDangerZone/SettingDangerZone';
 
 export function SettingsList() {
+
     return(
         <div className={styles.settingsList}>
             <ul className={cn(styles.settingsListContent, styles.List)}>

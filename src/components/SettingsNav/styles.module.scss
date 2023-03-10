@@ -37,3 +37,15 @@
         }
     }
 }
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .settings {
+        &Navigation {
+    
+            &Content {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}

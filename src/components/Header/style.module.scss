@@ -12,9 +12,13 @@
     text-decoration: none;
     color: var(--main);
 
-    > h1 {
+    > h1:first-child {
         padding-bottom: 10px;
         font-size: 44px;
+    }
+
+    > h1:last-child {
+        display: none;
     }
 }
 
@@ -37,4 +41,32 @@
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+
+    .Header {
+        padding: 0 15px;
+    }
+
+    .logo {
+
+        > h1:first-child {
+            display: none;
+        }
+
+        > h1:last-child {
+            padding-bottom: 10px;
+            display: block;
+            font-size: 44px;
+        }
+    }
+
+    .leftNav {
+        gap: 20px;
+    }
+
+    .rightNav {
+        gap: 20px;
+    }
 }

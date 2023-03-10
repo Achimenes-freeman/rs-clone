@@ -56,3 +56,16 @@
         gap: 40px;
     }
 }
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .Row {
+        grid-template-columns: 25px 100px 50px 100px 125px;
+        gap: 0;
+    }
+
+    .info{
+        &:nth-child(5) {
+            display: none;
+        }
+    }
+}

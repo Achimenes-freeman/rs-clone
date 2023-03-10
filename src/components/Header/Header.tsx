@@ -42,6 +42,7 @@ export const Header = ()=> {
                     <div className={styles.leftNav}>
                         <Link to='/rs-clone/' className={styles.logo} onClick={restartGame}>
                             <h1>RStype</h1>
+                            <h1>RSt</h1>
                         </Link>
                         <Link to='/rs-clone/' onClick={restartGame}>
                             <Keyboard />
