@@ -1,0 +1,47 @@
+.settings {
+    &List {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+
+        &Content {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: flex-start;
+            width: 100%;
+        }
+    }
+}
+
+.List {
+    list-style: none;
+
+    &Elem {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 30px;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .List {
+        &Elem {
+            padding: 0;
+        }
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .List {
+        &Elem {
+            padding: 0;
+        }
+    }
+}

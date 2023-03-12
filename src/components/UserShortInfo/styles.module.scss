@@ -1,0 +1,176 @@
+.UserCont {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: var(--subAlt);
+}
+
+.user {
+    &NameAndDateCont {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        width: 20%;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: -5px;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background: var(--main);
+        }
+    }
+
+    &TotalInfo {
+        &Cont {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 70%;
+        }
+
+        &Elem {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+        }
+    }
+}
+
+.user {
+    &Name {
+        position: relative;
+        color: var(--text);
+        font-size: 32px;
+        font-weight: normal;
+    }
+
+    &Date {
+        color: var(--sub);
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+    &TestHeading {
+        color: var(--sub);
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    &TestAmount {
+        color: var(--text);
+        font-size: 32px;
+        font-weight: normal;
+    }
+}
+
+.separator {
+    height: 100px;
+    width: 25px;
+    background: var(--background);
+    border-radius: 10px;
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .user {
+        &NameAndDateCont {
+            align-items: flex-start;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+
+    .UserCont {
+        flex-direction: column;
+    }
+
+    .user {
+        &NameAndDateCont {
+            align-items: center;
+            width: 100%;
+
+            &::before {
+                top: auto;
+                left: 0;
+            }
+        }
+
+        &TotalInfo {
+            &Cont {
+                align-items: flex-start;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            &Elem {
+                align-items: center;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+        }
+    }
+
+    .separator {
+        height: 25px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+
+    .UserCont {
+        flex-direction: column;
+    }
+
+    .user {
+        &NameAndDateCont {
+            align-items: center;
+            width: 100%;
+
+            &::before {
+                top: auto;
+                left: 0;
+            }
+        }
+
+        &TotalInfo {
+            &Cont {
+                align-items: flex-start;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            &Elem {
+                align-items: center;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+        }
+    }
+
+    .separator {
+        height: 25px;
+        width: 100%;
+    }
+}

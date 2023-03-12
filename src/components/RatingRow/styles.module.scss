@@ -1,0 +1,93 @@
+@import '../../variables.scss';
+
+.Row {
+    display: grid;
+    grid-template-columns: 25px 100px 50px 100px 100px 125px;
+    grid-template-rows: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    width: fit-content;
+}
+
+.bg {
+    background: var(--subAlt);
+}
+
+.info {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+
+    &:first-of-type {
+        align-items: flex-start;
+        padding-left: 10px;
+    }
+
+    &:nth-of-type(2) {
+        align-items: flex-start;
+    }
+
+    &:last-of-type {
+        padding-right: 10px;
+    }
+}
+
+.colored {
+    color: var(--text);
+}
+
+.top1 {
+    color: $main-yellow-text;
+}
+
+.date {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.position {
+    color: var(--error)
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .Row {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .Row {
+        grid-template-columns: 25px 100px 50px 100px 125px;
+        gap: 0;
+    }
+
+    .info{
+        &:nth-child(5) {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .Row {
+        grid-template-columns: 25px 100px 50px 100px;
+        gap: 0;
+    }
+
+    .info{
+
+        &:nth-child(4) {
+            padding-right: 10px;
+        }
+
+        &:nth-child(5) {
+            display: none;
+        }
+
+        &:last-child {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@import '../../variables.scss';
+
+.Crown{
+    width: 25px;
+    fill: var(--sub);
+
+    transition: all .2s linear;
+
+    &:hover{
+        fill: var(--text)
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .Crown {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+    }
+}

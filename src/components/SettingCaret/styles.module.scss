@@ -1,0 +1,17 @@
+.emptyCaret {
+    box-sizing: border-box;
+    display: block;
+    height: 16px;
+    width: 8px;
+    border: 1px solid var(--text);
+    transition: all 0.1s linear;
+}
+
+.filledCaret {
+    box-sizing: border-box;
+    display: block;
+    height: 16px;
+    width: 8px;
+    background: var(--text);
+    transition: all 0.1s linear;
+}

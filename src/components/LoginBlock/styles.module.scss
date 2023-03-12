@@ -1,0 +1,65 @@
+.input {
+    height: 40px;
+    width: 100%;
+    padding-left: 10px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background: var(--subAlt);
+    caret-color: var(--main);
+    color: var(--text);
+    font-size: 18px;
+
+    &::placeholder {
+        color: var(--main);
+        opacity: 0.25;
+    }
+}
+
+.inputPass {
+    margin-top: 20px;
+}
+
+.loginButt {
+    align-self: flex-start;
+    width: 50%;
+    height: 35px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: var(--subAlt);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.1s linear;
+
+    &:hover {
+        background: var(--text);
+        color: var(--background);
+    }
+}
+
+.errorSpan {
+    position: absolute;
+    bottom: 55px;
+    right: 30px;
+    width: 150px;
+    color: var(--error);
+    font-size: 12px;
+}
+
+.nameSpan, 
+.passSpan {
+    align-self: flex-start;
+    margin-top: 5px;
+    margin-left: 10px;
+    color: var(--error);
+    font-size: 12px;
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .errorSpan {
+        right: 15px;
+        width: 125px;
+    }
+}

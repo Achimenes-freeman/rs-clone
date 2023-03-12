@@ -1,0 +1,75 @@
+.Layout {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    background: var(--background);
+    color: var(--sub);
+    font-family: var(--font);
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1 1 auto;
+    height: 100%;
+    width: 100%;
+}
+
+.layoutCont {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    width: 1250px;
+}
+
+body {
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+        background: var(--background);
+    }
+    &::-webkit-scrollbar-thumb {
+        width: 10px;
+        border-radius: 10px;
+        background: var(--sub);
+    }
+}
+
+.overflow {
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+@media (max-width: 1439px) and (min-width: 1024px) {
+    .layoutCont {
+        width: 984px;
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .layoutCont {
+        width: 728px;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .layoutCont {
+        width: 405px;
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .layoutCont {
+        width: 300px;
+    }
+}

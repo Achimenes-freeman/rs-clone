@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+
+.Keyboard{
+    width: 25px;
+    height: 23px;
+    fill: var(--sub);
+
+    transition: all .2s linear;
+
+    &:hover{
+        fill: var(--text);
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .Keyboard {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+    }
+}

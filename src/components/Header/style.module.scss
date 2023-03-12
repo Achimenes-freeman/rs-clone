@@ -1,0 +1,100 @@
+.Header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    padding: 0 25px;
+}
+
+.logo{
+    line-height: 0.95;
+    text-decoration: none;
+    color: var(--main);
+
+    > h1:first-child {
+        padding-bottom: 10px;
+        font-size: 44px;
+    }
+
+    > h1:last-child {
+        display: none;
+    }
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.leftNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.rightNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+
+    .Header {
+        padding: 0 15px;
+    }
+
+    .logo {
+
+        > h1:first-child {
+            display: none;
+        }
+
+        > h1:last-child {
+            padding-bottom: 10px;
+            display: block;
+            font-size: 44px;
+        }
+    }
+
+    .leftNav {
+        gap: 20px;
+    }
+
+    .rightNav {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .Header {
+        padding: 0 15px;
+    }
+
+    .logo {
+
+        > h1:first-child {
+            display: none;
+        }
+
+        > h1:last-child {
+            padding-bottom: 0px;
+            display: block;
+            font-size: 36px;
+        }
+    }
+
+    .leftNav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .rightNav {
+        gap: 10px;
+    }
+}

@@ -1,0 +1,92 @@
+.Footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    padding: 0 25px;
+}
+
+.gitHub {
+    &Cont {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: flex-start;
+    }
+
+    &Logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.rss{
+    width: 100px;
+
+    &Cont {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        flex-direction: row;
+    }
+}
+
+.year {
+    position: relative;
+    top: -2px;
+    display: block;
+    line-height: 100%;
+    font-family: var(--font);
+    font-size: 46px;
+    font-weight: bold;
+}
+
+.link{
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
+    color: var(--sub);
+    transition: all 0.2s linear;
+
+    &:hover {
+        border-color: var(--main);
+        color: var(--text);
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    
+    .Footer {
+        padding: 0 15px;
+    }
+
+    .rss{
+        &Cont {
+            flex-direction: column;
+        }
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    
+    .Footer {
+        padding: 0 15px;
+    }
+
+    .rss{
+
+        width: 75px;
+        &Cont {
+            flex-direction: column;
+            width: 75px;
+        }
+    }
+
+    .year {
+        width: 75px;
+        font-size: 32px;
+    }
+}

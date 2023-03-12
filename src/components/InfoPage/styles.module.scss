@@ -1,0 +1,119 @@
+.InfoPage {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: flex-start;
+    width: 1250px;
+}
+
+.monkeytypeLink {
+    display: inline;
+    margin-left: 5px;
+    color: var(--main);
+    text-decoration: none;
+    transition: all 0.2s linear;
+
+    &:hover {
+        color: var(--text);
+    }
+}
+
+
+.section {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.aboutMt {
+    
+    font-size: 20px;
+
+    & > p:first-child, & > p:last-child {
+        margin-top: 10px;
+    }
+
+    & > p {
+        margin-top: 5px;
+    }
+
+    & > p:nth-of-type(2) a {
+        margin-left: 0;
+    }
+}
+
+.implCont {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.mainHeading {
+    color: var(--text);
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.subHeading {
+    width: fit-content;
+    margin-bottom: 5px; 
+    border-bottom: 1px solid var(--main);
+    color: var(--text);
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.subAltHeading {
+    color: var(--text);
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.feelFree{
+    color: var(--text);
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    padding-left: 20px;
+    font-size: 16px;
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .section {
+        padding: 0 10px;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    
+    .InfoPage {
+        margin: 25px 0;
+    }
+    
+    .section {
+        padding: 0 10px;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .implCont {
+        flex-direction: column;
+    }
+}
