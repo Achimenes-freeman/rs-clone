@@ -55,3 +55,10 @@
     stroke-width: 4;
     stroke-miterlimit: 10;
 }
+
+@media (max-width: 424px) and (min-width: 320px) {
+    
+    .RSSIcon {
+        width: 75px;
+    }
+}

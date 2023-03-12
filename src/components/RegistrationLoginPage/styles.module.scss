@@ -1,4 +1,5 @@
 .RegLogPage {
+    align-self: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,5 +64,17 @@
     }
     &Left {
         border-bottom-right-radius: 0;
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .RegLogPage {
+        width: 300px;
+        margin-bottom: 30px;
+    }
+
+    .regLogCont{
+        grid-template-columns: 150px 150px;
+        grid-template-rows: 40px 250px;
     }
 }

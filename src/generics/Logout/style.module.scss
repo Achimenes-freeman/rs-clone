@@ -12,3 +12,12 @@
         fill: var(--text);
     }
 }
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .Logout {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+    }
+}

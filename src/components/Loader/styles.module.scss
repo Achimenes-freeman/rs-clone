@@ -14,7 +14,7 @@
     background: var(--background);
 }
 
-.fakeHeader {
+.fakeHeader, .fakeHeaderShort {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -31,6 +31,10 @@
     animation-duration: 1s;
     animation-iteration-count: infinite;
     animation-fill-mode: both;
+}
+
+.fakeHeaderShort {
+    display: none;
 }
 
 .clockLoader {
@@ -91,5 +95,50 @@
 
     100%{
         opacity: 1;
+    }
+}
+
+
+@media (max-width: 1439px) and (min-width: 1024px) {
+    .Loader {
+        width: 984px;
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .Loader {
+        width: 728px;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .Loader {
+        width: 405px;
+    }
+
+    .fakeHeader {
+        display: none;
+
+        &Short {
+            display: flex;
+            padding-left: 15px;
+        }
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .Loader {
+        width: 300px;
+    }
+
+    .fakeHeader {
+        display: none;
+
+        &Short {
+            display: flex;
+            padding-top: 12px;
+            padding-left: 15px;
+            font-size: 36px;
+        }
     }
 }

@@ -37,3 +37,36 @@
         justify-self: center;
     }
 }
+
+@media (max-width: 1439px) and (min-width: 1024px)  {
+    .AccountPage {
+        width: 984px;
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px)  {
+    .AccountPage {
+        width:728px;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .AccountPage {
+        width: 405px;
+    }
+
+    .bestGamesCont {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .AccountPage {
+        width: 300px;
+        margin-bottom: 30px;
+    }
+
+    .bestGamesCont {
+        flex-direction: column;
+    }
+}

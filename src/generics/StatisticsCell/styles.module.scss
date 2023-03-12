@@ -20,3 +20,21 @@
         font-weight: normal;
     }
 }
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .CellCont {
+        padding: 10px 10px;
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .CellCont {
+        padding: 10px 10px;
+    }
+
+    .cell {
+        &Value {
+            font-size: 32px;
+        }
+    }
+}

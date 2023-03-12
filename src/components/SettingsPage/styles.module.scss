@@ -24,7 +24,7 @@
     outline: none;
     text-align: center;
     line-height: 100%;
-    transition: all 0.1s linear;
+    transition: all 0.2s linear;
 
     &:hover {
         background: var(--text);
@@ -115,6 +115,7 @@
 
             & > span {
                 color: var(--main);
+                margin-right: 5px;
                 font-size: 24px;
             }
         }
@@ -133,5 +134,80 @@
         opacity: 0;
     } to {
         opacity: 1;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+
+    .setGroup {
+
+        &Cont {
+            gap: 25px;
+        }
+
+        &Content {
+            &Cont {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 15px;
+                justify-content: flex-start;
+            }
+
+
+            &Title {
+                &Cont {
+                    justify-content: center;
+                    width: 100%;
+                }
+            }
+
+            &But {
+                &Cont {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+
+    .SettingsPage {
+        gap: 25px;
+        margin: 15px 0 40px 0;
+    }
+
+    .setGroup {
+
+        &Cont {
+            gap: 25px;
+        }
+
+        &Content {
+            &Cont {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 15px;
+                justify-content: flex-start;
+            }
+
+
+            &Title {
+                &Cont {
+                    justify-content: center;
+                    width: 100%;
+                }
+            }
+
+            &But {
+                &Cont {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    width: 100%;
+                }
+            }
+        }
     }
 }
