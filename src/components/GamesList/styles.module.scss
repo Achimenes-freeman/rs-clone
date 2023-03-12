@@ -129,3 +129,20 @@
         }
     }
 }
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .GameListCont {
+        width: 300px;
+    }
+
+    .head {
+        &Row {
+            gap: 10px;
+            grid-template-columns: 50px 100px 130px;
+
+            & > div {
+                display: none;
+            }
+        }
+    }
+}

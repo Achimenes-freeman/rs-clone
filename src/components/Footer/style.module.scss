@@ -69,3 +69,24 @@
         }
     }
 }
+
+@media (max-width: 424px) and (min-width: 320px) {
+    
+    .Footer {
+        padding: 0 15px;
+    }
+
+    .rss{
+
+        width: 75px;
+        &Cont {
+            flex-direction: column;
+            width: 75px;
+        }
+    }
+
+    .year {
+        width: 75px;
+        font-size: 32px;
+    }
+}

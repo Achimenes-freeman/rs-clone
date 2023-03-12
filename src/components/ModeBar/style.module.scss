@@ -82,3 +82,21 @@
         }
     }
 }
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .ModeBar {
+        width: 300px;
+    }
+
+    .modesList {
+        flex-direction: row;
+        padding: 10px 10px;
+    }
+
+    .modes {
+        &Seconds,
+        &Words {
+            flex-direction: column;
+        }
+    }
+}

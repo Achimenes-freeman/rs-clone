@@ -5,7 +5,7 @@ export const createMaxHeightValue = (settingId: SettingIdType) => {
     switch(settingId) {
         case 'behavior':
             if(windowWidth >= 320 && windowWidth <= 424) {
-                return 0
+                return 668
             }
             if (windowWidth >= 425 && windowWidth <= 767) {
                 return 630
@@ -20,7 +20,7 @@ export const createMaxHeightValue = (settingId: SettingIdType) => {
 
         case 'sound':
             if(windowWidth >= 320 && windowWidth <= 424) {
-                return 0
+                return 630
             }
             if (windowWidth >= 425 && windowWidth <= 767) {
                 return 573
@@ -35,7 +35,7 @@ export const createMaxHeightValue = (settingId: SettingIdType) => {
 
         case 'caret':
             if(windowWidth >= 320 && windowWidth <= 424) {
-                return 0
+                return 459
             }
             if (windowWidth >= 425 && windowWidth <= 767) {
                 return 459
@@ -50,7 +50,7 @@ export const createMaxHeightValue = (settingId: SettingIdType) => {
 
         case 'appearance':
             if(windowWidth >= 320 && windowWidth <= 424) {
-                return 0
+                return 1178
             }
             if (windowWidth >= 425 && windowWidth <= 767) {
                 return 1140
@@ -65,7 +65,7 @@ export const createMaxHeightValue = (settingId: SettingIdType) => {
 
         case 'theme':
             if(windowWidth >= 320 && windowWidth <= 424) {
-                return 0
+                return 661
             }
             if (windowWidth >= 425 && windowWidth <= 767) {
                 return 604
@@ -80,7 +80,7 @@ export const createMaxHeightValue = (settingId: SettingIdType) => {
 
         case 'dangerZone':
             if(windowWidth >= 320 && windowWidth <= 424) {
-                return 0
+                return 210
             }
             if (windowWidth >= 425 && windowWidth <= 767) {
                 return 191

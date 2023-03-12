@@ -96,3 +96,24 @@ li {
         gap: 10px;
     }
 }
+
+@media (max-width: 424px) and (min-width: 320px) {
+    
+    .InfoPage {
+        margin: 25px 0;
+    }
+    
+    .section {
+        padding: 0 10px;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .implCont {
+        flex-direction: column;
+    }
+}

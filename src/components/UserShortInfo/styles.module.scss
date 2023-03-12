@@ -135,3 +135,42 @@
         width: 100%;
     }
 }
+
+@media (max-width: 424px) and (min-width: 320px) {
+
+    .UserCont {
+        flex-direction: column;
+    }
+
+    .user {
+        &NameAndDateCont {
+            align-items: center;
+            width: 100%;
+
+            &::before {
+                top: auto;
+                left: 0;
+            }
+        }
+
+        &TotalInfo {
+            &Cont {
+                align-items: flex-start;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            &Elem {
+                align-items: center;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+        }
+    }
+
+    .separator {
+        height: 25px;
+        width: 100%;
+    }
+}

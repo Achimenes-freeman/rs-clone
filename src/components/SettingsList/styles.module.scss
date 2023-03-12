@@ -37,3 +37,11 @@
         }
     }
 }
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .List {
+        &Elem {
+            padding: 0;
+        }
+    }
+}

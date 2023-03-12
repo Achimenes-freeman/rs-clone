@@ -56,3 +56,10 @@
     color: var(--error);
     font-size: 12px;
 }
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .errorSpan {
+        right: 15px;
+        width: 125px;
+    }
+}
